@@ -17,7 +17,7 @@ export default class ServiceQuestionService {
         return this.instance
     }
     findServiceQuestionById = id =>
-        fetch(ServiceQuestionService.urlPrefix + `api/servicesSpecificQuestions/{id}`)
+        fetch(ServiceQuestionService.urlPrefix + `api/servicesSpecificQuestions/${id}`)
             .then(response => response.json())
     findAllServiceQuestions = () =>
         fetch(ServiceQuestionService.urlPrefix + "api/servicesSpecificQuestions")
