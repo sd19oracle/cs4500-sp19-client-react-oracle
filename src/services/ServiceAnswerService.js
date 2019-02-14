@@ -12,8 +12,6 @@ class ServiceAnswerService {
         } else {
             this.urlPrefix = 'https://cs4500-sp19-oracle.herokuapp.com/'
         }
-        console.log(this.hostname)
-        console.log(this.urlPrefix)
         return this.instance
     }
 
