@@ -28,7 +28,12 @@ class ServiceAnswers extends React.Component {
                 <table className="table">
                     <tbody>
                     {
-                        
+                        this.state.serviceAnswers
+                            .map(serviceAnswer =>
+                                <tr> key={serviceAnswer.id}
+                                    <td>{serviceAnswer.answer}</td>
+                                </tr>
+                            )
                     }
                     </tbody>
                 </table>
