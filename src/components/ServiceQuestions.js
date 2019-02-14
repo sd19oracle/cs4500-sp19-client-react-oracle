@@ -18,15 +18,10 @@ class ServiceQuestions extends React.Component {
             )
     }
 
-    myFunction() {
-        console.log(typeof(window.location.href));
-    }
-
     render() {
         return(
             <div>
                 <h3>Service Questions</h3>
-                <button onClick={this.myFunction}>Try it</button>
                 <table className="table">    
                     <tbody>
                     {
