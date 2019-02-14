@@ -6,5 +6,12 @@ class ServiceAnswerService {
         }
         return this.instance
     }
-    
+
+    findAllServiceSpecificAnswer = () =>
+        fetch('http://localhost:8080/api/servicesSpecificAnswers')
+            .then(response => response.json())
+
+    findOneAnswer = id =>
+        fetch('http://localhost:8080/api/servicesSpecificAnswers/{answerID}')
+            .then(response => response.json())
 }
