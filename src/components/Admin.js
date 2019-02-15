@@ -27,7 +27,7 @@ const Admin = () =>
                         exact
                         component={ServiceQuestions}/>
                     <Route
-                        paht="/admin/service-questions/1"
+                        path="/admin/service-questions/:id"
                         exact
                         component={ServiceQuestionDetails}/>
                 </div>
