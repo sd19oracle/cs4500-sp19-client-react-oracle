@@ -12,6 +12,19 @@ class ServiceQuestionDetails extends React.Component {
             }
         }
     }
+
+    componentDidMount() {
+        this.serviceQuestionService
+            .findAllServiceQuestions()
+            .then(serviceQuestions => {
+                    this.props.history.push("/admin/service-questions/" + serviceQuestions[0].id)
+                    this.setState({
+                        serviceQuestions: serviceQuestions,
+                        serviceQuestion: serviceQuestions[0]
+                    })
+                }
+            )
+    }
 }
 
 export default ServiceQuestionDetails
