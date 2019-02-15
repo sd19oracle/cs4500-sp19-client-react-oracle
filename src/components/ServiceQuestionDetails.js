@@ -7,7 +7,7 @@ class ServiceQuestionDetails extends React.Component {
         this.state = {
             serviceQuestions: [],
             serviceQuestion: {
-                question: '',
+                title: '',
                 id: 1
             }
         }
@@ -50,7 +50,7 @@ class ServiceQuestionDetails extends React.Component {
                                 <option
                                     value={serviceQuestion.id}
                                     key={serviceQuestion.id}>
-                                    {serviceQuestion.question}
+                                    {serviceQuestion.title}
                                 </option>
                             )
                     }
@@ -59,7 +59,7 @@ class ServiceQuestionDetails extends React.Component {
                 <input
                     onChange={() => { }}
                     className="form-control"
-                    value={this.state.serviceQuestion.question} />
+                    value={this.state.serviceQuestion.title} />
             </div>
         )
     }

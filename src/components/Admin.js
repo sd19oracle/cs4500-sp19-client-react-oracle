@@ -2,6 +2,7 @@ import React from 'react'
 import {BrowserRouter as Router, Link, Route} from 'react-router-dom'
 import ServiceAnswers from './ServiceAnswers'
 import ServiceQuestions from './ServiceQuestions'
+import ServiceQuestionDetails from './ServiceQuestionDetails';
 
 const Admin = () =>
     <div>
@@ -13,6 +14,8 @@ const Admin = () =>
                     <br/>
                     <Link to="/admin/service-questions">Service Questions</Link>
                     <br/>
+                    <Link to="/admin/service-questions/1">Service Questions Details</Link>
+                    <br/>
                 </div>
                 <div className="col-9">
                     <Route
@@ -23,6 +26,10 @@ const Admin = () =>
                         path="/admin/service-questions"
                         exact
                         component={ServiceQuestions}/>
+                    <Route
+                        paht="/admin/service-questions/1"
+                        exact
+                        component={ServiceQuestionDetails}/>
                 </div>
             </div>
         </Router>
