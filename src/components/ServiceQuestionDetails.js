@@ -40,6 +40,7 @@ class ServiceQuestionDetails extends React.Component {
         return (
             <div>
                 <h3>Service Question Details</h3>
+                <label>Service Question Id</label><br />
                 <select
                     value={this.state.serviceQuestion.id}
                     onChange={(e) => this.selectServiceQuestion(e.target.value)}
@@ -50,7 +51,7 @@ class ServiceQuestionDetails extends React.Component {
                                 <option
                                     value={serviceQuestion.id}
                                     key={serviceQuestion.id}>
-                                    {serviceQuestion.title}
+                            {serviceQuestion.id}) {serviceQuestion.title}
                                 </option>
                             )
                     }
