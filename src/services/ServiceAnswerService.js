@@ -16,11 +16,11 @@ class ServiceAnswerService {
     }
 
     findAllServiceSpecificAnswers = () =>
-        fetch(ServiceAnswerService.urlPrefix + 'api/servicesSpecificAnswers')
+        fetch(ServiceAnswerService.urlPrefix + `api/servicesSpecificAnswers`)
             .then(response => response.json())
 
     findOneAnswer = id =>
-        fetch(ServiceAnswerService.urlPrefix + 'api/servicesSpecificAnswers/{id}')
+        fetch(ServiceAnswerService.urlPrefix + `api/servicesSpecificAnswers/${id}`)
             .then(response => response.json())
 }
 
