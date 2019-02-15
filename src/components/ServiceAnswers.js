@@ -30,7 +30,7 @@ class ServiceAnswers extends React.Component {
                     {
                         this.state.serviceAnswers
                             .map(serviceAnswer =>
-                                <tr> key={serviceAnswer.id}
+                                <tr key={serviceAnswer.id}>
                                     <td>{serviceAnswer.answer}</td>
                                 </tr>
                             )

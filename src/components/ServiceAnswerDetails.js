@@ -1,6 +1,5 @@
 import React from 'react'
 import ServiceAnswerService from '../services/ServiceAnswerService'
-
 class ServiceAnswerDetails extends React.Component {
     constructor(props) {
         super(props)
@@ -8,12 +7,12 @@ class ServiceAnswerDetails extends React.Component {
         this.state = {
             serviceAnswers: [],
             serviceAnswer: {
-                choiceAnswer: '',
-                id: 1
+                id: 1,
+                answer: ''
+
             }
         }
     }
-
     componentDidMount() {
         this.serviceAnswerService
             .findAllServiceSpecificAnswers()
@@ -26,7 +25,6 @@ class ServiceAnswerDetails extends React.Component {
                 }
             )
     }
-
     selectServiceAnswer = id =>
         this.serviceAnswerService
             .findOneAnswer(id)
@@ -37,14 +35,13 @@ class ServiceAnswerDetails extends React.Component {
                     })
                 }
             )
-
     render() {
-        return (
+        return(
             <div>
                 <h3>Service Answer Details</h3>
                 <select
                     value={this.state.serviceAnswer.id}
-                    onChange={(e) => this.selectServiceAnswer(e.target.value)}
+                    onChange={e => {this.selectServiceAnswer(e.target.value)}}
                     className="form-control">
                     {
                         this.state.serviceAnswers
@@ -52,18 +49,19 @@ class ServiceAnswerDetails extends React.Component {
                                 <option
                                     value={serviceAnswer.id}
                                     key={serviceAnswer.id}>
-                                    {serviceAnswer.choiceAnswer}
-                                </option>)
+                                    {serviceAnswer.id}) {serviceAnswer.answer}
+                                </option>
+                            )
                     }
                 </select>
                 <label>Service Answer Answer</label><br/>
                 <input
                     onChange={() => {}}
                     className="form-control"
-                    value={this.state.serviceAnswer.choiceAnswer}/>
+                    value={this.state.serviceAnswer.answer}/>
             </div>
         )
     }
-
-
 }
+
+export default ServiceAnswerDetails
