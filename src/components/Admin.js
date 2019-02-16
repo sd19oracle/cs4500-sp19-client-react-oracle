@@ -4,6 +4,9 @@ import ServiceAnswers from './ServiceAnswers'
 import ServiceAnswerDetails from './ServiceAnswerDetails'
 import ServiceQuestions from './ServiceQuestions'
 import ServiceQuestionDetails from './ServiceQuestionDetails';
+import FAQAnswers from './FAQAnswers';
+import FAQAnswerDetails from './FAQAnswerDetails';
+
 
 const Admin = () =>
     <div>
@@ -19,10 +22,6 @@ const Admin = () =>
                     <br/>
                     <Link to="/admin/service-questions/1">Service Questions Details</Link>
                     <br/>
-					<Link to="/admin/faqs">FAQs</Link>
-					<br/>
-					<Link to="/admin/faqs/1">FAQ Details</Link>
-					<br/>
 					<Link to="/admin/faq-answers">FAQ Answers</Link>
 					<br/>
 					<Link to="/admin/faq-answers/1">FAQ Answer Details</Link>
@@ -44,14 +43,6 @@ const Admin = () =>
                         path="/admin/service-questions/:id"
                         exact
                         component={ServiceQuestionDetails}/>
-					<Route
-						path="/admin/faqs"
-						exact
-						component={FAQs}/>
-					<Route
-						path="/admin/faqs/:id"
-						exact
-						component={FAQDetails}/>
 					<Route
 						path="/admin/faq-answers"
 						exact
