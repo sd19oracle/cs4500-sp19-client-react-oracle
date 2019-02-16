@@ -19,6 +19,13 @@ const Admin = () =>
                     <br/>
                     <Link to="/admin/service-questions/1">Service Questions Details</Link>
                     <br/>
+					<Link to="/admin/faqs">FAQs</Link>
+					<br/>
+					<Link to="/admin/faqs/1">FAQ Details</Link>
+					<br/>
+					<Link to="/admin/faq-answers">FAQ Answers</Link>
+					<br/>
+					<Link to="/admin/faq-answers/1">FAQ Answer Details</Link>
                 </div>
                 <div className="col-9">
                     <Route
@@ -37,6 +44,22 @@ const Admin = () =>
                         path="/admin/service-questions/:id"
                         exact
                         component={ServiceQuestionDetails}/>
+					<Route
+						path="/admin/faqs"
+						exact
+						component={FAQs}/>
+					<Route
+						path="/admin/faqs/:id"
+						exact
+						component={FAQDetails}/>
+					<Route
+						path="/admin/faq-answers"
+						exact
+						component={FAQAnswers}/>
+					<Route
+						path="/admin/faq-answers/:id"
+						exact
+						component={FAQAnswerDetails}/>
                 </div>
             </div>
         </Router>
