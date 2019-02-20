@@ -1,5 +1,6 @@
 import React from 'react'
 import ServiceService from '../services/ServiceService'
+
 class Services extends React.Component {
     constructor(props) {
         super(props)
@@ -20,19 +21,19 @@ class Services extends React.Component {
     render() {
         return(
             <div>
-                <h3>Services</h3>
-                <table className="table">
-                    <tbody>
-                    {
-                        this.state.services
-                            .map(service =>
-                                <tr key={service.id}>
-                                    <td>{service.title}</td>
-                                </tr>
-                            )
-                    }
-                    </tbody>
-                </table>
+            <h3>Services</h3>
+            <table className="table">
+            <tbody>
+            {
+                this.state.services
+                .map(service =>
+                    <tr key={service.id}>
+                    <td>{service.title}</td>
+                    </tr>
+                )
+            }
+            </tbody>
+            </table>
             </div>
         )
     }
