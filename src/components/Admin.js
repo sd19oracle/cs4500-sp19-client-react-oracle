@@ -62,7 +62,7 @@ const Admin = () =>
 						exact
 						component={FAQs}/>
 					<Route
-						path="/admin/faq-details"
+						path="/admin/faqs/:id"
 						exact
 						component={FAQDetails}/>
                 </div>
