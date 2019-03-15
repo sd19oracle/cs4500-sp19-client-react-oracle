@@ -41,6 +41,14 @@ class ServiceQuestions extends React.Component {
         });
     }
 
+    applyFilter = () =>
+        this.serviceQuestionService
+            .getServiceQuestionsByFilter(this.state.filterQuestion)
+            .then(filteredServiceQustions =>
+                this.setState({
+                    serviceQuestions: filteredServiceQustions
+                }));
+
     render() {
         return (
             <div>
