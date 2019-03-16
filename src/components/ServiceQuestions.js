@@ -15,7 +15,7 @@ class ServiceQuestions extends React.Component {
             searchButtonOn: true
         };
         this.updateForm = this.updateForm.bind(this)
-        this.applyFilter = this.applyFilter.bind(this)
+        this.toggleSearch = this.toggleSearch.bind(this)
     }
 
     componentDidMount() {
@@ -43,16 +43,35 @@ class ServiceQuestions extends React.Component {
         });
     }
 
-    applyFilter() {
-        this.setState(function(prevState) {
+    toggleSearch() {
+        if (this.state.searchButtonOn) {
+            this.serviceQuestionService
+                .findServiceQuestionsByFilter(this.state.filterQuestion)
+                .then(filteredServiceQustions =>
+                    this.setState({
+                        serviceQuestions: filteredServiceQustions
+                    }));
+        } else {
+            this.setState({
+                filterQuestion: {
+                    title: '',
+                    type: '',
+                    choice: ''
+                }
+
+            });
+            this.serviceQuestionService
+                .findAllServiceQuestions()
+                .then(serviceQuestions =>
+                    this.setState({
+                        serviceQuestions: serviceQuestions
+                    })
+                )
+        }
+
+        this.setState(function (prevState) {
             return {searchButtonOn: !prevState.searchButtonOn};
         });
-        this.serviceQuestionService
-            .findServiceQuestionsByFilter(this.state.filterQuestion)
-            .then(filteredServiceQustions =>
-                this.setState({
-                    serviceQuestions: filteredServiceQustions
-                }));
     }
 
     render() {
@@ -71,18 +90,21 @@ class ServiceQuestions extends React.Component {
                             <input
                                 name="title"
                                 type="text"
+                                value={this.state.filterQuestion.title}
                                 onChange={this.updateForm}/>
                         </td>
                         <td>
                             <input
                                 name="type"
                                 type="text"
+                                value={this.state.filterQuestion.type}
                                 onChange={this.updateForm}/>
                         </td>
                         <td>
                             <input
                                 name="choice"
                                 type="text"
+                                value={this.state.filterQuestion.choice}
                                 onChange={this.updateForm}/>
                         </td>
                     </tr>
@@ -98,7 +120,7 @@ class ServiceQuestions extends React.Component {
                     }
                     <tr>
                         <td>
-                            <button onClick={this.applyFilter}>
+                            <button onClick={this.toggleSearch}>
                                 {this.state.searchButtonOn ? 'Search' : 'Clear Search'}
                             </button>
                         </td>
