@@ -41,6 +41,9 @@ export default class ServiceQuestionService {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
           }
+        }).then(response => {
+            console.log(response.json())
+            response.json()
         })
     }
 
