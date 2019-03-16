@@ -2,8 +2,9 @@ export default class ServiceQuestionService {
     static instance = null;
     static hostname = null
     static urlPrefix = null
+
     static getInstance() {
-        if(ServiceQuestionService.instance === null) {
+        if (ServiceQuestionService.instance === null) {
             ServiceQuestionService.instance = new ServiceQuestionService()
         }
         this.hostname = window.location.hostname
@@ -21,7 +22,8 @@ export default class ServiceQuestionService {
         fetch(ServiceQuestionService.urlPrefix + `api/servicesSpecificQuestions/${id}`)
             .then(response => {
                 console.log(response.json())
-                response.clone().json()})
+                response.clone().json()
+            })
     }
 
     findAllServiceQuestions = () =>
@@ -29,23 +31,15 @@ export default class ServiceQuestionService {
             .then(response => response.json())
     findPageInfo = num_item =>
         fetch(ServiceQuestionService.urlPrefix + `api/servicesSpecificQuestions/page/${num_item}`)
-        .then(response => response.json())
+            .then(response => response.json())
     findPageItem = (num_item, page_num) =>
         fetch(ServiceQuestionService.urlPrefix + `api/servicesSpecificQuestions/page/${num_item}/${page_num}`)
-        .then(response => response.json())
+            .then(response => response.json())
 
-    async removeById(id) {
-        await fetch(ServiceQuestionService.urlPrefix + `api/servicesSpecificQuestions/${id}`, {
-          method: 'DELETE',
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-          }
-        }).then(response => {
-            console.log(response.json())
-            response.json()
+    removeById = id =>
+        fetch(ServiceQuestionService.urlPrefix + `api/servicesSpecificQuestions/${id}`, {
+            method: 'delete'
         })
-    }
 
     async createQuestion(question) {
         delete question.id
@@ -82,6 +76,7 @@ export default class ServiceQuestionService {
             }
         }).then(response => {
             console.log(response.clone().json())
-            response.clone().json()})
-        }
+            response.clone().json()
+        })
+    }
 }

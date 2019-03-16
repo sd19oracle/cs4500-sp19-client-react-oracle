@@ -151,14 +151,11 @@ class ServiceQuestions extends React.Component {
     remove(id) {
         this.serviceQuestionService
             .removeById(id)
-             .then(
-            //     let updatedGroups = [...this.state.serviceQuestions].filter(i => i.id !== id);
-            //     this.setState({serviceQuestions: updatedGroups})
-                 updatedGroups => {
-                     this.setState({serviceQuestions: updatedGroups})
-                 })
+            .then(() => {
+                let updatedGroups = [...this.state.serviceQuestions].filter(i => i.id !== id);
+                this.setState({serviceQuestions: updatedGroups})
+            })
     }
-
 
     createQuestion() {
         if ((this.state.question.title === "")) {
