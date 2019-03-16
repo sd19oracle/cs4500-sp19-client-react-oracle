@@ -16,6 +16,7 @@ export default class ServiceQuestionService {
         console.log(this.urlPrefix)
         return this.instance
     }
+
     findServiceQuestionById(id) {
         fetch(ServiceQuestionService.urlPrefix + `api/servicesSpecificQuestions/${id}`)
             .then(response => {
@@ -44,6 +45,18 @@ export default class ServiceQuestionService {
         return fetch(ServiceQuestionService.urlPrefix + `api/servicesSpecificQuestions/`, {
             method: 'post',
             body: JSON.stringify(question),
+            headers: {
+                'content-type': 'application/json'
+            }
+        })
+            .then(response => response.json())
+    }
+
+    findServiceQuestionsByFilter = filter => {
+        delete filter.id;
+        return fetch(ServiceQuestionService.urlPrefix + "api/servicesSpecificQuestions/filter", {
+            method: 'post',
+            body: JSON.stringify(filter),
             headers: {
                 'content-type': 'application/json'
             }
