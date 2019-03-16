@@ -43,7 +43,7 @@ class ServiceQuestions extends React.Component {
 
     applyFilter = () =>
         this.serviceQuestionService
-            .getServiceQuestionsByFilter(this.state.filterQuestion)
+            .findServiceQuestionsByFilter(this.state.filterQuestion)
             .then(filteredServiceQustions =>
                 this.setState({
                     serviceQuestions: filteredServiceQustions
@@ -85,6 +85,8 @@ class ServiceQuestions extends React.Component {
                             .map(serviceQuestion =>
                                 <tr key={serviceQuestion.id}>
                                     <td>{serviceQuestion.title}</td>
+                                    <td>{serviceQuestion.type}</td>
+                                    <td>{serviceQuestion.choice}</td>
                                 </tr>
                             )
                     }

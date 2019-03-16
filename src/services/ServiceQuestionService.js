@@ -22,4 +22,15 @@ export default class ServiceQuestionService {
     findAllServiceQuestions = () =>
         fetch(ServiceQuestionService.urlPrefix + "api/servicesSpecificQuestions")
             .then(response => response.json())
+    findServiceQuestionsByFilter = filter => {
+        delete filter.id;
+        return fetch(ServiceQuestionService.urlPrefix + "api/servicesSpecificQuestions", {
+            method: 'post',
+            body: JSON.stringify(filter),
+            headers: {
+                'content-type': 'application/json'
+            }
+        })
+            .then(response => response.json())
+    }
 }
