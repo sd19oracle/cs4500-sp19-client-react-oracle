@@ -15,7 +15,7 @@ class ServiceQuestions extends React.Component {
             prev_button_state: "disabled",
             next_button_state: "",
             question: {
-                id: "", title: "", type: "MUTIPLECHOICE", choice: "", service_id: '123'
+                id: "", title: "", type: "", choice: "", service_id: '123'
             },
             searchButtonOn: true
         }
@@ -151,17 +151,27 @@ class ServiceQuestions extends React.Component {
     remove(id) {
         this.serviceQuestionService
             .removeById(id)
-            .then(() => {
-                let updatedGroups = [...this.state.serviceQuestions].filter(i => i.id !== id);
-                this.setState({serviceQuestions: updatedGroups})
-            })
+             .then(
+            //     let updatedGroups = [...this.state.serviceQuestions].filter(i => i.id !== id);
+            //     this.setState({serviceQuestions: updatedGroups})
+                 updatedGroups => {
+                     this.setState({serviceQuestions: updatedGroups})
+                 })
     }
 
+
     createQuestion() {
-        console.log("let create")
-        this.serviceQuestionService
-            .createQuestion(this.state.question)
-            .then(this.find_page(this.state.current_page, this.state.page_size))
+        if ((this.state.question.title === "")) {
+            alert("Please enter at least a Title!")
+        } else if (this.state.question.type === "") {
+            alert("Question type cannot be ANY when adding a new question! \n" +
+                "Please select a valid Type using the drop-down. \n\n" +
+                "(Type ANY is only for search purposes.)")
+        } else {
+            this.serviceQuestionService
+                .createQuestion(this.state.question)
+                .then(this.find_page(this.state.current_page, this.state.page_size))
+        }
     }
 
     updateQuestion = () =>
@@ -276,17 +286,21 @@ class ServiceQuestions extends React.Component {
                                 background: "rgb(49,168,75)",
                                 color: "white",
                                 textAlign: "center",
-                                paddingLeft: "20px",
-                                paddingRight: "20px"
+                                paddingLeft: "22px",
+                                paddingRight: "22px",
+                                marginLeft: "5px",
+                                marginRight: "5px",
                             }}
                                     onClick={this.createQuestion}>Add
                             </button>
                             <button style={{
-                                background: "rgb(83,189,248)",
+                                background: "rgb(44,131,232)",
                                 color: "white",
                                 textAlign: "center",
                                 paddingLeft: "10px",
-                                paddingRight: "10px"
+                                paddingRight: "10px",
+                                marginLeft: "5px",
+                                marginRight: "5px",
                             }}
                                     onClick={this.updateQuestion}>Update
                             </button>
@@ -302,15 +316,24 @@ class ServiceQuestions extends React.Component {
                                     <td>{serviceQuestion.choice}</td>
                                     <td>
                                         <button style={{
-                                            background: "linear-gradient(70deg, #e21d4b, #fc7997)",
-                                            borderRadius: "10px"
+                                            background: "rgb(237,43,63)",
+                                            color: "white",
+                                            textAlign: "center",
+                                            paddingLeft: "13px",
+                                            paddingRight: "13px",
+                                            marginLeft: "5px",
+                                            marginRight: "5px",
                                         }}
-                                                onClick={() => this.remove(serviceQuestion.id)}>Del
+                                                onClick={() => this.remove(serviceQuestion.id)}>Delete
                                         </button>
                                         <button style={{
-                                            background: "linear-gradient(70deg, #3615c6, #745ae2)",
-                                            borderRadius: "15px",
-                                            color: "#a493ed"
+                                            background: "rgb(83,189,248)",
+                                            color: "white",
+                                            textAlign: "center",
+                                            paddingLeft: "13px",
+                                            paddingRight: "13px",
+                                            marginLeft: "5px",
+                                            marginRight: "5px",
                                         }}
                                                 onClick={() => this.selectQuestion(serviceQuestion.id)}>Select
                                         </button>
