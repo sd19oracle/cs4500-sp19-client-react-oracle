@@ -11,9 +11,11 @@ class ServiceQuestions extends React.Component {
                 title: '',
                 type: '',
                 choice: ''
-            }
+            },
+            searchButtonOn: true
         };
         this.updateForm = this.updateForm.bind(this)
+        this.applyFilter = this.applyFilter.bind(this)
     }
 
     componentDidMount() {
@@ -41,13 +43,17 @@ class ServiceQuestions extends React.Component {
         });
     }
 
-    applyFilter = () =>
+    applyFilter() {
+        this.setState(function(prevState) {
+            return {searchButtonOn: !prevState.searchButtonOn};
+        });
         this.serviceQuestionService
             .findServiceQuestionsByFilter(this.state.filterQuestion)
             .then(filteredServiceQustions =>
                 this.setState({
                     serviceQuestions: filteredServiceQustions
                 }));
+    }
 
     render() {
         return (
@@ -92,7 +98,9 @@ class ServiceQuestions extends React.Component {
                     }
                     <tr>
                         <td>
-                            <button onClick={this.applyFilter}>Search</button>
+                            <button onClick={this.applyFilter}>
+                                {this.state.searchButtonOn ? 'Search' : 'Clear Search'}
+                            </button>
                         </td>
                     </tr>
 
