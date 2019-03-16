@@ -153,12 +153,23 @@ class ServiceQuestions extends React.Component {
                                 placeholder="CHOICE"/>
                         </td>
                         <td>
-                            <button style={{background: "linear-gradient(70deg, #6bf996, white)"}}
+                            <button style={{
+                                background: "rgb(49,168,75)",
+                                color: "white",
+                                textAlign: "center",
+                                paddingLeft: "20px",
+                                paddingRight: "20px"
+                            }}
                                     onClick={this.createQuestion}>Add
                             </button>
-                            <button style={{background: "linear-gradient(70deg, black, white)"}}
-                                    onClick={this.updateQuestion}><span style={{color: "white"}}>Double Cli</span>ck to
-                                Update it
+                            <button style={{
+                                background: "rgb(83,189,248)",
+                                color: "white",
+                                textAlign: "center",
+                                paddingLeft: "10px",
+                                paddingRight: "10px"
+                            }}
+                                    onClick={this.updateQuestion}>Update
                             </button>
                         </td>
                     </tr>
