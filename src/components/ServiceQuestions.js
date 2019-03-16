@@ -3,15 +3,30 @@ import ServiceQuestionService from '../services/ServiceQuestionService'
 
 class ServiceQuestions extends React.Component {
     constructor(props) {
-        super(props);
-        this.serviceQuestionService = ServiceQuestionService.getInstance();
+        super(props)
+        this.serviceQuestionService = ServiceQuestionService.getInstance()
+        this.default_page_item = [10, 20, 50, "ALL"]
         this.state = {
             serviceQuestions: [],
+            current_page: 1,
+            total_questions: 0,
+            total_pages: 0,
+            page_size: this.default_page_item[0],
+            prev_button_state: "disabled",
+            next_button_state: "",
             question: {
                 id: "", title: "", type: "MUTIPLECHOICE", choice: "", service_id: '123'
             },
             searchButtonOn: true
-        };
+        }
+        this.change_page_size = this.change_page_size.bind(this)
+        this.find_questions = this.find_questions.bind(this)
+        this.handleClick = this.handleClick.bind(this)
+        this.find_page = this.find_page.bind(this)
+        this.prev_button_click = this.prev_button_click.bind(this)
+        this.next_button_click = this.next_button_click.bind(this)
+        this.set_prev_next_state = this.set_prev_next_state.bind(this)
+        this.single_button = this.single_button.bind(this)
         this.remove = this.remove.bind(this);
         this.handleInputChange = this.handleInputChange.bind(this);
         this.createQuestion = this.createQuestion.bind(this);
@@ -19,16 +34,99 @@ class ServiceQuestions extends React.Component {
     }
 
     componentDidMount() {
-        this.findAllServiceQuestions();
-    }
-
-    findAllServiceQuestions = () => {
-        this.serviceQuestionService.findAllServiceQuestions()
-            .then(serviceQuestions =>
+        this.serviceQuestionService
+            .findPageInfo(this.default_page_item[0])
+            .then(pageInfo =>
                 this.setState({
-                    serviceQuestions: serviceQuestions
+                    serviceQuestions: pageInfo.list_questions,
+                    total_pages: pageInfo.page_num,
+                    total_questions: pageInfo.total_questions,
                 })
             )
+    }
+
+    find_questions(num) {
+        this.serviceQuestionService
+            .findPageInfo(num)
+            .then(pageInfo =>
+                this.setState({
+                    serviceQuestions: pageInfo.list_questions,
+                    total_pages: pageInfo.page_num,
+                    total_questions: pageInfo.total_questions
+                })
+            )
+    }
+
+    change_page_size(event) {
+        if (event.target.value === "ALL") {
+            this.setState({page_size: this.state.total_questions})
+            this.find_questions(this.state.total_questions)
+        } else {
+            this.setState({page_size: event.target.value})
+            this.find_questions(event.target.value)
+        }
+    }
+
+    prev_button_click() {
+        if (this.state.current_page > 1) {
+            this.setState({
+                current_page: this.state.current_page - 1
+            })
+            this.find_page(this.state.current_page - 1, this.state.page_size)
+        }
+        this.set_prev_next_state(this.state.current_page - 1)
+    }
+
+    next_button_click() {
+        if (this.state.current_page + 1 <= this.state.total_pages) {
+            this.setState({
+                current_page: this.state.current_page + 1
+            })
+            this.find_page(this.state.current_page + 1, this.state.page_size)
+        }
+        this.set_prev_next_state(this.state.current_page + 1)
+    }
+
+    find_page(page_num, page_size) {
+        this.serviceQuestionService
+            .findPageItem(page_size, page_num)
+            .then(pageItem =>
+                this.setState({
+                    serviceQuestions: pageItem
+                })
+            )
+    }
+
+    handleClick(event) {
+        this.setState({
+            current_page: Number(event.target.id)
+        })
+        this.find_page(event.target.id, this.state.page_size)
+        this.set_prev_next_state(event.target.id)
+    }
+
+    set_prev_next_state(num_button) {
+        if (num_button > 1) {
+            this.setState({prev_button_state: ""})
+        } else {
+            this.setState({prev_button_state: "disabled"})
+        }
+
+        if (num_button < this.state.total_pages) {
+            this.setState({next_button_state: ""})
+        } else {
+            this.setState({next_button_state: "disabled"})
+        }
+    }
+
+    single_button(num) {
+        console.log(num === this.state.current_page)
+        if (num === this.state.current_page) {
+            return <button key={num} id={num} style={{backgroundColor: "#69adfc", opacity: 0.8}}
+                           onClick={this.handleClick}>{num}</button>
+        } else {
+            return <button key={num} id={num} onClick={this.handleClick}>{num}</button>
+        }
     }
 
     selectQuestion(id) {
@@ -63,13 +161,13 @@ class ServiceQuestions extends React.Component {
         console.log("let create")
         this.serviceQuestionService
             .createQuestion(this.state.question)
-            .then(this.findAllServiceQuestions)
+            .then(this.find_page(this.state.current_page, this.state.page_size))
     }
 
     updateQuestion = () =>
         this.serviceQuestionService
             .updateQuestion(this.state.question)
-            .then(this.findAllServiceQuestions)
+            .then(this.find_page(this.state.current_page, this.state.page_size))
 
 
     handleInputChange(event) {
@@ -100,13 +198,7 @@ class ServiceQuestions extends React.Component {
                     id: "", title: "", type: "", choice: "", service_id: '123'
                 }
             });
-            this.serviceQuestionService
-                .findAllServiceQuestions()
-                .then(serviceQuestions =>
-                    this.setState({
-                        serviceQuestions: serviceQuestions
-                    })
-                )
+            this.find_page(this.state.current_page, this.state.page_size);
         }
 
         this.setState(function (prevState) {
@@ -114,7 +206,34 @@ class ServiceQuestions extends React.Component {
         });
     }
 
+
     render() {
+        const pageNumbers = [];
+        for (let i = 1; i <= this.state.total_pages; i++) {
+            pageNumbers.push(i);
+        }
+
+        const renderPageNumbers = pageNumbers.map(number => {
+            return this.single_button(number)
+        });
+
+        const prev_button_state = this.state.prev_button_state
+        let renderPrevBtn = null;
+        renderPrevBtn = (
+            <button className={prev_button_state} onClick={this.prev_button_click} disabled={prev_button_state}>
+                <span id="btnPrev"> Prev </span>
+            </button>
+        );
+
+
+        let renderNextBtn = null;
+        const next_button_state = this.state.next_button_state
+        renderNextBtn = (
+            <button className={next_button_state} onClick={this.next_button_click} disabled={next_button_state}>
+                <span id="btnNext"> Next </span>
+            </button>
+        );
+
         return (
             <div>
                 <h3>Service Questions</h3>
@@ -208,6 +327,15 @@ class ServiceQuestions extends React.Component {
                     </tr>
                     </tbody>
                 </table>
+                <select onChange={this.change_page_size}>
+                    {this.default_page_item.map((x, index) =>
+                        <option key={index} value={x}> {x} </option>)}
+                </select>
+                <div>
+                    {renderPrevBtn}
+                    {renderPageNumbers}
+                    {renderNextBtn}
+                </div>
             </div>
         )
     }
