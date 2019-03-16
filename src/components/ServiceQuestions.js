@@ -1,5 +1,6 @@
 import React from 'react'
 import ServiceQuestionService from '../services/ServiceQuestionService'
+
 class ServiceQuestions extends React.Component {
     constructor(props) {
         super(props)
@@ -11,8 +12,12 @@ class ServiceQuestions extends React.Component {
             total_questions: 0,
             total_pages: 0,
             page_size: this.default_page_item[0],
-            prev_button_state : "disabled",
-            next_button_state : ""
+            prev_button_state: "disabled",
+            next_button_state: "",
+            question: {
+                id: "", title: "", type: "MUTIPLECHOICE", choice: "", service_id: '123'
+            },
+            searchButtonOn: true
         }
         this.change_page_size = this.change_page_size.bind(this)
         this.find_questions = this.find_questions.bind(this)
@@ -22,6 +27,10 @@ class ServiceQuestions extends React.Component {
         this.next_button_click = this.next_button_click.bind(this)
         this.set_prev_next_state = this.set_prev_next_state.bind(this)
         this.single_button = this.single_button.bind(this)
+        this.remove = this.remove.bind(this);
+        this.handleInputChange = this.handleInputChange.bind(this);
+        this.createQuestion = this.createQuestion.bind(this);
+        this.toggleSearch = this.toggleSearch.bind(this)
     }
 
     componentDidMount() {
@@ -50,10 +59,10 @@ class ServiceQuestions extends React.Component {
 
     change_page_size(event) {
         if (event.target.value === "ALL") {
-            this.setState({ page_size: this.state.total_questions })
+            this.setState({page_size: this.state.total_questions})
             this.find_questions(this.state.total_questions)
         } else {
-            this.setState({ page_size: event.target.value })
+            this.setState({page_size: event.target.value})
             this.find_questions(event.target.value)
         }
     }
@@ -61,7 +70,7 @@ class ServiceQuestions extends React.Component {
     prev_button_click() {
         if (this.state.current_page > 1) {
             this.setState({
-                current_page : this.state.current_page - 1
+                current_page: this.state.current_page - 1
             })
             this.find_page(this.state.current_page - 1, this.state.page_size)
         }
@@ -71,7 +80,7 @@ class ServiceQuestions extends React.Component {
     next_button_click() {
         if (this.state.current_page + 1 <= this.state.total_pages) {
             this.setState({
-                current_page : this.state.current_page + 1
+                current_page: this.state.current_page + 1
             })
             this.find_page(this.state.current_page + 1, this.state.page_size)
         }
@@ -98,25 +107,103 @@ class ServiceQuestions extends React.Component {
 
     set_prev_next_state(num_button) {
         if (num_button > 1) {
-            this.setState({prev_button_state : ""})
+            this.setState({prev_button_state: ""})
         } else {
-            this.setState({prev_button_state : "disabled"})
+            this.setState({prev_button_state: "disabled"})
         }
 
         if (num_button < this.state.total_pages) {
-            this.setState({next_button_state : ""})
+            this.setState({next_button_state: ""})
         } else {
-            this.setState({next_button_state : "disabled"})
+            this.setState({next_button_state: "disabled"})
         }
     }
 
     single_button(num) {
         console.log(num === this.state.current_page)
         if (num === this.state.current_page) {
-            return <button key={num} id={num} style={{backgroundColor:"#69adfc", opacity: 0.8}} onClick={this.handleClick}>{num}</button>
+            return <button key={num} id={num} style={{backgroundColor: "#69adfc", opacity: 0.8}}
+                           onClick={this.handleClick}>{num}</button>
         } else {
             return <button key={num} id={num} onClick={this.handleClick}>{num}</button>
         }
+    }
+
+    selectQuestion(id) {
+        for (var i in this.state.serviceQuestions) {
+            if (this.state.serviceQuestions[i].id === id) {
+                console.log(this.state.serviceQuestions[i])
+                var addOn = this.state.serviceQuestions[i];
+                break
+            }
+        }
+        this.setState(prevState => ({
+            question: {
+                ...prevState.question,
+                id: addOn.id,
+                title: addOn.title,
+                type: addOn.type,
+                choice: addOn.choice
+            }
+        }))
+    }
+
+    remove(id) {
+        this.serviceQuestionService
+            .removeById(id)
+            .then(() => {
+                let updatedGroups = [...this.state.serviceQuestions].filter(i => i.id !== id);
+                this.setState({serviceQuestions: updatedGroups})
+            })
+    }
+
+    createQuestion() {
+        console.log("let create")
+        this.serviceQuestionService
+            .createQuestion(this.state.question)
+            .then(this.find_page(this.state.current_page, this.state.page_size))
+    }
+
+    updateQuestion = () =>
+        this.serviceQuestionService
+            .updateQuestion(this.state.question)
+            .then(this.find_page(this.state.current_page, this.state.page_size))
+
+
+    handleInputChange(event) {
+        const target = event.target;
+        const value = target.value
+        const name = target.name;
+
+        this.setState(prevState => ({
+            question: {
+                ...prevState.question,
+                id: this.state.question.id,
+                [name]: value
+            },
+        }));
+    }
+
+    toggleSearch() {
+        if (this.state.searchButtonOn) {
+            this.serviceQuestionService
+                .findServiceQuestionsByFilter(this.state.question)
+                .then(filteredServiceQustions =>
+                    this.setState({
+                        serviceQuestions: filteredServiceQustions
+                    }));
+        } else {
+            this.setState({
+                question: {
+                    id: "", title: "", type: "", choice: "", service_id: '123'
+                }
+            });
+            this.find_page(this.state.current_page, this.state.page_size);
+        }
+
+        this.setState(function (prevState) {
+            return {searchButtonOn: !prevState.searchButtonOn};
+        });
     }
 
 
@@ -133,33 +220,111 @@ class ServiceQuestions extends React.Component {
         const prev_button_state = this.state.prev_button_state
         let renderPrevBtn = null;
         renderPrevBtn = (
-                    <button className={prev_button_state} onClick={this.prev_button_click} disabled = {prev_button_state}>
-                        <span id="btnPrev"> Prev </span>
-                    </button>
-                );
+            <button className={prev_button_state} onClick={this.prev_button_click} disabled={prev_button_state}>
+                <span id="btnPrev"> Prev </span>
+            </button>
+        );
 
 
         let renderNextBtn = null;
         const next_button_state = this.state.next_button_state
-            renderNextBtn = (
-                <button className={next_button_state} onClick={this.next_button_click} disabled = {next_button_state}>
-                    <span id="btnNext"> Next </span>
-                </button>
-            );
+        renderNextBtn = (
+            <button className={next_button_state} onClick={this.next_button_click} disabled={next_button_state}>
+                <span id="btnNext"> Next </span>
+            </button>
+        );
 
         return (
             <div>
                 <h3>Service Questions</h3>
                 <table className="table">
                     <tbody>
-                        {
-                            this.state.serviceQuestions
-                                .map(serviceQuestion =>
-                                    <tr key={serviceQuestion.id}>
-                                        <td>{serviceQuestion.title}</td>
-                                    </tr>
-                                )
-                        }
+                    <tr>
+                        <td>Title</td>
+                        <td>Type</td>
+                        <td>Choice</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input
+                                type="text"
+                                name="title"
+                                value={this.state.question.title}
+                                onChange={this.handleInputChange}
+                                placeholder="TITLE"/>
+                        </td>
+                        <td>
+                            <select value={this.state.question.type}
+                                    name="type" onChange={this.handleInputChange}>
+                                <option value="MUTIPLECHOICE">MUTIPLECHOICE</option>
+                                <option value="MINMAX">MINMAX</option>
+                                <option value="SHORTANSWER">SHORTANSWER</option>
+                                <option value="TRUEFALSE">TRUEFALSE</option>
+                                <option value="">ANY</option>
+                            </select>
+                        </td>
+                        <td>
+                            <input
+                                type="text"
+                                name="choice"
+                                value={this.state.question.choice}
+                                onChange={this.handleInputChange}
+                                placeholder="CHOICE"/>
+                        </td>
+                        <td>
+                            <button style={{
+                                background: "rgb(49,168,75)",
+                                color: "white",
+                                textAlign: "center",
+                                paddingLeft: "20px",
+                                paddingRight: "20px"
+                            }}
+                                    onClick={this.createQuestion}>Add
+                            </button>
+                            <button style={{
+                                background: "rgb(83,189,248)",
+                                color: "white",
+                                textAlign: "center",
+                                paddingLeft: "10px",
+                                paddingRight: "10px"
+                            }}
+                                    onClick={this.updateQuestion}>Update
+                            </button>
+                        </td>
+                    </tr>
+                    {
+                        this.state.serviceQuestions
+                            .map(serviceQuestion =>
+                                <tr key={serviceQuestion.id}>
+
+                                    <td>{serviceQuestion.title}</td>
+                                    <td>{serviceQuestion.type}</td>
+                                    <td>{serviceQuestion.choice}</td>
+                                    <td>
+                                        <button style={{
+                                            background: "linear-gradient(70deg, #e21d4b, #fc7997)",
+                                            borderRadius: "10px"
+                                        }}
+                                                onClick={() => this.remove(serviceQuestion.id)}>Del
+                                        </button>
+                                        <button style={{
+                                            background: "linear-gradient(70deg, #3615c6, #745ae2)",
+                                            borderRadius: "15px",
+                                            color: "#a493ed"
+                                        }}
+                                                onClick={() => this.selectQuestion(serviceQuestion.id)}>Select
+                                        </button>
+                                    </td>
+                                </tr>
+                            )
+                    }
+                    <tr>
+                        <td>
+                            <button onClick={this.toggleSearch}>
+                                {this.state.searchButtonOn ? 'Search' : 'Clear Search'}
+                            </button>
+                        </td>
+                    </tr>
                     </tbody>
                 </table>
                 <select onChange={this.change_page_size}>
