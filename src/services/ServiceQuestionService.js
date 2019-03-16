@@ -22,4 +22,10 @@ export default class ServiceQuestionService {
     findAllServiceQuestions = () =>
         fetch(ServiceQuestionService.urlPrefix + "api/servicesSpecificQuestions")
             .then(response => response.json())
+    findPageInfo = num_item =>
+        fetch(ServiceQuestionService.urlPrefix + `api/servicesSpecificQuestions/page/${num_item}`)
+        .then(response => response.json())
+    findPageItem = (num_item, page_num) =>
+        fetch(ServiceQuestionService.urlPrefix + `api/servicesSpecificQuestions/page/${num_item}/${page_num}`)
+        .then(response => response.json())
 }
