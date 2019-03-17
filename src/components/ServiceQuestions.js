@@ -30,7 +30,8 @@ class ServiceQuestions extends React.Component {
         this.remove = this.remove.bind(this);
         this.handleInputChange = this.handleInputChange.bind(this);
         this.createQuestion = this.createQuestion.bind(this);
-        this.toggleSearch = this.toggleSearch.bind(this)
+        this.toggleSearch = this.toggleSearch.bind(this);
+        this.updateQuestion = this.updateQuestion.bind(this)
     }
 
     componentDidMount() {
@@ -132,8 +133,10 @@ class ServiceQuestions extends React.Component {
     selectQuestion(id) {
         for (var i in this.state.serviceQuestions) {
             if (this.state.serviceQuestions[i].id === id) {
-                console.log(this.state.serviceQuestions[i])
                 var addOn = this.state.serviceQuestions[i];
+                if (!addOn.choice) {
+                    addOn.choice = ''
+                }
                 break
             }
         }
@@ -166,16 +169,29 @@ class ServiceQuestions extends React.Component {
                 "(Type ANY is only for search purposes.)")
         } else {
             this.serviceQuestionService
-                .createQuestion(this.state.question)
-                .then(this.find_page(this.state.current_page, this.state.page_size))
+                .createQuestion(this.state.question).then(() => {
+                let updateQuestions = this.state.serviceQuestions;
+                updateQuestions.push(this.state.question);
+                this.setState({serviceQuestions: updateQuestions});
+                this.find_page(this.state.current_page, this.state.page_size);
+            })
         }
     }
 
-    updateQuestion = () =>
+    updateQuestion() {
         this.serviceQuestionService
-            .updateQuestion(this.state.question)
-            .then(this.find_page(this.state.current_page, this.state.page_size))
-
+            .updateQuestion(this.state.question);
+        let updateQuestions = this.state.serviceQuestions;
+        for (var i in updateQuestions) {
+            if (updateQuestions[i].id === this.state.question.id) {
+                updateQuestions[i].title = this.state.question.title;
+                updateQuestions[i].type = this.state.question.type;
+                updateQuestions[i].choice = this.state.question.choice;
+                break;
+            }
+        }
+        this.setState({serviceQuestions: updateQuestions});
+    }
 
     handleInputChange(event) {
         const target = event.target;
