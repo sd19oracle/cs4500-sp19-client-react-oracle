@@ -174,7 +174,12 @@ class ServiceQuestions extends React.Component {
                 .createQuestion(this.state.question).then(() => {
                 let updateQuestions = this.state.serviceQuestions;
                 updateQuestions.push(this.state.question);
-                this.setState({serviceQuestions: updateQuestions});
+                this.setState({
+                    serviceQuestions: updateQuestions,
+                    question: {
+                        id: "", title: "", type: "", choice: "", service_id: '123'
+                    }
+                });
                 this.find_questions(this.state.page_size)
                 this.find_page(this.state.current_page, this.state.page_size);
             })
@@ -193,7 +198,12 @@ class ServiceQuestions extends React.Component {
                 break;
             }
         }
-        this.setState({serviceQuestions: updateQuestions});
+        this.setState({
+            serviceQuestions: updateQuestions,
+            question: {
+                id: "", title: "", type: "", choice: "", service_id: '123'
+            }
+        });
     }
 
     handleInputChange(event) {
