@@ -158,6 +158,8 @@ class ServiceQuestions extends React.Component {
                 let updatedGroups = [...this.state.serviceQuestions].filter(i => i.id !== id);
                 this.setState({serviceQuestions: updatedGroups})
             })
+        this.find_questions(this.state.page_size)
+        this.find_page(this.state.current_page, this.state.page_size);
     }
 
     createQuestion() {
@@ -173,6 +175,7 @@ class ServiceQuestions extends React.Component {
                 let updateQuestions = this.state.serviceQuestions;
                 updateQuestions.push(this.state.question);
                 this.setState({serviceQuestions: updateQuestions});
+                this.find_questions(this.state.page_size)
                 this.find_page(this.state.current_page, this.state.page_size);
             })
         }
@@ -378,3 +381,4 @@ class ServiceQuestions extends React.Component {
 }
 
 export default ServiceQuestions
+
