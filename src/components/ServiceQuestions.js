@@ -1,6 +1,5 @@
 import React from 'react'
 import ServiceQuestionService from '../services/ServiceQuestionService'
-
 class ServiceQuestions extends React.Component {
     constructor(props) {
         super(props)
@@ -31,7 +30,8 @@ class ServiceQuestions extends React.Component {
         this.handleInputChange = this.handleInputChange.bind(this);
         this.createQuestion = this.createQuestion.bind(this);
         this.toggleSearch = this.toggleSearch.bind(this);
-        this.updateQuestion = this.updateQuestion.bind(this)
+        this.updateQuestion = this.updateQuestion.bind(this);
+        this.navToDetail = this.navToDetail.bind(this)
     }
 
     componentDidMount() {
@@ -242,6 +242,11 @@ class ServiceQuestions extends React.Component {
         });
     }
 
+    navToDetail(id) {
+        console.log('I am here')
+        this.props.history.push(`/admin/service-question/${id}`)
+        alert('IT SHOULD BE NAV TO' + ` /admin/service-question/${id}`)
+    }
 
     render() {
         const pageNumbers = [];
@@ -335,8 +340,8 @@ class ServiceQuestions extends React.Component {
                     {
                         this.state.serviceQuestions
                             .map(serviceQuestion =>
-                                <tr key={serviceQuestion.id}>
-
+                                <tr onClick={(e) => {this.navToDetail(serviceQuestion.id)}} key={serviceQuestion.id}>
+                                    {/* <td><Link to={`admin/service-question/${serviceQuestion.id}`}>Detail</Link></td> */}
                                     <td>{serviceQuestion.title}</td>
                                     <td>{serviceQuestion.type}</td>
                                     <td>{serviceQuestion.choice}</td>
@@ -363,7 +368,9 @@ class ServiceQuestions extends React.Component {
                                         }}
                                                 onClick={() => this.selectQuestion(serviceQuestion.id)}>Select
                                         </button>
+                                        
                                     </td>
+                                     
                                 </tr>
                             )
                     }
