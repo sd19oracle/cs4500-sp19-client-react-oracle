@@ -269,11 +269,20 @@ class ServiceQuestions extends React.Component {
 
         let renderNextBtn = null;
         const next_button_state = this.state.next_button_state
-        renderNextBtn = (
-            <button className={next_button_state} onClick={this.next_button_click} disabled={next_button_state}>
-                <span id="btnNext"> Next </span>
-            </button>
-        );
+        if (this.state.current_page === this.state.total_pages) {
+            renderNextBtn = (
+                <button className={next_button_state} onClick={this.next_button_click} disabled="disabled">
+                    <span id="btnNext"> Next </span>
+                </button>
+            );
+        } else {
+            renderNextBtn = (
+                <button className={next_button_state} onClick={this.next_button_click} disabled={next_button_state}>
+                    <span id="btnNext"> Next </span>
+                </button>
+            );
+        }
+        
 
         return (
             <div>
