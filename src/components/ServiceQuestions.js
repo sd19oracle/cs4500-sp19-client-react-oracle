@@ -245,7 +245,7 @@ class ServiceQuestions extends React.Component {
     navToDetail(id) {
         console.log('I am here')
         this.props.history.push(`/admin/service-question/${id}`)
-        alert('IT SHOULD BE NAV TO' + ` /admin/service-question/${id}`)
+        alert('UPDATING: IT WILL BE NAV TO' + ` /admin/service-question/${id}`)
     }
 
     render() {
@@ -340,11 +340,11 @@ class ServiceQuestions extends React.Component {
                     {
                         this.state.serviceQuestions
                             .map(serviceQuestion =>
-                                <tr onClick={(e) => {this.navToDetail(serviceQuestion.id)}} key={serviceQuestion.id}>
-                                    {/* <td><Link to={`admin/service-question/${serviceQuestion.id}`}>Detail</Link></td> */}
-                                    <td>{serviceQuestion.title}</td>
-                                    <td>{serviceQuestion.type}</td>
-                                    <td>{serviceQuestion.choice}</td>
+                                <tr key={serviceQuestion.id}>
+                                    
+                                    <td onClick={(e) => {this.navToDetail(serviceQuestion.id)}} >{serviceQuestion.title}</td>
+                                    <td onClick={(e) => {this.navToDetail(serviceQuestion.id)}} >{serviceQuestion.type}</td>
+                                    <td onClick={(e) => {this.navToDetail(serviceQuestion.id)}} >{serviceQuestion.choice}</td>
                                     <td>
                                         <button style={{
                                             background: "rgb(237,43,63)",
