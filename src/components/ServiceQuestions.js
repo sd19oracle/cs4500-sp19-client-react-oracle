@@ -21,7 +21,6 @@ class ServiceQuestions extends React.Component {
         this.change_page_size = this.change_page_size.bind(this)
         this.find_questions = this.find_questions.bind(this)
         this.handleClick = this.handleClick.bind(this)
-        this.find_page = this.find_page.bind(this)
         this.prev_button_click = this.prev_button_click.bind(this)
         this.next_button_click = this.next_button_click.bind(this)
         this.set_prev_next_state = this.set_prev_next_state.bind(this)
@@ -36,73 +35,61 @@ class ServiceQuestions extends React.Component {
 
     componentDidMount() {
         this.serviceQuestionService
-            .findPageInfo(this.default_page_item[0])
+            .findAPage(this.default_page_item[0], 0)
             .then(pageInfo =>
                 this.setState({
-                    serviceQuestions: pageInfo.list_questions,
-                    total_pages: pageInfo.page_num,
-                    total_questions: pageInfo.total_questions,
+                    serviceQuestions: pageInfo.content,
+                    total_pages: pageInfo.totalPages,
+                    total_questions: pageInfo.totalElements,
+                    current_page: pageInfo.pageable.pageNumber + 1
                 })
             )
     }
 
-    find_questions(num) {
+    find_questions(num_item, page_num) {
         this.serviceQuestionService
-            .findPageInfo(num)
+            .findAPage(num_item, page_num)
             .then(pageInfo =>
                 this.setState({
-                    serviceQuestions: pageInfo.list_questions,
-                    total_pages: pageInfo.page_num,
-                    total_questions: pageInfo.total_questions
+                    serviceQuestions: pageInfo.content,
+                    total_pages: pageInfo.totalPages,
+                    total_questions: pageInfo.totalElements,
+                    current_page: pageInfo.pageable.pageNumber + 1
                 })
             )
+            console.log(this.state.current_page)
     }
 
     change_page_size(event) {
         if (event.target.value === "ALL") {
             this.setState({page_size: this.state.total_questions})
-            this.find_questions(this.state.total_questions)
+            this.find_questions(this.state.total_questions, 0)
         } else {
             this.setState({page_size: event.target.value})
-            this.find_questions(event.target.value)
+            this.find_questions(event.target.value, this.state.current_page - 1)
         }
     }
 
     prev_button_click() {
         if (this.state.current_page > 1) {
-            this.setState({
-                current_page: this.state.current_page - 1
-            })
-            this.find_page(this.state.current_page - 1, this.state.page_size)
+            this.find_questions(this.state.page_size, this.state.current_page - 2)
         }
         this.set_prev_next_state(this.state.current_page - 1)
     }
 
     next_button_click() {
         if (this.state.current_page + 1 <= this.state.total_pages) {
-            this.setState({
-                current_page: this.state.current_page + 1
-            })
-            this.find_page(this.state.current_page + 1, this.state.page_size)
+            this.find_questions(this.state.page_size, this.state.current_page)
         }
         this.set_prev_next_state(this.state.current_page + 1)
     }
 
-    find_page(page_num, page_size) {
-        this.serviceQuestionService
-            .findPageItem(page_size, page_num)
-            .then(pageItem =>
-                this.setState({
-                    serviceQuestions: pageItem
-                })
-            )
-    }
 
     handleClick(event) {
         this.setState({
             current_page: Number(event.target.id)
         })
-        this.find_page(event.target.id, this.state.page_size)
+        this.find_questions(this.state.page_size, event.target.id - 1)
         this.set_prev_next_state(event.target.id)
     }
 
@@ -157,9 +144,16 @@ class ServiceQuestions extends React.Component {
             .then(() => {
                 let updatedGroups = [...this.state.serviceQuestions].filter(i => i.id !== id);
                 this.setState({serviceQuestions: updatedGroups})
+                this.find_questions(this.state.page_size, this.state.current_page - 1)
+                if (this.state.current_page > this.state.total_pages) {
+                    if (this.state.current_page != 1) {
+                        this.find_questions(this.state.page_size, this.state.current_page - 2)
+                    }
+                } else {
+                    this.find_questions(this.state.page_size, this.state.current_page - 1)
+                }
+               
             })
-        this.find_questions(this.state.page_size)
-        this.find_page(this.state.current_page, this.state.page_size);
     }
 
     createQuestion() {
@@ -175,13 +169,11 @@ class ServiceQuestions extends React.Component {
                 let updateQuestions = this.state.serviceQuestions;
                 updateQuestions.push(this.state.question);
                 this.setState({
-                    serviceQuestions: updateQuestions,
                     question: {
                         id: "", title: "", type: "", choice: "", service_id: '123'
                     }
                 });
-                this.find_questions(this.state.page_size)
-                this.find_page(this.state.current_page, this.state.page_size);
+                this.find_questions(this.state.page_size, this.state.current_page - 1);
             })
         }
     }
@@ -234,7 +226,7 @@ class ServiceQuestions extends React.Component {
                     id: "", title: "", type: "", choice: "", service_id: '123'
                 }
             });
-            this.find_page(this.state.current_page, this.state.page_size);
+            this.find_questions(this.state.page_size, this.state.current_page -1);
         }
 
         this.setState(function (prevState) {
@@ -249,6 +241,8 @@ class ServiceQuestions extends React.Component {
     }
 
     render() {
+        console.log(this.state.current_page)
+
         const pageNumbers = [];
         for (let i = 1; i <= this.state.total_pages; i++) {
             pageNumbers.push(i);

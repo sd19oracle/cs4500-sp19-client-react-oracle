@@ -35,6 +35,9 @@ export default class ServiceQuestionService {
     findPageItem = (num_item, page_num) =>
         fetch(ServiceQuestionService.urlPrefix + `api/servicesSpecificQuestions/page/${num_item}/${page_num}`)
             .then(response => response.json())
+    findAPage = (num_item, page_num) =>
+        fetch(ServiceQuestionService.urlPrefix + `api/servicesSpecificQuestions/paged/${num_item}/${page_num}`)
+            .then(respone => respone.json())
 
     removeById = id =>
         fetch(ServiceQuestionService.urlPrefix + `api/servicesSpecificQuestions/${id}`, {
