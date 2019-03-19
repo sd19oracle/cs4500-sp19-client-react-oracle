@@ -260,11 +260,19 @@ class ServiceQuestions extends React.Component {
 
         const prev_button_state = this.state.prev_button_state
         let renderPrevBtn = null;
+        if (this.state.current_page === 1) {
         renderPrevBtn = (
-            <button className={prev_button_state} onClick={this.prev_button_click} disabled={prev_button_state}>
+            <button className={prev_button_state} onClick={this.prev_button_click} disabled="disabled">
                 <span id="btnPrev"> Prev </span>
             </button>
-        );
+        )
+        } else {
+            renderPrevBtn = (
+                <button className={prev_button_state} onClick={this.prev_button_click} disabled={prev_button_state}>
+                    <span id="btnPrev"> Prev </span>
+                </button>
+            )
+        }
 
 
         let renderNextBtn = null;
