@@ -1,0 +1,86 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render correct for question 1 1`] = `
+<tr>
+  <td>
+    <input
+      name="title"
+      placeholder="TITLE"
+      type="text"
+      value=""
+    />
+  </td>
+  <td>
+    <select
+      name="type"
+      value=""
+    >
+      <option
+        value="MUTIPLECHOICE"
+      >
+        MUTIPLECHOICE
+      </option>
+      <option
+        value="MINMAX"
+      >
+        MINMAX
+      </option>
+      <option
+        value="SHORTANSWER"
+      >
+        SHORTANSWER
+      </option>
+      <option
+        value="TRUEFALSE"
+      >
+        TRUEFALSE
+      </option>
+      <option
+        value=""
+      >
+        ANY
+      </option>
+    </select>
+  </td>
+  <td>
+    <input
+      name="choice"
+      placeholder="CHOICE"
+      type="text"
+      value=""
+    />
+  </td>
+  <td>
+    <button
+      style={
+        Object {
+          "background": "rgb(49,168,75)",
+          "color": "white",
+          "marginLeft": "5px",
+          "marginRight": "5px",
+          "paddingLeft": "22px",
+          "paddingRight": "22px",
+          "textAlign": "center",
+        }
+      }
+    >
+      Add
+    </button>
+    <button
+      style={
+        Object {
+          "background": "rgb(44,131,232)",
+          "color": "white",
+          "marginLeft": "5px",
+          "marginRight": "5px",
+          "paddingLeft": "10px",
+          "paddingRight": "10px",
+          "textAlign": "center",
+        }
+      }
+    >
+      Update
+    </button>
+  </td>
+</tr>
+`;
