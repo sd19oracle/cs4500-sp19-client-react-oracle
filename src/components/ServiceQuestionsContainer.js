@@ -94,8 +94,8 @@ class ServiceQuestionsContainer extends React.Component {
     handleClick(event) {
         this.setState({
             current_page: Number(event.target.id)
-        })
-        this.find_questions(this.state.page_size, event.target.id - 1)
+        });
+        this.find_questions(this.state.page_size, event.target.id - 1);
         this.set_prev_next_state(event.target.id)
     }
 
@@ -195,7 +195,7 @@ class ServiceQuestionsContainer extends React.Component {
 
     handleInputChange(event) {
         const target = event.target;
-        const value = target.value
+        const value = target.value;
         const name = target.name;
 
         this.setState(prevState => ({
