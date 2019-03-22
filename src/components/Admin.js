@@ -2,7 +2,7 @@ import React from 'react'
 import {BrowserRouter as Router, Link, Route} from 'react-router-dom'
 import ServiceAnswers from './ServiceAnswers'
 import ServiceAnswerDetails from './ServiceAnswerDetails'
-import ServiceQuestions from './ServiceQuestions'
+import ServiceQuestions from './ServiceQuestionsContainer'
 import ServiceQuestionDetails from './ServiceQuestionDetails';
 import FAQAnswers from './FAQAnswers';
 import FAQAnswerDetails from './FAQAnswerDetails';
