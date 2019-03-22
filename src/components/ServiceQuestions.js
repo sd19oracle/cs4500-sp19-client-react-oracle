@@ -1,5 +1,6 @@
 import React from 'react'
 import ServiceQuestionService from '../services/ServiceQuestionService'
+import NumberButtons from './NumberButtons';
 class ServiceQuestions extends React.Component {
     constructor(props) {
         super(props)
@@ -24,7 +25,6 @@ class ServiceQuestions extends React.Component {
         this.prev_button_click = this.prev_button_click.bind(this)
         this.next_button_click = this.next_button_click.bind(this)
         this.set_prev_next_state = this.set_prev_next_state.bind(this)
-        this.single_button = this.single_button.bind(this)
         this.remove = this.remove.bind(this);
         this.handleInputChange = this.handleInputChange.bind(this);
         this.createQuestion = this.createQuestion.bind(this);
@@ -104,16 +104,6 @@ class ServiceQuestions extends React.Component {
             this.setState({next_button_state: ""})
         } else {
             this.setState({next_button_state: "disabled"})
-        }
-    }
-
-    single_button(num) {
-        console.log(num === this.state.current_page)
-        if (num === this.state.current_page) {
-            return <button key={num} id={num} style={{backgroundColor: "#69adfc", opacity: 0.8}}
-                           onClick={this.handleClick}>{num}</button>
-        } else {
-            return <button key={num} id={num} onClick={this.handleClick}>{num}</button>
         }
     }
 
@@ -241,17 +231,6 @@ class ServiceQuestions extends React.Component {
     }
 
     render() {
-        console.log(this.state.current_page)
-
-        const pageNumbers = [];
-        for (let i = 1; i <= this.state.total_pages; i++) {
-            pageNumbers.push(i);
-        }
-
-        const renderPageNumbers = pageNumbers.map(number => {
-            return this.single_button(number)
-        });
-
         const prev_button_state = this.state.prev_button_state
         let renderPrevBtn = null;
         if (this.state.current_page === 1) {
@@ -400,7 +379,11 @@ class ServiceQuestions extends React.Component {
                 </select>
                 <div>
                     {renderPrevBtn}
-                    {renderPageNumbers}
+                    <NumberButtons
+                    current_page={this.state.current_page}
+                    handleClick={this.handleClick}
+                    page_num={this.state.total_pages}
+                    />
                     {renderNextBtn}
                 </div>
             </div>
