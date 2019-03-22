@@ -3,10 +3,10 @@ import ServiceQuestionService from '../services/ServiceQuestionService'
 import NumberButtons from './NumberButtons';
 import PrevButton from './PrevButton'
 import NextButton from './NextButton'
-import PageSizeSelection from "./PageSzieSelection"
+import PageSizeSelection from "./PageSizeSelection"
 import SearchButton from './SearchButton'
 
-class ServiceQuestions extends React.Component {
+class ServiceQuestionsContainer extends React.Component {
     constructor(props) {
         super(props)
         this.serviceQuestionService = ServiceQuestionService.getInstance()
@@ -49,6 +49,7 @@ class ServiceQuestions extends React.Component {
                     current_page: pageInfo.pageable.pageNumber + 1
                 })
             )
+        
     }
 
     find_questions(num_item, page_num) {
@@ -146,7 +147,6 @@ class ServiceQuestions extends React.Component {
                 } else {
                     this.find_questions(this.state.page_size, this.state.current_page - 1)
                 }
-
             })
     }
 
@@ -365,7 +365,8 @@ class ServiceQuestions extends React.Component {
                     />
                     <NextButton
                     next_button_state={this.state.next_button_state}
-                    current_page={this.state.current_page}
+                    page_num={this.state.total_pages}               
+                    current_page={this.state.current_page}     
                     next_button_click={this.next_button_click}
                     />
                 </div>
@@ -374,5 +375,5 @@ class ServiceQuestions extends React.Component {
     }
 }
 
-export default ServiceQuestions
+export default ServiceQuestionsContainer
 
