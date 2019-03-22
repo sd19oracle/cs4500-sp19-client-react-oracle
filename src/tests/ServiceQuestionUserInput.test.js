@@ -1,33 +1,57 @@
 import React from "react";
 import ServiceQuestionUserInput from "../components/ServiceQuestionUserInput";
 import renderer from "react-test-renderer";
+import questions from '../data/questions.mock.json'
+import Enzyme, { mount, shallow, render } from 'enzyme';
+import { configure } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+import sinon from 'sinon';
 
-const question1 = {
-  id: "",
-  title: "",
-  type: "",
-  choice: "",
-  service_id: "123"
-};
+configure({ adapter: new Adapter() });
 
-const question2 = {
-  id: "22",
-  title: "FOR TEST PURPOSE",
-  type: "MUTIPLECHOICE",
-  choice: "TEST, TEST2",
-  service_id: "123"
-};
+// DOM test 
+it('title input', () => {
+  const wrapper = shallow(<ServiceQuestionUserInput question={questions[1]}/>);
+  const titleInput = wrapper.find('input').at(0);
+  expect(titleInput.props().value).toBe("FOR TEST PURPOSE")
+})
 
+it('update title input', () => {
+  const handleChangeSpy = sinon.spy();
+  const event = {target: {question : {title : "EDITED"}}};
+  const wrapper = mount(<ServiceQuestionUserInput question={questions[2]} handleInputChange={handleChangeSpy}/>);
+  const titleInput = wrapper.find('input').at(0);
+  titleInput.simulate('change', event);
+  expect(handleChangeSpy.calledOnce).toBe(true);
+})
+
+
+// Snapshot test
 test("render correct for question 1", () => {
   const tree = renderer
-    .create(<ServiceQuestionUserInput question={question1} />)
+    .create(<ServiceQuestionUserInput question={questions[0]} />)
     .toJSON();
   expect(tree).toMatchSnapshot();
 });
 
+test("render correct for questions 3", () => {
+  const tree = renderer
+    .create(<ServiceQuestionUserInput question={questions[2]} />)
+    .toJSON();
+  expect(tree).toMatchSnapshot();
+});
+
+test("render correct for question2 match", () => {
+  const tree = renderer
+    .create(<ServiceQuestionUserInput question={questions[1]} />)
+    .toJSON();
+  expect(tree).toMatchSnapshot();
+});
+
+
 test("render correct for question2 ", () => {
   const tree = renderer
-    .create(<ServiceQuestionUserInput question={question2} />)
+    .create(<ServiceQuestionUserInput question={questions[1]} />)
     .toJSON();
   expect(tree).toMatchInlineSnapshot(`
 <tr>
@@ -117,7 +141,7 @@ test("render correct for question2 ", () => {
 
 test("render correct2 for question 1 ", () => {
   const tree = renderer
-    .create(<ServiceQuestionUserInput question={question1} />)
+    .create(<ServiceQuestionUserInput question={questions[0]} />)
     .toJSON();
   expect(tree).toMatchInlineSnapshot(
     `
