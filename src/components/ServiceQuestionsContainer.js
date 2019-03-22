@@ -141,13 +141,6 @@ class ServiceQuestionsContainer extends React.Component {
                 let updatedGroups = [...this.state.serviceQuestions].filter(i => i.id !== id);
                 this.setState({serviceQuestions: updatedGroups})
                 this.find_questions(this.state.page_size, this.state.current_page - 1)
-                if (this.state.current_page > this.state.total_pages) {
-                    if (this.state.current_page !== 1) {
-                        this.find_questions(this.state.page_size, this.state.current_page - 2)
-                    }
-                } else {
-                    this.find_questions(this.state.page_size, this.state.current_page - 1)
-                }
             })
     }
 
