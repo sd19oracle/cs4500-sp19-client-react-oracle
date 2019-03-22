@@ -1,5 +1,6 @@
 import React from 'react'
 import ServiceQuestionService from '../services/ServiceQuestionService'
+import ServiceQuestionUserInput from './ServiceQuestionUserInput'
 import NumberButtons from './NumberButtons';
 import PrevButton from './PrevButton'
 import NextButton from './NextButton'
@@ -245,58 +246,11 @@ class ServiceQuestionsContainer extends React.Component {
                         <td>Type</td>
                         <td>Choice</td>
                     </tr>
-                    <tr>
-                        <td>
-                            <input
-                                type="text"
-                                name="title"
-                                value={this.state.question.title}
-                                onChange={this.handleInputChange}
-                                placeholder="TITLE"/>
-                        </td>
-                        <td>
-                            <select value={this.state.question.type}
-                                    name="type" onChange={this.handleInputChange}>
-                                <option value="MUTIPLECHOICE">MUTIPLECHOICE</option>
-                                <option value="MINMAX">MINMAX</option>
-                                <option value="SHORTANSWER">SHORTANSWER</option>
-                                <option value="TRUEFALSE">TRUEFALSE</option>
-                                <option value="">ANY</option>
-                            </select>
-                        </td>
-                        <td>
-                            <input
-                                type="text"
-                                name="choice"
-                                value={this.state.question.choice}
-                                onChange={this.handleInputChange}
-                                placeholder="CHOICE"/>
-                        </td>
-                        <td>
-                            <button style={{
-                                background: "rgb(49,168,75)",
-                                color: "white",
-                                textAlign: "center",
-                                paddingLeft: "22px",
-                                paddingRight: "22px",
-                                marginLeft: "5px",
-                                marginRight: "5px",
-                            }}
-                                    onClick={this.createQuestion}>Add
-                            </button>
-                            <button style={{
-                                background: "rgb(44,131,232)",
-                                color: "white",
-                                textAlign: "center",
-                                paddingLeft: "10px",
-                                paddingRight: "10px",
-                                marginLeft: "5px",
-                                marginRight: "5px",
-                            }}
-                                    onClick={this.updateQuestion}>Update
-                            </button>
-                        </td>
-                    </tr>
+                    <ServiceQuestionUserInput 
+                    question = {this.state.question}
+                    handleInputChange = {this.handleInputChange}
+                    createQuestion = {this.createQuestion}
+                    updateQuestion = {this.updateQuestion}/>
                     {
                         this.state.serviceQuestions
                             .map(serviceQuestion =>
