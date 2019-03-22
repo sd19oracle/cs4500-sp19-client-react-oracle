@@ -1,6 +1,8 @@
 import React from 'react'
 import ServiceQuestionService from '../services/ServiceQuestionService'
 import NumberButtons from './NumberButtons';
+import PrevButton from './PrevButton'
+import NextButton from './NextButton'
 class ServiceQuestions extends React.Component {
     constructor(props) {
         super(props)
@@ -83,7 +85,6 @@ class ServiceQuestions extends React.Component {
         }
         this.set_prev_next_state(this.state.current_page + 1)
     }
-
 
     handleClick(event) {
         this.setState({
@@ -231,40 +232,6 @@ class ServiceQuestions extends React.Component {
     }
 
     render() {
-        const prev_button_state = this.state.prev_button_state
-        let renderPrevBtn = null;
-        if (this.state.current_page === 1) {
-        renderPrevBtn = (
-            <button className={prev_button_state} onClick={this.prev_button_click} disabled="disabled">
-                <span id="btnPrev"> Prev </span>
-            </button>
-        )
-        } else {
-            renderPrevBtn = (
-                <button className={prev_button_state} onClick={this.prev_button_click} disabled={prev_button_state}>
-                    <span id="btnPrev"> Prev </span>
-                </button>
-            )
-        }
-
-
-        let renderNextBtn = null;
-        const next_button_state = this.state.next_button_state
-        if (this.state.current_page === this.state.total_pages) {
-            renderNextBtn = (
-                <button className={next_button_state} onClick={this.next_button_click} disabled="disabled">
-                    <span id="btnNext"> Next </span>
-                </button>
-            );
-        } else {
-            renderNextBtn = (
-                <button className={next_button_state} onClick={this.next_button_click} disabled={next_button_state}>
-                    <span id="btnNext"> Next </span>
-                </button>
-            );
-        }
-        
-
         return (
             <div>
                 <h3>Service Questions</h3>
@@ -378,13 +345,21 @@ class ServiceQuestions extends React.Component {
                         <option key={index} value={x}> {x} </option>)}
                 </select>
                 <div>
-                    {renderPrevBtn}
+                    <PrevButton
+                    prev_button_state={this.state.prev_button_state}
+                    current_page={this.state.current_page}
+                    prev_button_click={this.prev_button_click}
+                    />
                     <NumberButtons
                     current_page={this.state.current_page}
                     handleClick={this.handleClick}
                     page_num={this.state.total_pages}
                     />
-                    {renderNextBtn}
+                    <NextButton
+                    next_button_state={this.state.next_button_state}
+                    current_page={this.state.current_page}
+                    next_button_click={this.next_button_click}
+                    />
                 </div>
             </div>
         )
