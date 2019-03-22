@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`search button clear search rendering 1`] = `
+<button>
+  Clear Search
+</button>
+`;
+
+exports[`search button initial rendering 1`] = `
+<button>
+  Search
+</button>
+`;
