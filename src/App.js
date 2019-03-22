@@ -14,7 +14,6 @@ class App extends Component {
             <Link to="/admin">Admin</Link>
             <Route
                 path="/admin"
-                exact
                 component={Admin}/>
           </div>
         </Router>
