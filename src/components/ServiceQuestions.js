@@ -4,6 +4,8 @@ import NumberButtons from './NumberButtons';
 import PrevButton from './PrevButton'
 import NextButton from './NextButton'
 import PageSizeSelection from "./PageSzieSelection"
+import SearchButton from './SearchButton'
+
 class ServiceQuestions extends React.Component {
     constructor(props) {
         super(props)
@@ -60,6 +62,7 @@ class ServiceQuestions extends React.Component {
                     current_page: pageInfo.pageable.pageNumber + 1
                 })
             )
+
     }
 
     change_page_size(event) {
@@ -137,13 +140,13 @@ class ServiceQuestions extends React.Component {
                 this.setState({serviceQuestions: updatedGroups})
                 this.find_questions(this.state.page_size, this.state.current_page - 1)
                 if (this.state.current_page > this.state.total_pages) {
-                    if (this.state.current_page != 1) {
+                    if (this.state.current_page !== 1) {
                         this.find_questions(this.state.page_size, this.state.current_page - 2)
                     }
                 } else {
                     this.find_questions(this.state.page_size, this.state.current_page - 1)
                 }
-               
+
             })
     }
 
@@ -217,7 +220,7 @@ class ServiceQuestions extends React.Component {
                     id: "", title: "", type: "", choice: "", service_id: '123'
                 }
             });
-            this.find_questions(this.state.page_size, this.state.current_page -1);
+            this.find_questions(this.state.page_size, this.state.current_page - 1);
         }
 
         this.setState(function (prevState) {
@@ -228,7 +231,7 @@ class ServiceQuestions extends React.Component {
     navToDetail(id) {
         console.log('I am here')
         this.props.history.push(`/admin/service-question/${id}`)
-        alert('IT SHOULD BE NAV TO' + ` /admin/service-question/${id}`)
+        alert(`IT SHOULD BE NAV TO /admin/service-question/${id}`)
     }
 
     render() {
@@ -298,10 +301,16 @@ class ServiceQuestions extends React.Component {
                         this.state.serviceQuestions
                             .map(serviceQuestion =>
                                 <tr key={serviceQuestion.id}>
-                                    <td onClick={(e) => {this.navToDetail(serviceQuestion.id)}} >{serviceQuestion.title}</td>
-                                    <td onClick={(e) => {this.navToDetail(serviceQuestion.id)}} >{serviceQuestion.type}</td>
-                                    <td onClick={(e) => {this.navToDetail(serviceQuestion.id)}} >{serviceQuestion.choice}</td>
-                                   
+                                    <td onClick={(e) => {
+                                        this.navToDetail(serviceQuestion.id)
+                                    }}>{serviceQuestion.title}</td>
+                                    <td onClick={(e) => {
+                                        this.navToDetail(serviceQuestion.id)
+                                    }}>{serviceQuestion.type}</td>
+                                    <td onClick={(e) => {
+                                        this.navToDetail(serviceQuestion.id)
+                                    }}>{serviceQuestion.choice}</td>
+
                                     <td>
                                         <button style={{
                                             background: "rgb(237,43,63)",
@@ -325,17 +334,16 @@ class ServiceQuestions extends React.Component {
                                         }}
                                                 onClick={() => this.selectQuestion(serviceQuestion.id)}>Select
                                         </button>
-                                        
+
                                     </td>
-                                     
+
                                 </tr>
                             )
                     }
                     <tr>
                         <td>
-                            <button onClick={this.toggleSearch}>
-                                {this.state.searchButtonOn ? 'Search' : 'Clear Search'}
-                            </button>
+                            <SearchButton toggleSearch={this.toggleSearch} searchButtonOn={this.state.searchButtonOn}>
+                            </SearchButton>
                         </td>
                     </tr>
                     </tbody>
