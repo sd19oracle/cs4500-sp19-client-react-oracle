@@ -3,6 +3,7 @@ import ServiceQuestionService from '../services/ServiceQuestionService'
 import NumberButtons from './NumberButtons';
 import PrevButton from './PrevButton'
 import NextButton from './NextButton'
+import PageSizeSelection from "./PageSzieSelection"
 class ServiceQuestions extends React.Component {
     constructor(props) {
         super(props)
@@ -59,7 +60,6 @@ class ServiceQuestions extends React.Component {
                     current_page: pageInfo.pageable.pageNumber + 1
                 })
             )
-            console.log(this.state.current_page)
     }
 
     change_page_size(event) {
@@ -340,10 +340,10 @@ class ServiceQuestions extends React.Component {
                     </tr>
                     </tbody>
                 </table>
-                <select onChange={this.change_page_size}>
-                    {this.default_page_item.map((x, index) =>
-                        <option key={index} value={x}> {x} </option>)}
-                </select>
+                <PageSizeSelection
+                change_page_size={this.change_page_size}
+                default_page_item={this.default_page_item}
+                />
                 <div>
                     <PrevButton
                     prev_button_state={this.state.prev_button_state}
