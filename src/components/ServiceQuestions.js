@@ -1,5 +1,9 @@
 import React from 'react'
 import ServiceQuestionService from '../services/ServiceQuestionService'
+import NumberButtons from './NumberButtons';
+import PrevButton from './PrevButton'
+import NextButton from './NextButton'
+import PageSizeSelection from "./PageSzieSelection"
 import SearchButton from './SearchButton'
 
 class ServiceQuestions extends React.Component {
@@ -26,7 +30,6 @@ class ServiceQuestions extends React.Component {
         this.prev_button_click = this.prev_button_click.bind(this)
         this.next_button_click = this.next_button_click.bind(this)
         this.set_prev_next_state = this.set_prev_next_state.bind(this)
-        this.single_button = this.single_button.bind(this)
         this.remove = this.remove.bind(this);
         this.handleInputChange = this.handleInputChange.bind(this);
         this.createQuestion = this.createQuestion.bind(this);
@@ -59,7 +62,7 @@ class ServiceQuestions extends React.Component {
                     current_page: pageInfo.pageable.pageNumber + 1
                 })
             )
-        console.log(this.state.current_page)
+
     }
 
     change_page_size(event) {
@@ -86,7 +89,6 @@ class ServiceQuestions extends React.Component {
         this.set_prev_next_state(this.state.current_page + 1)
     }
 
-
     handleClick(event) {
         this.setState({
             current_page: Number(event.target.id)
@@ -106,16 +108,6 @@ class ServiceQuestions extends React.Component {
             this.setState({next_button_state: ""})
         } else {
             this.setState({next_button_state: "disabled"})
-        }
-    }
-
-    single_button(num) {
-        console.log(num === this.state.current_page)
-        if (num === this.state.current_page) {
-            return <button key={num} id={num} style={{backgroundColor: "#69adfc", opacity: 0.8}}
-                           onClick={this.handleClick}>{num}</button>
-        } else {
-            return <button key={num} id={num} onClick={this.handleClick}>{num}</button>
         }
     }
 
@@ -243,51 +235,6 @@ class ServiceQuestions extends React.Component {
     }
 
     render() {
-        console.log(this.state.current_page)
-
-        const pageNumbers = [];
-        for (let i = 1; i <= this.state.total_pages; i++) {
-            pageNumbers.push(i);
-        }
-
-        const renderPageNumbers = pageNumbers.map(number => {
-            return this.single_button(number)
-        });
-
-        const prev_button_state = this.state.prev_button_state
-        let renderPrevBtn = null;
-        if (this.state.current_page === 1) {
-            renderPrevBtn = (
-                <button className={prev_button_state} onClick={this.prev_button_click} disabled="disabled">
-                    <span id="btnPrev"> Prev </span>
-                </button>
-            )
-        } else {
-            renderPrevBtn = (
-                <button className={prev_button_state} onClick={this.prev_button_click} disabled={prev_button_state}>
-                    <span id="btnPrev"> Prev </span>
-                </button>
-            )
-        }
-
-
-        let renderNextBtn = null;
-        const next_button_state = this.state.next_button_state
-        if (this.state.current_page === this.state.total_pages) {
-            renderNextBtn = (
-                <button className={next_button_state} onClick={this.next_button_click} disabled="disabled">
-                    <span id="btnNext"> Next </span>
-                </button>
-            );
-        } else {
-            renderNextBtn = (
-                <button className={next_button_state} onClick={this.next_button_click} disabled={next_button_state}>
-                    <span id="btnNext"> Next </span>
-                </button>
-            );
-        }
-
-
         return (
             <div>
                 <h3>Service Questions</h3>
@@ -401,14 +348,26 @@ class ServiceQuestions extends React.Component {
                     </tr>
                     </tbody>
                 </table>
-                <select onChange={this.change_page_size}>
-                    {this.default_page_item.map((x, index) =>
-                        <option key={index} value={x}> {x} </option>)}
-                </select>
+                <PageSizeSelection
+                change_page_size={this.change_page_size}
+                default_page_item={this.default_page_item}
+                />
                 <div>
-                    {renderPrevBtn}
-                    {renderPageNumbers}
-                    {renderNextBtn}
+                    <PrevButton
+                    prev_button_state={this.state.prev_button_state}
+                    current_page={this.state.current_page}
+                    prev_button_click={this.prev_button_click}
+                    />
+                    <NumberButtons
+                    current_page={this.state.current_page}
+                    handleClick={this.handleClick}
+                    page_num={this.state.total_pages}
+                    />
+                    <NextButton
+                    next_button_state={this.state.next_button_state}
+                    current_page={this.state.current_page}
+                    next_button_click={this.next_button_click}
+                    />
                 </div>
             </div>
         )
