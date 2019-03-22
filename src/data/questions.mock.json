@@ -1,0 +1,22 @@
+[{
+    "id": "",
+    "title": "",
+    "type": "",
+    "choice": "",
+    "service_id": "123"
+  }, 
+  {
+    "id": "22",
+    "title": "FOR TEST PURPOSE",
+    "type": "MUTIPLECHOICE",
+    "choice": "TEST, TEST2",
+    "service_id": "123"
+  },
+  {
+    "id": "11",
+    "title": "TEST 2",
+    "type": "MINMAX",
+    "choice": "TEST, TEST2",
+    "service_id": "123"
+  }
+]
