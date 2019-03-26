@@ -2,7 +2,7 @@ import React from 'react'
 export default props => {
     const tableContainer = props.serviceQuestions
         .map(serviceQuestion =>
-            <tr key={serviceQuestion.id}>
+            <tr className={serviceQuestion.id + '-tr'} key={serviceQuestion.id} value={serviceQuestion.id}>
                 <td onClick={(e) => {
                     props.navToDetail(serviceQuestion.id)
                 }}>{serviceQuestion.title}</td>
