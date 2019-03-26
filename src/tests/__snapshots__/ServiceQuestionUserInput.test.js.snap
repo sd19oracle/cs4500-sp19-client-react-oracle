@@ -4,6 +4,7 @@ exports[`render correct for question 1 1`] = `
 <tr>
   <td>
     <input
+      className="title-input"
       name="title"
       placeholder="TITLE"
       type="text"
@@ -52,6 +53,7 @@ exports[`render correct for question 1 1`] = `
   </td>
   <td>
     <button
+      className="add_button"
       style={
         Object {
           "background": "rgb(49,168,75)",
@@ -89,6 +91,7 @@ exports[`render correct for question2 match 1`] = `
 <tr>
   <td>
     <input
+      className="title-input"
       name="title"
       placeholder="TITLE"
       type="text"
@@ -137,6 +140,7 @@ exports[`render correct for question2 match 1`] = `
   </td>
   <td>
     <button
+      className="add_button"
       style={
         Object {
           "background": "rgb(49,168,75)",
@@ -174,6 +178,7 @@ exports[`render correct for questions 3 1`] = `
 <tr>
   <td>
     <input
+      className="title-input"
       name="title"
       placeholder="TITLE"
       type="text"
@@ -222,6 +227,97 @@ exports[`render correct for questions 3 1`] = `
   </td>
   <td>
     <button
+      className="add_button"
+      style={
+        Object {
+          "background": "rgb(49,168,75)",
+          "color": "white",
+          "marginLeft": "5px",
+          "marginRight": "5px",
+          "paddingLeft": "22px",
+          "paddingRight": "22px",
+          "textAlign": "center",
+        }
+      }
+    >
+      Add
+    </button>
+    <button
+      style={
+        Object {
+          "background": "rgb(44,131,232)",
+          "color": "white",
+          "marginLeft": "5px",
+          "marginRight": "5px",
+          "paddingLeft": "10px",
+          "paddingRight": "10px",
+          "textAlign": "center",
+        }
+      }
+    >
+      Update
+    </button>
+  </td>
+</tr>
+`;
+
+exports[`when change in snapshot 1`] = `
+<tr>
+  <td>
+    <input
+      className="title-input"
+      name="title"
+      onChange={[Function]}
+      placeholder="TITLE"
+      type="text"
+      value="FOR TEST PURPOSE"
+    />
+  </td>
+  <td>
+    <select
+      name="type"
+      onChange={[Function]}
+      value="MUTIPLECHOICE"
+    >
+      <option
+        value="MUTIPLECHOICE"
+      >
+        MUTIPLECHOICE
+      </option>
+      <option
+        value="MINMAX"
+      >
+        MINMAX
+      </option>
+      <option
+        value="SHORTANSWER"
+      >
+        SHORTANSWER
+      </option>
+      <option
+        value="TRUEFALSE"
+      >
+        TRUEFALSE
+      </option>
+      <option
+        value=""
+      >
+        ANY
+      </option>
+    </select>
+  </td>
+  <td>
+    <input
+      name="choice"
+      onChange={[Function]}
+      placeholder="CHOICE"
+      type="text"
+      value="TEST, TEST2"
+    />
+  </td>
+  <td>
+    <button
+      className="add_button"
       style={
         Object {
           "background": "rgb(49,168,75)",

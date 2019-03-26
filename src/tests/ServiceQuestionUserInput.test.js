@@ -1,11 +1,13 @@
 import React from "react";
 import ServiceQuestionUserInput from "../components/ServiceQuestionUserInput";
+import AddServiceQuestionButton from "../components/AddServiceQuestionButton"
 import renderer from "react-test-renderer";
 import questions from '../data/questions.mock.json'
 import Enzyme, { mount, shallow, render } from 'enzyme';
 import { configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import sinon from 'sinon';
+
 
 configure({ adapter: new Adapter() });
 
@@ -16,6 +18,7 @@ it('title input', () => {
   expect(titleInput.props().value).toBe("FOR TEST PURPOSE")
 })
 
+// DOM test when we change the content in the input, the change function will be actived
 it('update title input', () => {
   const handleChangeSpy = sinon.spy();
   const event = {target: {question : {title : "EDITED"}}};
@@ -48,185 +51,20 @@ test("render correct for question2 match", () => {
   expect(tree).toMatchSnapshot();
 });
 
+// Snapshot when something change  
+test("when change in snapshot", () => {
+  let changeHandle = () => {
+    const testRenderer = renderer
+      .create(<ServiceQuestionUserInput question={questions[0]} handleInputChange={changeHandle}/>)
+    const tree = testRenderer.toJSON();
+    expect(tree).toMatchSnapshot();
+  }
+  const testRenderer = renderer
+    .create(<ServiceQuestionUserInput question={questions[1]} handleInputChange={changeHandle}/>)
+  const tree = testRenderer.toJSON();
+  expect(tree).toMatchSnapshot();
+  const testInstance = testRenderer.root;
+  const input1 = testInstance.findAllByProps({className : "title-input"})
 
-test("render correct for question2 ", () => {
-  const tree = renderer
-    .create(<ServiceQuestionUserInput question={questions[1]} />)
-    .toJSON();
-  expect(tree).toMatchInlineSnapshot(`
-<tr>
-  <td>
-    <input
-      name="title"
-      placeholder="TITLE"
-      type="text"
-      value="FOR TEST PURPOSE"
-    />
-  </td>
-  <td>
-    <select
-      name="type"
-      value="MUTIPLECHOICE"
-    >
-      <option
-        value="MUTIPLECHOICE"
-      >
-        MUTIPLECHOICE
-      </option>
-      <option
-        value="MINMAX"
-      >
-        MINMAX
-      </option>
-      <option
-        value="SHORTANSWER"
-      >
-        SHORTANSWER
-      </option>
-      <option
-        value="TRUEFALSE"
-      >
-        TRUEFALSE
-      </option>
-      <option
-        value=""
-      >
-        ANY
-      </option>
-    </select>
-  </td>
-  <td>
-    <input
-      name="choice"
-      placeholder="CHOICE"
-      type="text"
-      value="TEST, TEST2"
-    />
-  </td>
-  <td>
-    <button
-      style={
-        Object {
-          "background": "rgb(49,168,75)",
-          "color": "white",
-          "marginLeft": "5px",
-          "marginRight": "5px",
-          "paddingLeft": "22px",
-          "paddingRight": "22px",
-          "textAlign": "center",
-        }
-      }
-    >
-      Add
-    </button>
-    <button
-      style={
-        Object {
-          "background": "rgb(44,131,232)",
-          "color": "white",
-          "marginLeft": "5px",
-          "marginRight": "5px",
-          "paddingLeft": "10px",
-          "paddingRight": "10px",
-          "textAlign": "center",
-        }
-      }
-    >
-      Update
-    </button>
-  </td>
-</tr>
-`);
 });
 
-test("render correct2 for question 1 ", () => {
-  const tree = renderer
-    .create(<ServiceQuestionUserInput question={questions[0]} />)
-    .toJSON();
-  expect(tree).toMatchInlineSnapshot(
-    `
-<tr>
-  <td>
-    <input
-      name="title"
-      placeholder="TITLE"
-      type="text"
-      value=""
-    />
-  </td>
-  <td>
-    <select
-      name="type"
-      value=""
-    >
-      <option
-        value="MUTIPLECHOICE"
-      >
-        MUTIPLECHOICE
-      </option>
-      <option
-        value="MINMAX"
-      >
-        MINMAX
-      </option>
-      <option
-        value="SHORTANSWER"
-      >
-        SHORTANSWER
-      </option>
-      <option
-        value="TRUEFALSE"
-      >
-        TRUEFALSE
-      </option>
-      <option
-        value=""
-      >
-        ANY
-      </option>
-    </select>
-  </td>
-  <td>
-    <input
-      name="choice"
-      placeholder="CHOICE"
-      type="text"
-      value=""
-    />
-  </td>
-  <td>
-    <button
-      style={
-        Object {
-          "background": "rgb(49,168,75)",
-          "color": "white",
-          "marginLeft": "5px",
-          "marginRight": "5px",
-          "paddingLeft": "22px",
-          "paddingRight": "22px",
-          "textAlign": "center",
-        }
-      }
-    >
-      Add
-    </button>
-    <button
-      style={
-        Object {
-          "background": "rgb(44,131,232)",
-          "color": "white",
-          "marginLeft": "5px",
-          "marginRight": "5px",
-          "paddingLeft": "10px",
-          "paddingRight": "10px",
-          "textAlign": "center",
-        }
-      }
-    >
-      Update
-    </button>
-  </td>
-</tr>
-`
-  );
-});

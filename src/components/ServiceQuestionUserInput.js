@@ -8,6 +8,7 @@ export default props => (
             <input
                 type="text"
                 name="title"
+                className="title-input"
                 value={props.question.title}
                 onChange={props.handleInputChange}
                 placeholder="TITLE"/>

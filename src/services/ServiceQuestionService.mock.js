@@ -44,7 +44,15 @@ global.fetch = jest.fn()
                 })
             }
         } else if (config.method === 'put') {
-
+            if(url.indexOf('api/servicesSpecificQuestions/1')) {
+                return new Promise((resolve, reject) => {
+                    resolve({
+                        json: function () {
+                            return serviceQuestions
+                        }
+                    })
+                })
+            }
         } else if (config.method === 'delete') {
 
         }

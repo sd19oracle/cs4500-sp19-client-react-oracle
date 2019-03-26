@@ -1,7 +1,8 @@
 import React from 'react';
 
 export default props => (
-    <button style={{
+    <button className= "add_button"
+        style={{
         background: "rgb(49,168,75)",
         color: "white",
         textAlign: "center",
