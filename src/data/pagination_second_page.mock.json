@@ -1,0 +1,35 @@
+{
+    "content": [
+        {
+            "id": 168,
+            "title": "ssg",
+            "type": "MINMAX",
+            "choice": ""
+        }
+    ],
+    "pageable": {
+        "sort": {
+            "sorted": false,
+            "unsorted": true,
+            "empty": true
+        },
+        "pageSize": 10,
+        "pageNumber": 1,
+        "offset": 10,
+        "paged": true,
+        "unpaged": false
+    },
+    "totalPages": 2,
+    "totalElements": 11,
+    "last": true,
+    "first": false,
+    "sort": {
+        "sorted": false,
+        "unsorted": true,
+        "empty": true
+    },
+    "numberOfElements": 1,
+    "size": 10,
+    "number": 1,
+    "empty": false
+}

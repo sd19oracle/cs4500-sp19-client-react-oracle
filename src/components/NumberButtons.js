@@ -9,10 +9,10 @@ export default props => {
 
     let buttons = pageNumbers.map(num => {
         if (num === (props.current_page)) {
-            return <button key={num} id={num} style={{ backgroundColor: "#69adfc", opacity: 0.8 }}
+            return <button className={num + '-button'} key={num} id={num} style={{ backgroundColor: "#69adfc", opacity: 0.8 }}
                 onClick={props.handleClick}>{num}</button>;
         } else {
-            return <button key={num} id={num} onClick={props.handleClick}>{num}</button>;
+            return <button className={num + '-button'} key={num} id={num} onClick={props.handleClick}>{num}</button>;
         }
     });
 
