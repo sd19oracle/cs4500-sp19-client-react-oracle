@@ -2,7 +2,6 @@ import serviceQuestions from '../data/serviceQuestions.mock'
 
 global.fetch = jest.fn()
     .mockImplementation((url, config) => {
-        console.log("Run mock service");
         if (!config) {
             if (url.indexOf('api/servicesSpecificQuestions/0') != -1) {
                 return new Promise((resolve, reject) => {
