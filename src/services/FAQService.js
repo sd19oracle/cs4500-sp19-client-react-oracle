@@ -12,4 +12,9 @@ export default class FAQService {
     findAllFAQs = () =>
         fetch("http://localhost:8080/api/faqs")
             .then(response => response.json());
+
+    findFAQsPaged(count, page) {
+        return fetch(`http://localhost:8080/api/faqs/paged?count=${count}&page=${page}`)
+            .then(response => response.json());
+    }
 }

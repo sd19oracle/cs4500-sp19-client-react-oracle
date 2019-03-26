@@ -1,5 +1,6 @@
 import React from 'react';
-
+import AddServiceQuestionButton from './AddServiceQuestionButton';
+import UpdateServiceQuestionButton from './UpdateServiceQuestionButton';
 
 export default props => (
     <tr>
@@ -30,29 +31,10 @@ export default props => (
                 placeholder="CHOICE"/>
         </td>
         <td>
-            <button style={{
-                background: "rgb(49,168,75)",
-                color: "white",
-                textAlign: "center",
-                paddingLeft: "22px",
-                paddingRight: "22px",
-                marginLeft: "5px",
-                marginRight: "5px",
-            }}
-                    onClick={props.createQuestion}>Add
-            </button>
-            <button style={{
-                background: "rgb(44,131,232)",
-                color: "white",
-                textAlign: "center",
-                paddingLeft: "10px",
-                paddingRight: "10px",
-                marginLeft: "5px",
-                marginRight: "5px",
-            }}
-                    onClick={props.updateQuestion}>Update
-            </button>
+            <AddServiceQuestionButton 
+            createQuestion = {props.createQuestion} />
+            <UpdateServiceQuestionButton 
+            updateQuestion = {props.updateQuestion} />
         </td>       
     </tr>
 )
-

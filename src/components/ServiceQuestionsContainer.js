@@ -5,6 +5,7 @@ import NumberButtons from './NumberButtons';
 import PrevButton from './PrevButton'
 import NextButton from './NextButton'
 import PageSizeSelection from "./PageSizeSelection"
+import QuestionsContainer from "./QuestionsContainer"
 import SearchButton from './SearchButton'
 
 class ServiceQuestionsContainer extends React.Component {
@@ -141,13 +142,6 @@ class ServiceQuestionsContainer extends React.Component {
                 let updatedGroups = [...this.state.serviceQuestions].filter(i => i.id !== id);
                 this.setState({serviceQuestions: updatedGroups})
                 this.find_questions(this.state.page_size, this.state.current_page - 1)
-                if (this.state.current_page > this.state.total_pages) {
-                    if (this.state.current_page !== 1) {
-                        this.find_questions(this.state.page_size, this.state.current_page - 2)
-                    }
-                } else {
-                    this.find_questions(this.state.page_size, this.state.current_page - 1)
-                }
             })
     }
 
@@ -251,49 +245,12 @@ class ServiceQuestionsContainer extends React.Component {
                     handleInputChange = {this.handleInputChange}
                     createQuestion = {this.createQuestion}
                     updateQuestion = {this.updateQuestion}/>
-                    {
-                        this.state.serviceQuestions
-                            .map(serviceQuestion =>
-                                <tr key={serviceQuestion.id}>
-                                    <td onClick={(e) => {
-                                        this.navToDetail(serviceQuestion.id)
-                                    }}>{serviceQuestion.title}</td>
-                                    <td onClick={(e) => {
-                                        this.navToDetail(serviceQuestion.id)
-                                    }}>{serviceQuestion.type}</td>
-                                    <td onClick={(e) => {
-                                        this.navToDetail(serviceQuestion.id)
-                                    }}>{serviceQuestion.choice}</td>
-
-                                    <td>
-                                        <button style={{
-                                            background: "rgb(237,43,63)",
-                                            color: "white",
-                                            textAlign: "center",
-                                            paddingLeft: "13px",
-                                            paddingRight: "13px",
-                                            marginLeft: "5px",
-                                            marginRight: "5px",
-                                        }}
-                                                onClick={() => this.remove(serviceQuestion.id)}>Delete
-                                        </button>
-                                        <button style={{
-                                            background: "rgb(83,189,248)",
-                                            color: "white",
-                                            textAlign: "center",
-                                            paddingLeft: "13px",
-                                            paddingRight: "13px",
-                                            marginLeft: "5px",
-                                            marginRight: "5px",
-                                        }}
-                                                onClick={() => this.selectQuestion(serviceQuestion.id)}>Select
-                                        </button>
-
-                                    </td>
-
-                                </tr>
-                            )
-                    }
+                    <QuestionsContainer
+                    serviceQuestions = {this.state.serviceQuestions}
+                    remove = {this.remove}
+                    navToDetail = {this.navToDetail}
+                    />
+                    
                     <tr>
                         <td>
                             <SearchButton toggleSearch={this.toggleSearch} searchButtonOn={this.state.searchButtonOn}>
