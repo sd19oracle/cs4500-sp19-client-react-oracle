@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DOM testing 1`] = `
+<button
+  className="search-button"
+>
+  Search
+</button>
+`;
+
+exports[`on-click event handler - toggle search 1`] = `
+<button
+  className="search-button"
+  onClick={[Function]}
+>
+  Search
+</button>
+`;
+
+exports[`on-click event handler - toggle search 2`] = `
+<button
+  className="search-button"
+  onClick={[Function]}
+>
+  Clear Search
+</button>
+`;
+
+exports[`search button clear search rendering 1`] = `
+<button
+  className="search-button"
+>
+  Clear Search
+</button>
+`;
+
+exports[`search button initial rendering 1`] = `
+<button
+  className="search-button"
+>
+  Search
+</button>
+`;
