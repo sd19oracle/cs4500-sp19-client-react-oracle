@@ -250,7 +250,6 @@ class ServiceQuestionsContainer extends React.Component {
                     remove = {this.remove}
                     navToDetail = {this.navToDetail}
                     />
-                    
                     <tr>
                         <td>
                             <SearchButton toggleSearch={this.toggleSearch} searchButtonOn={this.state.searchButtonOn}>
