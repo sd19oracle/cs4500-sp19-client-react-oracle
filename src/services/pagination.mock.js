@@ -20,7 +20,7 @@ global.fetch = jest.fn()
                     }
                 })
             })
-        } else if (url.includes('api/serviceSpecificQuestions/paded/10/2')) {
+        } else if (url.includes('api/servicesSpecificQuestions/paged/10/2')) {
             return new Promise((resolve, reject) => {
                 resolve({
                     json: function () {

@@ -68,7 +68,7 @@ exports[`nextButton if button state is enabled render correctly 1`] = `
 exports[`nextButton is pressed 1`] = `
 <button
   className="next-button"
-  disabled=""
+  disabled="disabled"
   onClick={[Function]}
 >
   <span
@@ -82,7 +82,7 @@ exports[`nextButton is pressed 1`] = `
 exports[`nextButton is pressed 2`] = `
 <button
   className="next-button"
-  disabled=""
+  disabled="disabled"
   onClick={[Function]}
 >
   <span
@@ -130,4 +130,654 @@ exports[`prevButton is disabled for the first page 1`] = `
      Prev 
   </span>
 </button>
+`;
+
+exports[`render num buttons correctly for the first page 1`] = `
+Array [
+  <button
+    className="1-button"
+    id={1}
+    style={
+      Object {
+        "backgroundColor": "#69adfc",
+        "opacity": 0.8,
+      }
+    }
+  >
+    1
+  </button>,
+  <button
+    className="2-button"
+    id={2}
+  >
+    2
+  </button>,
+]
+`;
+
+exports[`render num buttons correctly for the second page 1`] = `
+Array [
+  <button
+    className="1-button"
+    id={1}
+  >
+    1
+  </button>,
+  <button
+    className="2-button"
+    id={2}
+    style={
+      Object {
+        "backgroundColor": "#69adfc",
+        "opacity": 0.8,
+      }
+    }
+  >
+    2
+  </button>,
+]
+`;
+
+exports[`rendering empty page correctly with selected page size 1`] = `null`;
+
+exports[`rendering first page correctly with selected page size 1`] = `
+Array [
+  <tr
+    className="88-tr"
+    value={88}
+  >
+    <td
+      onClick={[Function]}
+    >
+      What classes can you teach?
+    </td>
+    <td
+      onClick={[Function]}
+    >
+      MUTIPLECHOICE
+    </td>
+    <td
+      onClick={[Function]}
+    >
+      CS,CE,IS,others
+    </td>
+    <td>
+      <button
+        onClick={[Function]}
+        style={
+          Object {
+            "background": "rgb(237,43,63)",
+            "color": "white",
+            "marginLeft": "5px",
+            "marginRight": "5px",
+            "paddingLeft": "13px",
+            "paddingRight": "13px",
+            "textAlign": "center",
+          }
+        }
+      >
+        Delete
+      </button>
+      <button
+        onClick={[Function]}
+        style={
+          Object {
+            "background": "rgb(83,189,248)",
+            "color": "white",
+            "marginLeft": "5px",
+            "marginRight": "5px",
+            "paddingLeft": "13px",
+            "paddingRight": "13px",
+            "textAlign": "center",
+          }
+        }
+      >
+        Select
+      </button>
+    </td>
+  </tr>,
+  <tr
+    className="123-tr"
+    value={123}
+  >
+    <td
+      onClick={[Function]}
+    >
+      Are you allergic to pollen?
+    </td>
+    <td
+      onClick={[Function]}
+    >
+      TRUEFALSE
+    </td>
+    <td
+      onClick={[Function]}
+    >
+      1.no2.yes
+    </td>
+    <td>
+      <button
+        onClick={[Function]}
+        style={
+          Object {
+            "background": "rgb(237,43,63)",
+            "color": "white",
+            "marginLeft": "5px",
+            "marginRight": "5px",
+            "paddingLeft": "13px",
+            "paddingRight": "13px",
+            "textAlign": "center",
+          }
+        }
+      >
+        Delete
+      </button>
+      <button
+        onClick={[Function]}
+        style={
+          Object {
+            "background": "rgb(83,189,248)",
+            "color": "white",
+            "marginLeft": "5px",
+            "marginRight": "5px",
+            "paddingLeft": "13px",
+            "paddingRight": "13px",
+            "textAlign": "center",
+          }
+        }
+      >
+        Select
+      </button>
+    </td>
+  </tr>,
+  <tr
+    className="124-tr"
+    value={124}
+  >
+    <td
+      onClick={[Function]}
+    >
+      What is your education level?
+    </td>
+    <td
+      onClick={[Function]}
+    >
+      MUTIPLECHOICE
+    </td>
+    <td
+      onClick={[Function]}
+    >
+      BS/BA,MS/MA,PhD,others
+    </td>
+    <td>
+      <button
+        onClick={[Function]}
+        style={
+          Object {
+            "background": "rgb(237,43,63)",
+            "color": "white",
+            "marginLeft": "5px",
+            "marginRight": "5px",
+            "paddingLeft": "13px",
+            "paddingRight": "13px",
+            "textAlign": "center",
+          }
+        }
+      >
+        Delete
+      </button>
+      <button
+        onClick={[Function]}
+        style={
+          Object {
+            "background": "rgb(83,189,248)",
+            "color": "white",
+            "marginLeft": "5px",
+            "marginRight": "5px",
+            "paddingLeft": "13px",
+            "paddingRight": "13px",
+            "textAlign": "center",
+          }
+        }
+      >
+        Select
+      </button>
+    </td>
+  </tr>,
+  <tr
+    className="127-tr"
+    value={127}
+  >
+    <td
+      onClick={[Function]}
+    >
+      What is best way to contact you?
+    </td>
+    <td
+      onClick={[Function]}
+    >
+      SHORTANSWER
+    </td>
+    <td
+      onClick={[Function]}
+    >
+      
+    </td>
+    <td>
+      <button
+        onClick={[Function]}
+        style={
+          Object {
+            "background": "rgb(237,43,63)",
+            "color": "white",
+            "marginLeft": "5px",
+            "marginRight": "5px",
+            "paddingLeft": "13px",
+            "paddingRight": "13px",
+            "textAlign": "center",
+          }
+        }
+      >
+        Delete
+      </button>
+      <button
+        onClick={[Function]}
+        style={
+          Object {
+            "background": "rgb(83,189,248)",
+            "color": "white",
+            "marginLeft": "5px",
+            "marginRight": "5px",
+            "paddingLeft": "13px",
+            "paddingRight": "13px",
+            "textAlign": "center",
+          }
+        }
+      >
+        Select
+      </button>
+    </td>
+  </tr>,
+  <tr
+    className="130-tr"
+    value={130}
+  >
+    <td
+      onClick={[Function]}
+    >
+      test question 3
+    </td>
+    <td
+      onClick={[Function]}
+    >
+      SHORTANSWER
+    </td>
+    <td
+      onClick={[Function]}
+    >
+      
+    </td>
+    <td>
+      <button
+        onClick={[Function]}
+        style={
+          Object {
+            "background": "rgb(237,43,63)",
+            "color": "white",
+            "marginLeft": "5px",
+            "marginRight": "5px",
+            "paddingLeft": "13px",
+            "paddingRight": "13px",
+            "textAlign": "center",
+          }
+        }
+      >
+        Delete
+      </button>
+      <button
+        onClick={[Function]}
+        style={
+          Object {
+            "background": "rgb(83,189,248)",
+            "color": "white",
+            "marginLeft": "5px",
+            "marginRight": "5px",
+            "paddingLeft": "13px",
+            "paddingRight": "13px",
+            "textAlign": "center",
+          }
+        }
+      >
+        Select
+      </button>
+    </td>
+  </tr>,
+  <tr
+    className="136-tr"
+    value={136}
+  >
+    <td
+      onClick={[Function]}
+    >
+      kk
+    </td>
+    <td
+      onClick={[Function]}
+    >
+      SHORTANSWER
+    </td>
+    <td
+      onClick={[Function]}
+    >
+      
+    </td>
+    <td>
+      <button
+        onClick={[Function]}
+        style={
+          Object {
+            "background": "rgb(237,43,63)",
+            "color": "white",
+            "marginLeft": "5px",
+            "marginRight": "5px",
+            "paddingLeft": "13px",
+            "paddingRight": "13px",
+            "textAlign": "center",
+          }
+        }
+      >
+        Delete
+      </button>
+      <button
+        onClick={[Function]}
+        style={
+          Object {
+            "background": "rgb(83,189,248)",
+            "color": "white",
+            "marginLeft": "5px",
+            "marginRight": "5px",
+            "paddingLeft": "13px",
+            "paddingRight": "13px",
+            "textAlign": "center",
+          }
+        }
+      >
+        Select
+      </button>
+    </td>
+  </tr>,
+  <tr
+    className="137-tr"
+    value={137}
+  >
+    <td
+      onClick={[Function]}
+    >
+      Do you have pet(s)?
+    </td>
+    <td
+      onClick={[Function]}
+    >
+      TRUEFALSE
+    </td>
+    <td
+      onClick={[Function]}
+    >
+      
+    </td>
+    <td>
+      <button
+        onClick={[Function]}
+        style={
+          Object {
+            "background": "rgb(237,43,63)",
+            "color": "white",
+            "marginLeft": "5px",
+            "marginRight": "5px",
+            "paddingLeft": "13px",
+            "paddingRight": "13px",
+            "textAlign": "center",
+          }
+        }
+      >
+        Delete
+      </button>
+      <button
+        onClick={[Function]}
+        style={
+          Object {
+            "background": "rgb(83,189,248)",
+            "color": "white",
+            "marginLeft": "5px",
+            "marginRight": "5px",
+            "paddingLeft": "13px",
+            "paddingRight": "13px",
+            "textAlign": "center",
+          }
+        }
+      >
+        Select
+      </button>
+    </td>
+  </tr>,
+  <tr
+    className="139-tr"
+    value={139}
+  >
+    <td
+      onClick={[Function]}
+    >
+      test for fun
+    </td>
+    <td
+      onClick={[Function]}
+    >
+      MINMAX
+    </td>
+    <td
+      onClick={[Function]}
+    >
+      
+    </td>
+    <td>
+      <button
+        onClick={[Function]}
+        style={
+          Object {
+            "background": "rgb(237,43,63)",
+            "color": "white",
+            "marginLeft": "5px",
+            "marginRight": "5px",
+            "paddingLeft": "13px",
+            "paddingRight": "13px",
+            "textAlign": "center",
+          }
+        }
+      >
+        Delete
+      </button>
+      <button
+        onClick={[Function]}
+        style={
+          Object {
+            "background": "rgb(83,189,248)",
+            "color": "white",
+            "marginLeft": "5px",
+            "marginRight": "5px",
+            "paddingLeft": "13px",
+            "paddingRight": "13px",
+            "textAlign": "center",
+          }
+        }
+      >
+        Select
+      </button>
+    </td>
+  </tr>,
+  <tr
+    className="143-tr"
+    value={143}
+  >
+    <td
+      onClick={[Function]}
+    >
+      TESTNOREASON
+    </td>
+    <td
+      onClick={[Function]}
+    >
+      MUTIPLECHOICE
+    </td>
+    <td
+      onClick={[Function]}
+    >
+      
+    </td>
+    <td>
+      <button
+        onClick={[Function]}
+        style={
+          Object {
+            "background": "rgb(237,43,63)",
+            "color": "white",
+            "marginLeft": "5px",
+            "marginRight": "5px",
+            "paddingLeft": "13px",
+            "paddingRight": "13px",
+            "textAlign": "center",
+          }
+        }
+      >
+        Delete
+      </button>
+      <button
+        onClick={[Function]}
+        style={
+          Object {
+            "background": "rgb(83,189,248)",
+            "color": "white",
+            "marginLeft": "5px",
+            "marginRight": "5px",
+            "paddingLeft": "13px",
+            "paddingRight": "13px",
+            "textAlign": "center",
+          }
+        }
+      >
+        Select
+      </button>
+    </td>
+  </tr>,
+  <tr
+    className="144-tr"
+    value={144}
+  >
+    <td
+      onClick={[Function]}
+    >
+      hello
+    </td>
+    <td
+      onClick={[Function]}
+    >
+      TRUEFALSE
+    </td>
+    <td
+      onClick={[Function]}
+    >
+      
+    </td>
+    <td>
+      <button
+        onClick={[Function]}
+        style={
+          Object {
+            "background": "rgb(237,43,63)",
+            "color": "white",
+            "marginLeft": "5px",
+            "marginRight": "5px",
+            "paddingLeft": "13px",
+            "paddingRight": "13px",
+            "textAlign": "center",
+          }
+        }
+      >
+        Delete
+      </button>
+      <button
+        onClick={[Function]}
+        style={
+          Object {
+            "background": "rgb(83,189,248)",
+            "color": "white",
+            "marginLeft": "5px",
+            "marginRight": "5px",
+            "paddingLeft": "13px",
+            "paddingRight": "13px",
+            "textAlign": "center",
+          }
+        }
+      >
+        Select
+      </button>
+    </td>
+  </tr>,
+]
+`;
+
+exports[`rendering second page correctly with selected page size 1`] = `
+<tr
+  className="168-tr"
+  value={168}
+>
+  <td
+    onClick={[Function]}
+  >
+    ssg
+  </td>
+  <td
+    onClick={[Function]}
+  >
+    MINMAX
+  </td>
+  <td
+    onClick={[Function]}
+  >
+    
+  </td>
+  <td>
+    <button
+      onClick={[Function]}
+      style={
+        Object {
+          "background": "rgb(237,43,63)",
+          "color": "white",
+          "marginLeft": "5px",
+          "marginRight": "5px",
+          "paddingLeft": "13px",
+          "paddingRight": "13px",
+          "textAlign": "center",
+        }
+      }
+    >
+      Delete
+    </button>
+    <button
+      onClick={[Function]}
+      style={
+        Object {
+          "background": "rgb(83,189,248)",
+          "color": "white",
+          "marginLeft": "5px",
+          "marginRight": "5px",
+          "paddingLeft": "13px",
+          "paddingRight": "13px",
+          "textAlign": "center",
+        }
+      }
+    >
+      Select
+    </button>
+  </td>
+</tr>
 `;
