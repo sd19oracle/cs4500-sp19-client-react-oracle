@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PageSizeSelection render correctly 1`] = `
+<select
+  className="page-size-selection"
+>
+  <option
+    className="10-selection"
+    value={10}
+  >
+     
+    10
+     
+  </option>
+  <option
+    className="20-selection"
+    value={20}
+  >
+     
+    20
+     
+  </option>
+  <option
+    className="50-selection"
+    value={50}
+  >
+     
+    50
+     
+  </option>
+  <option
+    className="all-selection"
+    value="all"
+  >
+     
+    all
+     
+  </option>
+</select>
+`;

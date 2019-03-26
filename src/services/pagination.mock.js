@@ -2,7 +2,7 @@ import React from 'react'
 import { resolve } from 'url';
 import First_page from '../data/pagination_first_page.mock.json'
 import Second_page from '../data/pagination_second_page.mock.json'
-import Empty_page from '../data/pagination_empty_page.mock.json'
+import Empty_page from '../data/pagination_emtpy_page.mock.json'
 
 let urlPrefix = 'http://localhost:8080/';
 global.fetch = jest.fn()
