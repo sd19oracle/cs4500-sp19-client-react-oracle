@@ -1,0 +1,133 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PageSizeSelection render correctly 1`] = `
+<select
+  className="page-size-selection"
+>
+  <option
+    className="10-selection"
+    value={10}
+  >
+     
+    10
+     
+  </option>
+  <option
+    className="20-selection"
+    value={20}
+  >
+     
+    20
+     
+  </option>
+  <option
+    className="50-selection"
+    value={50}
+  >
+     
+    50
+     
+  </option>
+  <option
+    className="all-selection"
+    value="all"
+  >
+     
+    all
+     
+  </option>
+</select>
+`;
+
+exports[`nextButton if button state is disabled render correctly 1`] = `
+<button
+  className="next-button"
+  disabled="disabled"
+>
+  <span
+    id="btnNext"
+  >
+     Next 
+  </span>
+</button>
+`;
+
+exports[`nextButton if button state is enabled render correctly 1`] = `
+<button
+  className="next-button"
+  disabled=""
+>
+  <span
+    id="btnNext"
+  >
+     Next 
+  </span>
+</button>
+`;
+
+exports[`nextButton is pressed 1`] = `
+<button
+  className="next-button"
+  disabled="disabled"
+  onClick={[Function]}
+>
+  <span
+    id="btnNext"
+  >
+     Next 
+  </span>
+</button>
+`;
+
+exports[`nextButton is pressed 2`] = `
+<button
+  className="next-button"
+  disabled="disabled"
+  onClick={[Function]}
+>
+  <span
+    id="btnNext"
+  >
+     Next 
+  </span>
+</button>
+`;
+
+exports[`prevButton if button state is disabled render correctly 1`] = `
+<button
+  className="prev-button"
+  disabled="disabled"
+>
+  <span
+    id="btnPrev"
+  >
+     Prev 
+  </span>
+</button>
+`;
+
+exports[`prevButton if button state is enabled render correctly 1`] = `
+<button
+  className="prev-button"
+  disabled=""
+>
+  <span
+    id="btnPrev"
+  >
+     Prev 
+  </span>
+</button>
+`;
+
+exports[`prevButton is disabled for the first page 1`] = `
+<button
+  className="prev-button"
+  disabled="disabled"
+>
+  <span
+    id="btnPrev"
+  >
+     Prev 
+  </span>
+</button>
+`;
