@@ -5,6 +5,42 @@ import PageSizeSlection from '../components/PageSizeSelection'
 import TestRenderer from 'react-test-renderer'
 import '../services/pagination.mock'
 
+// snapshot test for next button is pressed
+test('nextButton is pressed', (done) => {
+    let go_next_page = () => {
+        const testRenderer = TestRenderer.create(
+            <NextButton
+                next_button_state={"disabled"}
+                current_page={3}
+                page_num={3}
+                next_button_click={go_next_page}
+            />
+        );
+        let tree = testRenderer.toJSON()
+        expect(tree).toMatchSnapshot()
+
+        done()
+    };
+
+    const testRenderer = TestRenderer.create(
+        <NextButton
+            next_button_state={""}
+            current_page={3}
+            page_num={3}
+            next_button_click={go_next_page}
+        />
+    )
+    let tree = testRenderer.toJSON()
+    expect(tree).toMatchSnapshot()
+
+    const testInstance = testRenderer.root
+
+    const next_button = testInstance.findByProps({ className: 'next-button' })
+    next_button.props.onClick()
+    // When current page is equal to the total page, the next button should be disabled
+    expect(next_button.props.disabled).toBe('disabled')
+})
+
 // snapshot testing and sort of DOM testing for page size selection menu
 test('PageSizeSelection render correctly', () => {
     const testRenderer = TestRenderer.create(
@@ -114,38 +150,3 @@ test('prevButton is disabled for the first page', () => {
     expect(prev_button.props.disabled).toBe("disabled")
 })
 
-// snapshot test for next button is pressed
-test('nextButton is pressed', (done) => {
-    let go_next_page = () => {
-        const testRenderer = TestRenderer.create(
-            <NextButton
-                next_button_state={"disabled"}
-                current_page={3}
-                page_num={3}
-                next_button_click={go_next_page}
-            />
-        );
-        let tree = testRenderer.toJSON()
-        expect(tree).toMatchSnapshot()
-
-        done()
-    };
-
-    const testRenderer = TestRenderer.create(
-        <NextButton
-            next_button_state={""}
-            current_page={3}
-            page_num={3}
-            next_button_click={go_next_page}
-        />
-    )
-    let tree = testRenderer.toJSON()
-    expect(tree).toMatchSnapshot()
-
-    const testInstance = testRenderer.root
-
-    const next_button = testInstance.findByProps({ className: 'next-button' })
-    next_button.props.onClick()
-    // When current page is equal to the total page, the next button should be disabled
-    expect(next_button.props.disabled).toBe('disabled')
-})
