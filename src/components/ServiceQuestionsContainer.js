@@ -249,6 +249,7 @@ class ServiceQuestionsContainer extends React.Component {
                     serviceQuestions = {this.state.serviceQuestions}
                     remove = {this.remove}
                     navToDetail = {this.navToDetail}
+                    selectQuestion = {this.selectQuestion}
                     />
                     <tr>
                         <td>
