@@ -26,6 +26,7 @@ class ServiceQuestionsContainer extends React.Component {
             },
             searchButtonOn: true
         }
+        this.selectQuestion = this.selectQuestion.bind(this)
         this.change_page_size = this.change_page_size.bind(this)
         this.find_questions = this.find_questions.bind(this)
         this.handleClick = this.handleClick.bind(this)
