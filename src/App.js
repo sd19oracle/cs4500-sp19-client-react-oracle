@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom'
 import Admin from './components/Admin'
+import Home from './components/Home'
 // import './App.css';
 
 class App extends Component {
@@ -35,12 +36,12 @@ class App extends Component {
                       exact
                       render={() =>
                           <Provider
-                              provider={serviceCategories[0].serviceProviders[0]}/>}/>
+                              provider={serviceCategories[0].serviceProviders[0]}/>}/> */}
                   <Route
                       path="/home"
                       exact
                       component={Home}/>
-                  <Route
+                  {/* <Route
                       path="/services"
                       exact
                       component={ServiceNavigator}/> */}
