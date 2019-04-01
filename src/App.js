@@ -7,16 +7,54 @@ import Admin from './components/Admin'
 class App extends Component {
   render() {
     return (
-      <div className="container-fluid">
-        <h1>ServiceRus</h1>
-        <Router>
-          <div>
-            <Link to="/admin">Admin</Link>
-            <Route
-                path="/admin"
-                component={Admin}/>
-          </div>
-        </Router>
+      // <div className="container-fluid">
+      //   <h1>ServiceRus</h1>
+      //   <Router>
+      //     <div>
+      //       <Link to="/admin">Admin</Link>
+      //       <Route
+      //           path="/admin"
+      //           component={Admin}/>
+      //     </div>
+      //   </Router>
+      // </div>
+      <div className="container">
+          <Router>
+              <div>
+                  <Link to="/home">Home</Link> |
+                  <Link to="/services"> Services</Link> |
+                  <Link to="/providers"> Providers</Link> |
+                  <Link to="/admin"> Admin</Link> |
+                  <Link to="/provider"> Provider</Link>
+                  <br/>
+                  <br/>
+                  <br/>
+
+                  {/* <Route
+                      path="/provider"
+                      exact
+                      render={() =>
+                          <Provider
+                              provider={serviceCategories[0].serviceProviders[0]}/>}/>
+                  <Route
+                      path="/home"
+                      exact
+                      component={Home}/>
+                  <Route
+                      path="/services"
+                      exact
+                      component={ServiceNavigator}/> */}
+                  <Route
+                      path="/admin"
+                      exact
+                      component={Admin}/>
+                  {/* <Route
+                      path="/providers"
+                      exact
+                      component={ServiceProviderNavigator}/> */}
+              </div>
+          </Router>
+        {/*<h1>ServicesRus</h1>*/}
       </div>
     );
   }
