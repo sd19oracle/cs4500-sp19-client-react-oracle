@@ -26,8 +26,8 @@ class App extends Component {
         
           <Router>
               <div>
-                  <GiWyvern size="60" /> 
-                  <h6> Oracle</h6> 
+                  <Link to="/home" style={{color: 'black'}}><GiWyvern size="60" /> 
+                  <h6> Oracle</h6> </Link>
                   <Link to="/home">Home</Link> |
                   <Link to="/services"> Services</Link> |
                   <Link to="/providers"> Providers</Link> |
