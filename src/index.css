@@ -29,6 +29,11 @@ code {
   background-color: white;
 }
 
+.nav-pills :hover {
+  background-color : #a0e3ef;
+  color: black
+}
+
 .wd-shadow {
   box-shadow: 0 0 15px #aaa;
 }
