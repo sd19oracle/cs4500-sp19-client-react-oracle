@@ -1,11 +1,11 @@
 import React from 'react'
-
+import {GiBarracks, GiBank, GiSpikedDragonHead, GiTechnoHeart, GiDiceTwentyFacesTwenty } from "react-icons/gi";
 const ServiceCategoryPills = () =>
     <ul className="nav nav-pills nav-fill wd-shadow wd-padding-20">
         <li className="nav-item">
             <a className="nav-link btn-lg text-center"
                href="/services">
-                <i className="fa fa-home"/>
+                <GiBarracks />
                 <br/>
                 Home
             </a>
@@ -13,7 +13,7 @@ const ServiceCategoryPills = () =>
         <li className="nav-item">
             <a className="nav-link btn-lg text-center"
                href="/services">
-                <i className="fa fa-paw"/>
+                <GiSpikedDragonHead />
                 <br/>
                 Pets
             </a>
@@ -21,7 +21,7 @@ const ServiceCategoryPills = () =>
         <li className="nav-item">
             <a className="nav-link btn-lg text-center"
                href="/services">
-                <i className="fa fa-heart"/>
+                <GiTechnoHeart />
                 <br/>
                 Wellness
             </a>
@@ -29,7 +29,7 @@ const ServiceCategoryPills = () =>
         <li className="nav-item">
             <a className="nav-link btn-lg text-center"
                href="/services">
-                <i className="fa fa-briefcase"/>
+                <GiBank />
                 <br/>
                 Business
             </a>
@@ -37,7 +37,7 @@ const ServiceCategoryPills = () =>
         <li className="nav-item">
             <a className="nav-link btn-lg text-center"
                href="/services">
-                <i className="fa fa-ellipsis-h"/>
+                <GiDiceTwentyFacesTwenty />
                 <br/>
                 More
             </a>

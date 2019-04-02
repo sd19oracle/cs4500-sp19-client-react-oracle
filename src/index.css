@@ -12,3 +12,31 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.list-group-item.no-border,
+.card.no-border
+{
+  border: none;
+}
+
+.fa.fa-star.cs4500-yellow {
+  color: gold;
+}
+
+
+.nav.nav-pills .nav-item {
+  margin-left: 10px;
+  background-color: white;
+}
+
+.wd-shadow {
+  box-shadow: 0 0 15px #aaa;
+}
+
+.wd-padding-20 {
+  padding: 20px;
+}
+
+.wd-font-size-2-em {
+  font-size: 2em !important;
+}
