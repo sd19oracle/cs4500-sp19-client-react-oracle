@@ -3,6 +3,7 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom'
 import Admin from './components/Admin'
 import Home from './components/Home'
+import {GiWyvern} from "react-icons/gi";
 // import './App.css';
 
 class App extends Component {
@@ -19,15 +20,19 @@ class App extends Component {
       //     </div>
       //   </Router>
       // </div>
-      <div className="container">
+      
+      <div  className="container">
+        
+        
           <Router>
               <div>
+                  <GiWyvern size="60" /> 
+                  <h6> Oracle</h6> 
                   <Link to="/home">Home</Link> |
                   <Link to="/services"> Services</Link> |
                   <Link to="/providers"> Providers</Link> |
                   <Link to="/admin"> Admin</Link> |
                   <Link to="/provider"> Provider</Link>
-                  <br/>
                   <br/>
                   <br/>
 
