@@ -4,7 +4,7 @@ const ServiceCategoryPills = () =>
     <ul className="nav nav-pills nav-fill wd-shadow wd-padding-20">
         <li className="nav-item">
             <a className="nav-link btn-lg text-center"
-               href="/services">
+               href="/services/home">
                 <GiBarracks />
                 <br/>
                 Home
@@ -12,7 +12,7 @@ const ServiceCategoryPills = () =>
         </li>
         <li className="nav-item">
             <a className="nav-link btn-lg text-center"
-               href="/services">
+               href="/services/pets">
                 <GiSpikedDragonHead />
                 <br/>
                 Pets
@@ -20,7 +20,7 @@ const ServiceCategoryPills = () =>
         </li>
         <li className="nav-item">
             <a className="nav-link btn-lg text-center"
-               href="/services">
+               href="/services/wellness">
                 <GiTechnoHeart />
                 <br/>
                 Wellness
@@ -28,7 +28,7 @@ const ServiceCategoryPills = () =>
         </li>
         <li className="nav-item">
             <a className="nav-link btn-lg text-center"
-               href="/services">
+               href="/services/business">
                 <GiBank />
                 <br/>
                 Business
