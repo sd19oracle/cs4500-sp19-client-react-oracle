@@ -3,6 +3,7 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom'
 import Admin from './components/Admin'
 import Home from './components/Home'
+import SignUp from './components/SignUp'
 import {GiWyvern} from "react-icons/gi";
 // import './App.css';
 
@@ -33,9 +34,27 @@ class App extends Component {
                   <Link to="/providers"> Providers</Link> |
                   <Link to="/admin"> Admin</Link> |
                   <Link to="/provider"> Provider</Link>
-                  <br/>
-                  <br/>
+                  <div className="text-right">
+                  <Link to="/signup">Sign up</Link>
+                  </div>
+                  <div className="text-right">
+                  <Link to="/login">Log in</Link>
+                  </div>
+                  
+                  
+                  
 
+                  <div>
+             </div>
+
+                  <Route
+                        path="/signup"
+                        exact
+                        component={SignUp}/>
+                  <Route
+                        path="/login"
+                        exact
+                        component={Admin}/>
                   {/* <Route
                       path="/provider"
                       exact
