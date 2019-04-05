@@ -44,7 +44,7 @@ class App extends Component {
                   <Link to="/providers"> Providers</Link> |
                   <Link to="/admin"> Admin</Link> |
                   <Link to="/provider"> Provider</Link>
-                  
+                  {console.log(this.state)}
                   {this.state.username != "" ? 
                      
                       (<div className="text-right">
@@ -67,7 +67,10 @@ class App extends Component {
 
                   <div>
              </div>
-
+                
+                    <Route exact path="/" render={() => (
+                        <Redirect to="/home"/>
+                    )}/>
                   <Route
                         path="/signup"
                         exact
@@ -98,7 +101,7 @@ class App extends Component {
                       path="/providers"
                       exact
                       component={ServiceProviderNavigator}/> */}
-                      <Redirect from="/" to="/home" />
+                  {/* <Redirect from="/" to="/home" /> */}
               </div>
               
           </Router>
