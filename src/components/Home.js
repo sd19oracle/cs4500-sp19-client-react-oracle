@@ -1,5 +1,4 @@
 import React from 'react'
-import {BrowserRouter as Router, Link, Route} from 'react-router-dom'
 // import SearchBar from './SearchBar/SearchBar'
 // import ServiceTabNavigator from './ServiceTabNavigator/ServiceTabNavigator'
 import ServiceCategoryPills from './ServiceCategoryPills/ServiceCategoryPills'
