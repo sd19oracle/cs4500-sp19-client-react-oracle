@@ -1,6 +1,7 @@
-import React from 'react'
-import FAQAnswerService from '../../services/FAQAnswerService'
-import './index.css'
+import React from "react";
+import FAQAnswerService from "../../services/FAQAnswerService";
+import "./index.css";
+import * as qs from "query-string";
 
 export default class FAQAnswerDetails extends React.Component {
   constructor(props) {
@@ -24,6 +25,7 @@ export default class FAQAnswerDetails extends React.Component {
 
   componentDidMount() {
     this.load(this.props.match.params.id);
+    qs.parse(this.props.location.search).edit && this.enableEditing();
   }
 
   load(id) {
@@ -74,8 +76,7 @@ export default class FAQAnswerDetails extends React.Component {
             id={"id"}
             readOnly={true}
             value={this.state.faqAnswer.id}
-            className="form-control">
-          </input>
+            className="form-control" />
         </div>
         <div className={"d-flex"}>
           <label className={"flex-shrink-0 m-1"} htmlFor={"questionId"}>Question ID</label>

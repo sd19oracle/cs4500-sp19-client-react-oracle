@@ -14,15 +14,26 @@ export default class FAQService {
     this.urlPrefix = URLPrefix.getInstance().urlPrefix;
   }
 
-  findFAQById = id =>
-    fetch(`${this.urlPrefix}/api/faqs/${id}`)
+  findFAQById(id) {
+    return fetch(`${this.urlPrefix}/api/faqs/${id}`)
       .then(response => response.json());
-  findAllFAQs = () =>
-    fetch(`${this.urlPrefix}/api/faqs`)
+  }
+
+  findAllFAQs() {
+    return fetch(`${this.urlPrefix}/api/faqs`)
       .then(response => response.json());
+  }
 
   findFAQsPaged(count, page) {
     return fetch(`${this.urlPrefix}/api/faqs/paged?count=${count}&page=${page}`)
       .then(response => response.json());
+  }
+
+  addAnswer(id) {
+    return fetch(`${this.urlPrefix}/api/faqs/${id}/addAnswer`, {
+      method: "post",
+      body: JSON.stringify({answer: "New FAQ Answer"}),
+      headers: {"Content-Type": "application/json"}
+    }).then(response => response.json());
   }
 }

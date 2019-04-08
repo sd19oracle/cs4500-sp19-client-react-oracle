@@ -1,0 +1,17 @@
+.grid-container div:not(:first-child){
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    justify-content: space-between;
+}
+
+.grid-container div:first-child :first-child {
+    flex-grow: 1;
+}
+
+.grid-container div:first-child * {
+    margin-left: 5px;
+}
+
+input {
+    max-width: 30rem;
+}
