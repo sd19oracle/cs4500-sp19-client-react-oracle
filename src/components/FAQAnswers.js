@@ -2,8 +2,8 @@ import React from 'react'
 import FAQAnswerService from '../services/FAQAnswerService'
 class FAQAnswers extends React.Component {
     constructor(props) {
-        super(props)
-        this.faqAnswerService = FAQAnswerService.getInstance()
+        super(props);
+        this.faqAnswerService = FAQAnswerService.getInstance();
         this.state = {
             faqAnswers: []
         }
@@ -20,7 +20,7 @@ class FAQAnswers extends React.Component {
     render() {
         return(
             <div>
-                <h3>Service Answers</h3>
+                <h3>FAQ Answers</h3>
                 <table className="table">
                     <tbody>
                     {
