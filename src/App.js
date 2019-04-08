@@ -7,7 +7,7 @@ import SignUp from './components/SignUp'
 import {GiWyvern} from "react-icons/gi";
 // import './App.css';
 
-class App extends Component {  
+class App extends Component {
     constructor(props) {
         super(props)
         this.state = {username : "Jose"};
@@ -31,13 +31,13 @@ class App extends Component {
       //     </div>
       //   </Router>
       // </div>
-      
+
         <div  className="container">
-        
+
         {console.log(this.props)}
           <Router>
               <div>
-                  <Link to="/home" style={{color: 'black'}}><GiWyvern size="60" /> 
+                  <Link to="/home" style={{color: 'black'}}><GiWyvern size="60" />
                   <h6> Oracle</h6> </Link>
                   <Link to="/home">Home</Link> |
                   <Link to="/services"> Services</Link> |
@@ -45,8 +45,8 @@ class App extends Component {
                   <Link to="/admin"> Admin</Link> |
                   <Link to="/provider"> Provider</Link>
                   {console.log(this.state)}
-                  {this.state.username != "" ? 
-                     
+                  {this.state.username != "" ?
+
                       (<div className="text-right">
                       {"Welcome  " + this.state.username}
                       <button className="button" onClick={this.logout}>Log Out</button>
@@ -60,14 +60,14 @@ class App extends Component {
                         </div>
                     </div>
                   )}
-                  
-                  
-                  
-                  
+
+
+
+
 
                   <div>
              </div>
-                
+
                     <Route exact path="/" render={() => (
                         <Redirect to="/home"/>
                     )}/>
@@ -95,7 +95,6 @@ class App extends Component {
                       component={ServiceNavigator}/> */}
                   <Route
                       path="/admin"
-                      exact
                       component={Admin}/>
                   {/* <Route
                       path="/providers"
@@ -103,7 +102,7 @@ class App extends Component {
                       component={ServiceProviderNavigator}/> */}
                   {/* <Redirect from="/" to="/home" /> */}
               </div>
-              
+
           </Router>
         {/*<h1>ServicesRus</h1>*/}
       </div>
