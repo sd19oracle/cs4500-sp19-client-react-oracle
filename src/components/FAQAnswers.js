@@ -26,13 +26,15 @@ class FAQAnswers extends React.Component {
       <div>
         <h3>FAQ Answers</h3>
         <table className="table">
-          <tbody>
+          <thead>
           <tr>
             <td>ID</td>
             <td>Question ID</td>
             <td>Question</td>
             <td>Answer</td>
           </tr>
+          </thead>
+          <tbody>
           {
             this.state.faqAnswers
               .map(faqAnswer =>
