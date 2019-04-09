@@ -17,4 +17,10 @@ export default class FAQService {
         return fetch(`http://localhost:8080/api/faqs/paged?count=${count}&page=${page}`)
             .then(response => response.json());
     }
+
+    findFAQsFiltered(filterFAQ) {
+        console.log(filterFAQ);
+        return fetch(`http://localhost:8080/api/faqs/filtered?title=${filterFAQ.title}&question=${filterFAQ.question}`)
+            .then(response => response.json());
+    }
 }

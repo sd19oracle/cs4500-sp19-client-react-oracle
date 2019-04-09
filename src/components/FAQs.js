@@ -1,18 +1,26 @@
 import React from 'react'
 import FAQService from '../services/FAQService'
 
+import SearchButton from './SearchButton'
+
 export default class FAQs extends React.Component {
 	constructor(props) {
 		super(props);
 		this.faqService = FAQService.getInstance();
 		this.state = {
 			faqs: [],
-			count: 10
+			count: 10,
+            filterFAQ: {title:"", question:""},
+            searchButtonOn: true
 		};
 		this.previous = this.previous.bind(this);
 		this.reload = this.reload.bind(this);
 		this.next = this.next.bind(this);
 		this.setCount = this.setCount.bind(this);
+        
+        
+        this.toggleSearch = this.toggleSearch.bind(this);
+        this.handleInputChange = this.handleInputChange.bind(this);
 	}
 
 	componentDidMount() {
@@ -48,6 +56,41 @@ export default class FAQs extends React.Component {
 		this.setState({count: e.target.value});
 		this.reload(e.target.value, 0);
 	}
+    
+    handleInputChange(event) {
+//        this.setState({filterFAQ: {
+//            [event.target.name]:event.target.value
+//        }})
+        const target = event.target;
+        const name = target.name;
+        const value = target.value;
+        
+        this.setState(prevState => ({
+            filterFAQ: {
+                ...prevState.filterFAQ,
+                [name]: value
+            },
+        }));
+    }
+    
+    toggleSearch() {
+        if (this.state.searchButtonOn) {
+            console.log(this.state.filterFAQ);
+            this.faqService.findFAQsFiltered(this.state.filterFAQ)
+            .then(filteredFAQs =>
+                 this.setState({
+                    faqs: filteredFAQs
+            }));
+            this.reload(this.state.count, 0);
+        }
+        else {
+            this.setState({filterFAQ:{title:"", question:""}});
+            this.reload(this.state.count, 0);
+        }
+        this.setState(function (prevState) {
+            return {searchButtonOn: !prevState.searchButtonOn}
+        });
+    }
 
 	render() {
 		let prevClass = "page-item";
@@ -59,6 +102,14 @@ export default class FAQs extends React.Component {
 				<h3>FAQs</h3>
 				<table className="table">
 					<tbody>
+                        <tr>
+                            <td>Title</td>
+                            <td>Question</td>
+                        </tr>
+                        <tr>
+                            <td> <input type="text" name="title" className="title-input" value={this.state.filterFAQ.title} onChange={this.handleInputChange} placeholder="Title"/> </td>
+                            <td> <input type="text" name="question" className="question-input" value={this.state.filterFAQ.question} onChange={this.handleInputChange} placeholder="Question"/> </td>
+                        </tr>
 					{
 						this.state.faqs
 							.map(faq =>
@@ -68,6 +119,11 @@ export default class FAQs extends React.Component {
 								</tr>
 							)
 					}
+                    <tr>
+                        <td>
+                            <SearchButton toggleSearch={this.toggleSearch} searchButtonOn={this.state.searchButtonOn}>Search</SearchButton>
+                        </td>
+                    </tr>
 					</tbody>
 				</table>
 				<div className="d-flex">
