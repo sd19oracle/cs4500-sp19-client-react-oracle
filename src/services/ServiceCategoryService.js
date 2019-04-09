@@ -33,6 +33,14 @@ export default class ServiceCategoryService {
         fetch(ServiceCategoryService.urlPrefix + `/api/categories/paged?pageNum=${pageNum}&ipp=${ipp}`)
             .then(response => response.json())
     
+    findServiceCategoryById = categoryId =>
+        fetch('http://localhost:8080/api/service-categories/${categoryId}')
+            .then(response => response.json())
+
+    findAllServiceCategories = () =>
+        fetch("http://localhost:8080/api/service-categories")
+            .then(response => response.json())
+    
     deleteServiceCategoryById = id => 
         fetch(ServiceCategoryService.urlPrefix + `/api/categories/${id}`, { method: "delete" })
     
