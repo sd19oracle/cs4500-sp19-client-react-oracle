@@ -1,0 +1,42 @@
+[
+  {
+    "name": "Home Improvements",
+    "id": "2"
+  },
+  {
+    "name": "Pets",
+    "id": "3"
+  },
+  {
+    "name": "Wellness",
+    "id": "4"
+  },
+  {
+    "name": "Business",
+    "id": "5"
+  },
+  {
+    "name": "Events",
+    "id": "6"
+  },
+  {
+    "name": "Crafts",
+    "id": "7"
+  },
+  {
+    "name": "Design and Web",
+    "id": "8"
+  },
+  {
+    "name": "Legal",
+    "id": "9"
+  },
+  {
+    "name": "Personal",
+    "id": "10"
+  },
+  {
+    "name": "Photography",
+    "id": "11"
+  }
+]
