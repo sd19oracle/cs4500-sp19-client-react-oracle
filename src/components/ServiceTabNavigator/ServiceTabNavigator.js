@@ -7,23 +7,25 @@ const ServiceTabNavigator = ({services}) => {
         <div>
             <ul className="nav nav-tabs">
                 {
-                    services.map(service =>
-                        <li key={service.id} className="nav-item">
-                            <Link to={service.category_name} className="nav-link" href="#">
-                                {service.category_name}
-                            </Link>
-                        </li>
+                    services.map(service => {
+                            let url = "/home/" + service.category_name;
+                            return <li key={service.id} className="nav-item">
+                                <Link to={url} className="nav-link" href="#">
+                                    {service.category_name}
+                                </Link>
+                            </li>
+                        }
                     )
                 }
             </ul>
             <br/>
-            <Route path="/Home Improvements" render={() =>
+            <Route path="/home/Home Improvements" exact render={() =>
                 <ServiceTabItem services={services[0].services.splice(0, 6)}/>}/>
-            <Route path="/Pets" render={() =>
+            <Route path="/home/Pets" exact render={() =>
                 <ServiceTabItem services={services[1].services.splice(0, 6)}/>}/>
         </div>
     </Router>
-}
+};
 
 
 export default ServiceTabNavigator
