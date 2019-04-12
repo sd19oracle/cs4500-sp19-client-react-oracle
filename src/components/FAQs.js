@@ -7,6 +7,8 @@ export default class FAQs extends React.Component {
     super(props);
     this.faqService = FAQService.getInstance();
     this.state = {
+      filterTitle: "",
+      filterQuestion: "",
       faqs: [],
       count: 10
     };
@@ -14,15 +16,17 @@ export default class FAQs extends React.Component {
     this.reload = this.reload.bind(this);
     this.next = this.next.bind(this);
     this.setCount = this.setCount.bind(this);
+    this.titleFilter = this.titleFilter.bind(this);
+    this.questionFilter = this.questionFilter.bind(this);
   }
 
   componentDidMount() {
-    this.reload(10, 0);
+    this.reload(10, 0, "", "");
   }
 
-  reload(count, page) {
+  reload(count, page, filterTitle, filterQuestion) {
     this.faqService
-      .findFAQsPaged(count, page)
+      .findAllFAQs({count, page, title: filterTitle, question: filterQuestion})
       .then(paged => {
         let {content, ...metadata} = paged;
         this.setState({
@@ -46,8 +50,18 @@ export default class FAQs extends React.Component {
   }
 
   setCount(e) {
-    this.setState({count: e.target.value});
-    this.reload(e.target.value, 0);
+    this.setState({count: e.currentTarget.value});
+    this.reload(e.currentTarget.value, 0, this.state.filterTitle, this.state.filterQuestion);
+  }
+
+  titleFilter(e) {
+    this.setState({filterTitle: e.currentTarget.value});
+    this.reload(this.state.count, 0, e.currentTarget.value, this.state.filterQuestion);
+  }
+
+  questionFilter(e) {
+    this.setState({filterQuestion: e.currentTarget.value});
+    this.reload(this.state.count, 0, this.state.filterTitle, e.currentTarget.value);
   }
 
   render() {
@@ -57,7 +71,21 @@ export default class FAQs extends React.Component {
     if (this.state.metadata && this.state.metadata.last) nextClass += " disabled";
     return (
       <div>
-        <h3>FAQs</h3>
+        <div className="d-flex">
+          <h3>FAQs</h3>
+          <input
+            className={"form-control ml-1"}
+            placeholder={"Title"}
+            onChange={this.titleFilter}
+            value={this.state.filterTitle}
+          />
+          <input
+            className={"form-control ml-1"}
+            placeholder={"Question"}
+            onChange={this.questionFilter}
+            value={this.state.filterQuestion}
+          />
+        </div>
         <table className="table">
           <thead>
           <tr>
