@@ -2,7 +2,7 @@ import React from 'react'
 import FAQAnswerService from '../services/FAQAnswerService'
 import {Link} from "react-router-dom";
 
-class FAQAnswers extends React.Component {
+export default class FAQAnswers extends React.Component {
   constructor(props) {
     super(props);
     this.faqAnswerService = FAQAnswerService.getInstance();
@@ -54,5 +54,3 @@ class FAQAnswers extends React.Component {
     )
   }
 }
-
-export default FAQAnswers
