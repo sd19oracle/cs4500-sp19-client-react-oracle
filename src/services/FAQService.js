@@ -1,5 +1,7 @@
 import URLPrefix from "./URLPrefix";
 
+import * as qs from "query-string";
+
 export default class FAQService {
   static instance = null;
 
@@ -19,8 +21,11 @@ export default class FAQService {
       .then(response => response.json());
   }
 
-  findAllFAQs() {
-    return fetch(`${this.urlPrefix}/api/faqs`)
+  findAllFAQs(params) {
+    let queryString = "";
+    if (params) queryString = "?" + qs.stringify(params);
+    console.log(queryString);
+    return fetch(`${this.urlPrefix}/api/faqs` + queryString)
       .then(response => response.json());
   }
 

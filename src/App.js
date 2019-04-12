@@ -10,14 +10,14 @@ import {GiWyvern} from "react-icons/gi";
 
 export default class App extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {username: "Jose"};
     this.logout = this.logout.bind(this);
   }
 
   logout = () => {
     this.setState({username: ""});
-  }
+  };
 
   render() {
     return (
