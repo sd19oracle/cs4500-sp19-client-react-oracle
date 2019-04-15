@@ -5,6 +5,7 @@ import Admin from './components/Admin'
 import Home from './components/Home'
 import SignUp from './components/SignUp'
 import {GiWyvern} from "react-icons/gi";
+import ServiceNavigator from "./components/ServiceNavigator/ServiceNavigator";
 
 // import './App.css';
 
@@ -49,14 +50,14 @@ export default class App extends Component {
                   </div>
                 </div>
               )}
-
-
-            <div>
-            </div>
-
             <Route exact path="/" render={() => (
               <Redirect to="/home"/>
             )}/>
+            <Route
+              path="/services"
+              exact
+              render={() =>
+                <ServiceNavigator serviceCategories={this.state.allServices}/>}/>
             <Route
               path="/signup"
               exact
