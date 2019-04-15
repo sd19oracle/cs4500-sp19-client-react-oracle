@@ -74,8 +74,8 @@ class App extends Component {
                             <Redirect to="/home"/>
                         )}/>
                         <Route
-                            path="/home"
                             exact
+                            path="/home"
                             render={() => <Home services={this.state.popularServices}/>}/>
                         {/* <Route
                       path="/services"
