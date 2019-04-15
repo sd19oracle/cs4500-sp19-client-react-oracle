@@ -1,20 +1,44 @@
-export default class FAQService {
-    static instance = null;
-    static getInstance() {
-        if(FAQService.instance === null) {
-            FAQService.instance = new FAQService()
-        }
-        return this.instance
-    }
-    findFAQById = id =>
-        fetch(`http://localhost:8080/api/faqs/${id}`)
-            .then(response => response.json());
-    findAllFAQs = () =>
-        fetch("http://localhost:8080/api/faqs")
-            .then(response => response.json());
+import URLPrefix from "./URLPrefix";
 
-    findFAQsPaged(count, page) {
-        return fetch(`http://localhost:8080/api/faqs/paged?count=${count}&page=${page}`)
-            .then(response => response.json());
+import * as qs from "query-string";
+
+export default class FAQService {
+  static instance = null;
+
+  static getInstance() {
+    if (FAQService.instance === null) {
+      FAQService.instance = new FAQService()
     }
+    return this.instance;
+  }
+
+  constructor() {
+    this.urlPrefix = URLPrefix.getInstance().urlPrefix;
+  }
+
+  findFAQById(id) {
+    return fetch(`${this.urlPrefix}/api/faqs/${id}`)
+      .then(response => response.json());
+  }
+
+  findAllFAQs(params) {
+    let queryString = "";
+    if (params) queryString = "?" + qs.stringify(params);
+    console.log(queryString);
+    return fetch(`${this.urlPrefix}/api/faqs` + queryString)
+      .then(response => response.json());
+  }
+
+  findFAQsPaged(count, page) {
+    return fetch(`${this.urlPrefix}/api/faqs/paged?count=${count}&page=${page}`)
+      .then(response => response.json());
+  }
+
+  addAnswer(id) {
+    return fetch(`${this.urlPrefix}/api/faqs/${id}/addAnswer`, {
+      method: "post",
+      body: JSON.stringify({answer: "New FAQ Answer"}),
+      headers: {"Content-Type": "application/json"}
+    }).then(response => response.json());
+  }
 }

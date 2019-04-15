@@ -1,46 +1,47 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 import {GiBarracks, GiBank, GiSpikedDragonHead, GiTechnoHeart, GiDiceTwentyFacesTwenty } from "react-icons/gi";
 const ServiceCategoryPills = () =>
     <ul className="nav nav-pills nav-fill wd-shadow wd-padding-20">
         <li className="nav-item">
-            <a className="nav-link btn-lg text-center"
-               href="/services">
+            <Link className="nav-link btn-lg text-center"
+               to="/services/home">
                 <GiBarracks />
                 <br/>
                 Home
-            </a>
+            </Link>
         </li>
         <li className="nav-item">
-            <a className="nav-link btn-lg text-center"
-               href="/services">
+            <Link className="nav-link btn-lg text-center"
+               to="/services/pets">
                 <GiSpikedDragonHead />
                 <br/>
                 Pets
-            </a>
+            </Link>
         </li>
         <li className="nav-item">
-            <a className="nav-link btn-lg text-center"
-               href="/services">
+            <Link className="nav-link btn-lg text-center"
+               to="/services/wellness">
                 <GiTechnoHeart />
                 <br/>
                 Wellness
-            </a>
+            </Link>
         </li>
         <li className="nav-item">
-            <a className="nav-link btn-lg text-center"
-               href="/services">
+            <Link className="nav-link btn-lg text-center"
+               to="/services/business">
                 <GiBank />
                 <br/>
                 Business
-            </a>
+            </Link>
         </li>
         <li className="nav-item">
-            <a className="nav-link btn-lg text-center"
-               href="/services">
+            <Link className="nav-link btn-lg text-center"
+               to="/services">
                 <GiDiceTwentyFacesTwenty />
                 <br/>
                 More
-            </a>
+            </Link>
         </li>
     </ul>
 

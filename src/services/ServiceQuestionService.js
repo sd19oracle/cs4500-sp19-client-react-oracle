@@ -44,9 +44,10 @@ export default class ServiceQuestionService {
         });
 
     async createQuestion(question) {
-        delete question.id;
-        console.log('I HAVE BEEN HERE');
-        console.log(ServiceQuestionService.urlPrefix + `api/servicesSpecificQuestions/`);
+        delete question.id
+        console.log('I HAVE BEEN HERE')
+        console.log(JSON.stringify(question))
+        console.log(ServiceQuestionService.urlPrefix + `api/servicesSpecificQuestions/`)
         return fetch(ServiceQuestionService.urlPrefix + `api/servicesSpecificQuestions/`, {
             method: 'post',
             body: JSON.stringify(question),

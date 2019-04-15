@@ -4,19 +4,24 @@ import {BrowserRouter as Router, Route, Link, Redirect} from 'react-router-dom'
 import Admin from './components/Admin'
 import Home from './components/Home'
 import ServiceService from './services/ServiceService'
+import SignUp from './components/SignUp'
 import {GiWyvern} from "react-icons/gi";
 import popularCategories from './data/popular-service-categories.mock'
 
-// import './App.css';
-
-class App extends Component {
+export default class App extends Component {
     constructor(props) {
         super(props);
         this.serviceService = ServiceService.getInstance();
         this.state = {
-            popularServices: []
+            popularServices: [],
+            username: "Jose"
         };
+        this.logout = this.logout.bind(this);
     }
+
+    logout = () => {
+        this.setState({username: ""});
+    };
 
     componentDidMount() {
         for (let i in popularCategories) {
@@ -39,37 +44,33 @@ class App extends Component {
 
     render() {
         return (
-            // <div className="container-fluid">
-            //   <h1>ServiceRus</h1>
-            //   <Router>
-            //     <div>
-            //       <Link to="/admin">Admin</Link>
-            //       <Route
-            //           path="/admin"
-            //           component={Admin}/>
-            //     </div>
-            //   </Router>
-            // </div>
-
             <div className="container">
                 <Router>
                     <div>
-                        <GiWyvern size="60"/>
+                        <Link to="/home" style={{color: 'black'}}><GiWyvern size="60"/></Link>
                         <h6> Oracle</h6>
                         <Link to="/home">Home</Link> |
                         <Link to="/services"> Services</Link> |
                         <Link to="/providers"> Providers</Link> |
                         <Link to="/admin"> Admin</Link> |
                         <Link to="/provider"> Provider</Link>
-                        <br/>
-                        <br/>
+                        {this.state.username !== "" ?
 
-                        {/* <Route
-                      path="/provider"
-                      exact
-                      render={() =>
-                          <Provider
-                              provider={serviceCategories[0].serviceProviders[0]}/>}/> */}
+                            (<div className="text-right">
+                                {"Welcome  " + this.state.username}
+                                <button className="button" onClick={this.logout}>Log Out</button>
+                            </div>) : (
+                                <div>
+                                    <div className="text-right">
+                                        <Link to="/signup">Sign up</Link>
+                                    </div>
+                                    <div className="text-right">
+                                        <Link to="/login">Log in</Link>
+                                    </div>
+                                </div>
+                            )}
+
+
                         <Route exact path="/" render={() => (
                             <Redirect to="/home"/>
                         )}/>
@@ -77,24 +78,20 @@ class App extends Component {
                             exact
                             path="/home"
                             render={() => <Home services={this.state.popularServices}/>}/>
-                        {/* <Route
-                      path="/services"
-                      exact
-                      component={ServiceNavigator}/> */}
                         <Route
-                            path="/admin"
+                            path="/signup"
+                            exact
+                            component={SignUp}/>
+                        <Route
+                            path="/login"
                             exact
                             component={Admin}/>
-                        {/* <Route
-                      path="/providers"
-                      exact
-                      component={ServiceProviderNavigator}/> */}
+                        <Route
+                            path="/admin"
+                            component={Admin}/>
                     </div>
                 </Router>
-                {/*<h1>ServicesRus</h1>*/}
             </div>
         );
     }
 }
-
-export default App;
