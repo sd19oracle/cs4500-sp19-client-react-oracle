@@ -3,39 +3,59 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import {BrowserRouter as Router, Route, Link, Redirect} from 'react-router-dom'
 import Admin from './components/Admin'
 import Home from './components/Home'
+import ServiceService from './services/ServiceService'
 import SignUp from './components/SignUp'
 import {GiWyvern} from "react-icons/gi";
+import popularCategories from './data/popular-service-categories.mock'
 import ServiceNavigator from "./components/ServiceNavigator/ServiceNavigator";
 
-// import './App.css';
-
 export default class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {username: "Jose"};
-    this.logout = this.logout.bind(this);
-  }
+    constructor(props) {
+        super(props);
+        this.serviceService = ServiceService.getInstance();
+        this.state = {
+            popularServices: [],
+            username: "Jose"
+        };
+        this.logout = this.logout.bind(this);
+    }
 
-  logout = () => {
-    this.setState({username: ""});
-  };
+    logout = () => {
+        this.setState({username: ""});
+    };
 
-  render() {
-    return (
-      <div className="container">
+    componentDidMount() {
+        for (let i in popularCategories) {
+            this.serviceService.findPopularServicesByCategory(popularCategories[i].id, 6)
+                .then(services => {
+                        let newPopularServices = this.state.popularServices;
+                        newPopularServices.push(
+                            {
+                                "id": popularCategories[i].id,
+                                "category_name": popularCategories[i].name,
+                                "services": services
+                            });
+                        this.setState({
+                            popularServices: newPopularServices
+                        });
+                    }
+                )
+        }
+    }
 
-        {console.log(this.props)}
-        <Router>
-          <div>
-            <Link to="/home" style={{color: 'black'}}><GiWyvern size="60"/>
-              <h6> Oracle</h6></Link>
-            <Link to="/home">Home</Link> |
-            <Link to="/services"> Services</Link> |
-            <Link to="/providers"> Providers</Link> |
-            <Link to="/admin"> Admin</Link> |
-            <Link to="/provider"> Provider</Link>
-            {console.log(this.state)}
-            {this.state.username !== "" ?
+    render() {
+        return (
+            <div className="container">
+                <Router>
+                    <div>
+                        <Link to="/home" style={{color: 'black'}}><GiWyvern size="60"/></Link>
+                        <h6> Oracle</h6>
+                        <Link to="/home">Home</Link> |
+                        <Link to="/services"> Services</Link> |
+                        <Link to="/providers"> Providers</Link> |
+                        <Link to="/admin"> Admin</Link> |
+                        <Link to="/provider"> Provider</Link>
+                        {this.state.username !== "" ?
 
               (<div className="text-right">
                 {"Welcome  " + this.state.username}
@@ -58,25 +78,24 @@ export default class App extends Component {
               exact
               render={() =>
                 <ServiceNavigator serviceCategories={this.state.allServices}/>}/>
-            <Route
-              path="/signup"
-              exact
-              component={SignUp}/>
-            <Route
-              path="/login"
-              exact
-              component={Admin}/>
-            <Route
-              path="/home"
-              exact
-              component={Home}/>
-            <Route
-              path="/admin"
-              component={Admin}/>
-          </div>
-
-        </Router>
-      </div>
-    );
-  }
+                        <Route
+                            exact
+                            path="/home"
+                            render={() => <Home services={this.state.popularServices}/>}/>
+                        <Route
+                            path="/signup"
+                            exact
+                            component={SignUp}/>
+                        <Route
+                            path="/login"
+                            exact
+                            component={Admin}/>
+                        <Route
+                            path="/admin"
+                            component={Admin}/>
+                    </div>
+                </Router>
+            </div>
+        );
+    }
 }
