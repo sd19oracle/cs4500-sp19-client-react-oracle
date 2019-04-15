@@ -1,48 +1,47 @@
 export default class ServiceQuestionService {
     static instance = null;
-    static hostname = null
-    static urlPrefix = null
+    static hostname = null;
+    static urlPrefix = null;
 
     static getInstance() {
         if (ServiceQuestionService.instance === null) {
             ServiceQuestionService.instance = new ServiceQuestionService()
         }
-        this.hostname = window.location.hostname
+        this.hostname = window.location.hostname;
         if (this.hostname === "localhost") {
             this.urlPrefix = 'http://localhost:8080/'
         } else {
             this.urlPrefix = 'https://cs4500-sp19-oracle.herokuapp.com/'
         }
-        console.log(this.hostname)
-        console.log(this.urlPrefix)
+        console.log(this.hostname);
+        console.log(this.urlPrefix);
         return this.instance
     }
 
     findServiceQuestionById(id) {
         fetch(ServiceQuestionService.urlPrefix + `api/servicesSpecificQuestions/${id}`)
             .then(response => {
-                console.log(response.json())
+                console.log(response.json());
                 response.clone().json()
             })
     }
-
     findAllServiceQuestions = () =>
         fetch(ServiceQuestionService.urlPrefix + "api/servicesSpecificQuestions")
-            .then(response => response.json())
+            .then(response => response.json());
     findPageInfo = num_item =>
         fetch(ServiceQuestionService.urlPrefix + `api/servicesSpecificQuestions/page/${num_item}`)
-            .then(response => response.json())
+            .then(response => response.json());
     findPageItem = (num_item, page_num) =>
         fetch(ServiceQuestionService.urlPrefix + `api/servicesSpecificQuestions/page/${num_item}/${page_num}`)
-            .then(response => response.json())
+            .then(response => response.json());
     findAPage = (num_item, page_num) =>
         fetch(ServiceQuestionService.urlPrefix + `api/servicesSpecificQuestions/paged/${num_item}/${page_num}`)
-            .then(respone => respone.json())
+            .then(respone => respone.json());
 
     removeById = id =>
         fetch(ServiceQuestionService.urlPrefix + `api/servicesSpecificQuestions/${id}`, {
             method: 'delete'
-        })
+        });
 
     async createQuestion(question) {
         delete question.id
@@ -69,7 +68,7 @@ export default class ServiceQuestionService {
             }
         })
             .then(response => response.json())
-    }
+    };
 
     async updateQuestion(question) {
         fetch(ServiceQuestionService.urlPrefix + `api/servicesSpecificQuestions/${question.id}`, {
@@ -79,7 +78,7 @@ export default class ServiceQuestionService {
                 'content-type': 'application/json'
             }
         }).then(response => {
-            console.log(response.clone().json())
+            console.log(response.clone().json());
             response.clone().json()
         })
     }

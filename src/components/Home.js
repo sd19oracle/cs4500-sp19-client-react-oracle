@@ -1,9 +1,10 @@
 import React from 'react'
 // import SearchBar from './SearchBar/SearchBar'
-// import ServiceTabNavigator from './ServiceTabNavigator/ServiceTabNavigator'
+import ServiceTabNavigator from './ServiceTabNavigator/ServiceTabNavigator'
 import ServiceCategoryPills from './ServiceCategoryPills/ServiceCategoryPills'
-// import serviceCategories from '../data/service-categories.mock.json'
-const Home = ({history}) =>
+import serviceCategories from '../data/service-categories.mock.json'
+
+const Home = ({services}) =>
     <div>
         <div className="row">
             <div className="col-8">
@@ -23,8 +24,7 @@ const Home = ({history}) =>
         <br/>
         <br/>
         <br/>
-        {/* <ServiceTabNavigator
-            serviceCategories={serviceCategories}/> */}
-    </div>
+        <ServiceTabNavigator services={services}/>
+    </div>;
 
 export default Home
