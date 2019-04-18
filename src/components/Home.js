@@ -3,8 +3,7 @@ import React from 'react'
 import ServiceTabNavigator from './ServiceTabNavigator/ServiceTabNavigator'
 import ServiceCategoryPills from './ServiceCategoryPills/ServiceCategoryPills'
 import serviceCategories from '../data/service-categories.mock.json'
-import SearchBar from './SearchBar/SearchBar'
-
+import SearchBarContaner from './SearchBar/SearchBarContainer'
 
 class Home extends React.Component {
     constructor(props) {
@@ -19,10 +18,9 @@ class Home extends React.Component {
                         <h1>
                             Find professionals near you.
                 </h1>
-                        <SearchBar history={this.props.history} />
+                        <SearchBarContaner history={this.props.history} />
                     </div>
                 </div>
-
                 <br />
                 <br />
                 <br />
@@ -32,7 +30,7 @@ class Home extends React.Component {
                 <br />
                 <br />
                 <br />
-                <ServiceTabNavigator services={this.props.services} />
+                {/* <ServiceTabNavigator /> */}
             </div>
         )
     }

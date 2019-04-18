@@ -1,11 +1,11 @@
-export default class ServiceQuestionService {
+export default class SearchBarService {
     static instance = null;
     static hostname = null;
     static urlPrefix = null;
 
     static getInstance() {
-        if (ServiceQuestionService.instance === null) {
-            ServiceQuestionService.instance = new ServiceQuestionService()
+        if (SearchBarService.instance === null) {
+            SearchBarService.instance = new SearchBarService()
         }
         this.hostname = window.location.hostname;
         if (this.hostname === "localhost") {
@@ -19,7 +19,7 @@ export default class ServiceQuestionService {
     }
 
     findProvidersByName(name) {
-        fetch(ServiceQuestionService.urlPrefix + `api/users/providers/name/${name}`)
+        fetch(SearchBarService.urlPrefix + `api/users/providers/name/${name}`)
             .then(response => {
                 console.log(response.json())
                 response.clone().json()
@@ -27,7 +27,7 @@ export default class ServiceQuestionService {
     }
 
     findProvidersByZip(zip) {
-        fetch(ServiceQuestionService.urlPrefix + `api/users/providers/zip/${zip}`)
+        fetch(SearchBarService.urlPrefix + `api/users/providers/zip/${zip}`)
             .then(response => {
                 console.log(response.json())
                 response.clone().json()
@@ -35,7 +35,7 @@ export default class ServiceQuestionService {
     }
 
     findProvidersByNameAndZip(name, zip) {
-        fetch(ServiceQuestionService.urlPrefix + `api/users/providers/${name}/${zip}`)
+        fetch(SearchBarService.urlPrefix + `api/users/providers/${name}/${zip}`)
             .then(response => {
                 console.log(response.json())
                 response.clone().json()

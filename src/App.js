@@ -77,11 +77,15 @@ export default class App extends Component {
                         <Route
                             exact
                             path="/home"
-                            render={() => <Home services={this.state.popularServices}/>}/>
+                            component={Home}/>
                         <Route
                             path="/signup"
                             exact
                             component={SignUp}/>
+                        {/* <Route
+                            path="/providers"
+                            exact
+                            component={}/> */}
                         <Route
                             path="/login"
                             exact
