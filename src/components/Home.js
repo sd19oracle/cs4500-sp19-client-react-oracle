@@ -3,28 +3,40 @@ import React from 'react'
 import ServiceTabNavigator from './ServiceTabNavigator/ServiceTabNavigator'
 import ServiceCategoryPills from './ServiceCategoryPills/ServiceCategoryPills'
 import serviceCategories from '../data/service-categories.mock.json'
+import SearchBar from './SearchBar/SearchBar'
 
-const Home = ({services}) =>
-    <div>
-        <div className="row">
-            <div className="col-8">
-                <h1>
-                    Find professionals near you.
+
+class Home extends React.Component {
+    constructor(props) {
+        super(props)
+    }
+
+    render() {
+        return (
+            <div>
+                <div className="row">
+                    <div className="col-8">
+                        <h1>
+                            Find professionals near you.
                 </h1>
-                {/* <SearchBar history={history}/> */}
-            </div>
-        </div>
+                        <SearchBar history={this.props.history} />
+                    </div>
+                </div>
 
-        <br/>
-        <br/>
-        <br/>
-        <div>
-            <ServiceCategoryPills/>
-        </div>
-        <br/>
-        <br/>
-        <br/>
-        <ServiceTabNavigator services={services}/>
-    </div>;
+                <br />
+                <br />
+                <br />
+                <div>
+                    <ServiceCategoryPills />
+                </div>
+                <br />
+                <br />
+                <br />
+                <ServiceTabNavigator services={this.props.services} />
+            </div>
+        )
+    }
+}
+
 
 export default Home
