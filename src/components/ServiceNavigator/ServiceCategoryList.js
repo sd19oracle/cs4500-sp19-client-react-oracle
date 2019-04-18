@@ -1,15 +1,17 @@
-import React from 'react'
+import React from 'react';
+import {Link} from "react-router-dom";
 
-const ServiceCategoryList = ({serviceCategories}) =>
-    <ul className="list-group">
-        {
-            serviceCategories.map(serviceCategory =>
-                <li key={serviceCategory.id}
-                    className="list-group-item no-border">
-                    <a href={`#${serviceCategory.id}`}>{serviceCategory.title}</a>
-                </li>
-            )
-        }
-    </ul>
+const ServiceCategoryList = ({serviceCategories, catId}) =>
+  <ul className="list-group">
+    {
+      serviceCategories.map(serviceCategory =>
+          <Link  key={serviceCategory.id}
+                 className={"list-group-item no-border " + (catId == serviceCategory.id ? "active" : "")}
+                 to={`/services/${serviceCategory.id}`}>
+            {serviceCategory.serviceCategoryName}
+          </Link>
+      )
+    }
+  </ul>;
 
 export default ServiceCategoryList

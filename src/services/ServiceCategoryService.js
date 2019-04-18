@@ -14,25 +14,21 @@ export default class ServiceCategoryService {
         this.urlPrefix = URLPrefix.getInstance().urlPrefix;
     }
 
-    getServiceCategoryById(id) {
+    findServiceCategoryById(id) {
         fetch(this.urlPrefix + `/api/categories/${id}`)
             .then(response => response.json())
     }
 
-    getAllServiceCategories = () =>
+    findAllServiceCategoriesAlphabetically() {
+        return fetch(this.urlPrefix +   "/api/categories/alphabetically")
+    }
+
+    findAllServiceCategories = () =>
         fetch(this.urlPrefix + "/api/categories")
             .then(response => response.json());
 
-    getPageOfServiceCategories = (pageNum, ipp) =>
+    findPageOfServiceCategories = (pageNum, ipp) =>
         fetch(this.urlPrefix + `/api/categories/paged?pageNum=${pageNum}&ipp=${ipp}`)
-            .then(response => response.json());
-
-    findServiceCategoryById = categoryId =>
-        fetch(this.urlPrefix + '/api/service-categories/${categoryId}')
-            .then(response => response.json());
-
-    findAllServiceCategories = () =>
-        fetch(this.urlPrefix + "/api/service-categories")
             .then(response => response.json());
 
     deleteServiceCategoryById = id =>

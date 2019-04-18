@@ -1,32 +1,43 @@
 import React from 'react'
 import ServiceCategoryList from './ServiceCategoryList'
 import ServiceCategorySectionList from './ServiceCategorySectionList'
+import SearchBar from "./SearchBar";
+import ServiceCategoryService from "../../services/ServiceCategoryService";
 
-const ServiceNavigator = ({serviceCategories}) =>
-  (
-    <div>
-        <div className="row">
-            <div className="col-8">
-            </div>
-            <div className="col-3 text-right">
-                <a href="#">Sign up</a>
-            </div>
-            <div className="col-1">
-                <a href="#">Log in</a>
-            </div>
-        </div>
-        <br/>
-        <br/>
-        <div className="row">
-            <div className="col-3">
-                <ServiceCategoryList
-                    serviceCategories={serviceCategories}/>
-            </div>
-            <div className="col-9">
-                <ServiceCategorySectionList
-                    serviceCategories={serviceCategories}/>
-            </div>
-        </div>
-    </div>
-  );
-export default ServiceNavigator;
+export default class ServiceNavigator extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.serviceCategoryService = ServiceCategoryService.getInstance();
+    this.state = {
+      categoryFilter: "",
+      serviceFilter: "",
+      serviceCategories: []
+    }
+  }
+
+  componentDidMount() {
+    this.serviceCategoryService.findAllServiceCategories()
+      .then(cats => this.setState({serviceCategories: cats}));
+  }
+
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    console.log(this.props);
+  }
+
+  render() {
+    return <div className="row">
+      <div className="col-4">
+        <SearchBar placeholder={"Filter categories"} handler={() => {
+        }}/>
+        <ServiceCategoryList
+          serviceCategories={this.state.serviceCategories}
+          catId={this.props.match.params.catId}/>
+      </div>
+      <div className="col-8">
+        <ServiceCategorySectionList
+          serviceCategories={this.state.serviceCategories}/>
+      </div>
+    </div>;
+  }
+}

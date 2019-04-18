@@ -3,7 +3,7 @@ import ServiceCards from './ServiceCards'
 const ServiceCategorySection = ({serviceCategory}) =>
     <div>
         <a id={serviceCategory.id}/>
-        <h2>{serviceCategory.title}</h2>
+        <h2>{serviceCategory.serviceCategoryName}</h2>
             <div>
                 <ServiceCards
                     services={serviceCategory.services.slice(0,4)}/>

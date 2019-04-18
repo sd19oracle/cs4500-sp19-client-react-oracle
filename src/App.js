@@ -8,54 +8,57 @@ import SignUp from './components/SignUp'
 import {GiWyvern} from "react-icons/gi";
 import popularCategories from './data/popular-service-categories.mock'
 import ServiceNavigator from "./components/ServiceNavigator/ServiceNavigator";
+import ServiceCategoryService from "./services/ServiceCategoryService";
 
 export default class App extends Component {
-    constructor(props) {
-        super(props);
-        this.serviceService = ServiceService.getInstance();
-        this.state = {
-            popularServices: [],
-            username: "Jose"
-        };
-        this.logout = this.logout.bind(this);
-    }
-
-    logout = () => {
-        this.setState({username: ""});
+  constructor(props) {
+    super(props);
+    this.serviceService = ServiceService.getInstance();
+    this.serviceCategoryService = ServiceCategoryService.getInstance();
+    this.state = {
+      popularServices: [],
+      allServices: [],
+      username: "Jose"
     };
+    this.logout = this.logout.bind(this);
+  }
 
-    componentDidMount() {
-        for (let i in popularCategories) {
-            this.serviceService.findPopularServicesByCategory(popularCategories[i].id, 6)
-                .then(services => {
-                        let newPopularServices = this.state.popularServices;
-                        newPopularServices.push(
-                            {
-                                "id": popularCategories[i].id,
-                                "category_name": popularCategories[i].name,
-                                "services": services
-                            });
-                        this.setState({
-                            popularServices: newPopularServices
-                        });
-                    }
-                )
-        }
+  logout = () => {
+    this.setState({username: ""});
+  };
+
+  componentDidMount() {
+    for (let i in popularCategories) {
+      this.serviceService.findPopularServicesByCategory(popularCategories[i].id, 6)
+        .then(services => {
+            let newPopularServices = this.state.popularServices;
+            newPopularServices.push(
+              {
+                "id": popularCategories[i].id,
+                "category_name": popularCategories[i].name,
+                "services": services
+              });
+            this.setState({
+              popularServices: newPopularServices
+            });
+          }
+        )
     }
+  }
 
-    render() {
-        return (
-            <div className="container">
-                <Router>
-                    <div>
-                        <Link to="/home" style={{color: 'black'}}><GiWyvern size="60"/></Link>
-                        <h6> Oracle</h6>
-                        <Link to="/home">Home</Link> |
-                        <Link to="/services"> Services</Link> |
-                        <Link to="/providers"> Providers</Link> |
-                        <Link to="/admin"> Admin</Link> |
-                        <Link to="/provider"> Provider</Link>
-                        {this.state.username !== "" ?
+  render() {
+    return (
+      <div className="container">
+        <Router>
+          <div>
+            <Link to="/home" style={{color: 'black'}}><GiWyvern size="60"/></Link>
+            <h6> Oracle</h6>
+            <Link to="/home">Home</Link> |
+            <Link to="/services"> Services</Link> |
+            <Link to="/providers"> Providers</Link> |
+            <Link to="/admin"> Admin</Link> |
+            <Link to="/provider"> Provider</Link>
+            {this.state.username !== "" ?
 
               (<div className="text-right">
                 {"Welcome  " + this.state.username}
@@ -74,28 +77,26 @@ export default class App extends Component {
               <Redirect to="/home"/>
             )}/>
             <Route
-              path="/services"
+              path={["/services/:catId", "/services"]}
+              component={ServiceNavigator}/>
+            <Route
               exact
-              render={() =>
-                <ServiceNavigator serviceCategories={this.state.allServices}/>}/>
-                        <Route
-                            exact
-                            path="/home"
-                            render={() => <Home services={this.state.popularServices}/>}/>
-                        <Route
-                            path="/signup"
-                            exact
-                            component={SignUp}/>
-                        <Route
-                            path="/login"
-                            exact
-                            component={Admin}/>
-                        <Route
-                            path="/admin"
-                            component={Admin}/>
-                    </div>
-                </Router>
-            </div>
-        );
-    }
+              path="/home"
+              render={() => <Home services={this.state.popularServices}/>}/>
+            <Route
+              path="/signup"
+              exact
+              component={SignUp}/>
+            <Route
+              path="/login"
+              exact
+              component={Admin}/>
+            <Route
+              path="/admin"
+              component={Admin}/>
+          </div>
+        </Router>
+      </div>
+    );
+  }
 }
