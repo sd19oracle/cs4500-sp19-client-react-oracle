@@ -6,16 +6,48 @@ import SearchBarService from '../../services/SearchBarService'
 class ProviderPage extends React.Component {
     constructor(props) {
         super(props)
-        console.log(props.location.state.list)
         this.searchBarService = SearchBarService.getInstance();
-        this.state = {
-            providerList : props.location.state.list,
-            name : props.location.state.name,
-            zip : props.location.state.zip
+        if (props.location.state) {
+            this.state = {
+                providerList: props.location.state.list,
+                name: props.location.state.name,
+                zip: props.location.state.zip
+            }
+        } else {
+            this.state = {
+                providerList: [],
+                name: "",
+                zip: ""
+            }
+            this.searchProvByName = this.searchProvByName.bind(this)
+            this.searchProvByZip = this.searchProvByZip.bind(this)
+            this.searchProvByNameAndZip = this.searchProvByNameAndZip.bind(this)
         }
-        this.searchProvByName = this.searchProvByName.bind(this)
-        this.searchProvByZip = this.searchProvByZip.bind(this)
-        this.searchProvByNameAndZip = this.searchProvByNameAndZip.bind(this)
+    }
+
+    // componentDidMount() {
+        
+    // }
+
+    loadPosts(props = this.props) {
+        if (props.location.state) {
+            this.state = {
+                providerList: props.location.state.list,
+                name: props.location.state.name,
+                zip: props.location.state.zip
+            }
+        } else {
+            this.searchBarService.findProvidersByZip(0).then(providers =>
+                this.setState({
+                    name: "",
+                    zip: "0",
+                    providerList: providers
+                }))
+        }
+    }
+
+    componentWillReceiveProps(nextProps) {
+        this.loadPosts(nextProps)
     }
 
     searchProvByName(name) {
