@@ -1,4 +1,5 @@
 import URLPrefix from "./URLPrefix";
+import * as qs from "query-string";
 
 export default class ServiceService {
     static instance = null;
@@ -24,4 +25,11 @@ export default class ServiceService {
     findPopularServicesByCategory = (category_id, size) =>
         fetch(this.urlPrefix + `/api/services/category/${category_id}/limit/${size}`)
             .then(response => response.json());
+
+    filterServicesForCategory(categoryId, nameFilter) {
+        let queryString = "";
+        if (nameFilter) queryString = "?" + qs.stringify({nameFilter});
+        return fetch(this.urlPrefix + `/api/category/${categoryId}/services/filtered` + queryString)
+          .then(response => response.json());
+    }
 }
