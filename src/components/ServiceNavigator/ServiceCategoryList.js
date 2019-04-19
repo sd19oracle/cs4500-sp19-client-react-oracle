@@ -6,7 +6,7 @@ const ServiceCategoryList = ({serviceCategories, catId}) =>
     {
       serviceCategories.map(serviceCategory =>
           <Link  key={serviceCategory.id}
-                 className={"list-group-item no-border " + (catId == serviceCategory.id ? "active" : "")}
+                 className={"list-group-item " + (catId == serviceCategory.id ? "active" : "")}
                  to={`/services/${serviceCategory.id}`}>
             {serviceCategory.serviceCategoryName}
           </Link>

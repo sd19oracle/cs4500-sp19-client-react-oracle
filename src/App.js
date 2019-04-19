@@ -7,7 +7,7 @@ import ServiceService from './services/ServiceService'
 import SignUp from './components/SignUp'
 import {GiWyvern} from "react-icons/gi";
 import popularCategories from './data/popular-service-categories.mock'
-import ServiceNavigator from "./components/ServiceNavigator/ServiceNavigator";
+import ServiceNavigator from "./components/ServiceNavigator";
 import ServiceCategoryService from "./services/ServiceCategoryService";
 
 export default class App extends Component {

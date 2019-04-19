@@ -3,7 +3,7 @@ import React from "react";
 const SearchBar = ({handler, placeholder}) => (
   <input
     placeholder={placeholder}
-    className={"form-control ml-1"}
+    className={"form-control"}
     onChange={handler}
   />
 );
