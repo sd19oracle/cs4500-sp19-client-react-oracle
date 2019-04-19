@@ -18,27 +18,16 @@ export default class SearchBarService {
         return this.instance
     }
 
-    findProvidersByName(name) {
+    findProvidersByName = name => 
         fetch(SearchBarService.urlPrefix + `api/users/providers/name/${name}`)
-            .then(response => {
-                console.log(response.json())
-                response.clone().json()
-            })
-    }
+            .then(response => response.json())
+    
 
-    findProvidersByZip(zip) {
+    findProvidersByZip = zip =>
         fetch(SearchBarService.urlPrefix + `api/users/providers/zip/${zip}`)
-            .then(response => {
-                console.log(response.json())
-                response.clone().json()
-            })
-    }
+            .then(response => response.json())
 
-    findProvidersByNameAndZip(name, zip) {
+    findProvidersByNameAndZip = (name, zip) =>
         fetch(SearchBarService.urlPrefix + `api/users/providers/${name}/${zip}`)
-            .then(response => {
-                console.log(response.json())
-                response.clone().json()
-            })
-    }
+            .then(response => response.json())
 }

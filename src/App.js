@@ -7,6 +7,7 @@ import ServiceService from './services/ServiceService'
 import SignUp from './components/SignUp'
 import {GiWyvern} from "react-icons/gi";
 import popularCategories from './data/popular-service-categories.mock'
+import ProvidersPage from './components/ProvidersPage/ProvidersPage'
 
 export default class App extends Component {
     constructor(props) {
@@ -71,9 +72,8 @@ export default class App extends Component {
                             )}
 
 
-                        <Route exact path="/" render={() => (
-                            <Redirect to="/home"/>
-                        )}/>
+                        <Route exact path="/"
+                        component={Home}/>
                         <Route
                             exact
                             path="/home"
@@ -82,10 +82,10 @@ export default class App extends Component {
                             path="/signup"
                             exact
                             component={SignUp}/>
-                        {/* <Route
+                        <Route
                             path="/providers"
                             exact
-                            component={}/> */}
+                            component={ProvidersPage}/>
                         <Route
                             path="/login"
                             exact
