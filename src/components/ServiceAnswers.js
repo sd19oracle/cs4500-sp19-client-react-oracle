@@ -10,7 +10,7 @@ class ServiceAnswers extends React.Component {
         }
     }
 
-    // after the component is loaded, load in all service answers
+    // after the component is loaded, loadCategories in all service answers
     // via the service client - ServiceAnswerService
     componentDidMount() {
         this.serviceAnswerService

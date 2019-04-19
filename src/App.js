@@ -13,7 +13,8 @@ import DropdownButton from 'react-bootstrap/DropdownButton'
 import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
 import SelectUSState from 'react-select-us-states';
-
+import ServiceNavigator from "./components/ServiceNavigator";
+import ServiceCategoryService from "./services/ServiceCategoryService";
 
 
 export default class App extends Component {
@@ -22,12 +23,13 @@ export default class App extends Component {
         this.serviceService = ServiceService.getInstance();
         this.state = {
             popularServices: [],
+            allServices: [],
             username: "Jose",
             modalIsOpen: false
         };
         this.logout = this.logout.bind(this);
         this.goToProfile = this.goToProfile.bind(this);
-
+    this.logout = this.logout.bind(this);
     this.openModal = this.openModal.bind(this)
     this.closeModal = this.closeModal.bind(this)
     this.afterOpenModal = this.afterOpenModal.bind(this)
@@ -53,7 +55,7 @@ export default class App extends Component {
       
     logout = () => {
         this.setState({username: ""});
-    };
+
 
     goToProfile = () => {
         this.props.history.push('/profile')
@@ -164,6 +166,9 @@ export default class App extends Component {
                             exact
                             path="/home"
                             render={() => <Home services={this.state.popularServices}/>}/>
+                       <Route
+                            path={["/services/:catId", "/services"]}
+                            component={ServiceNavigator}/>
                         <Route
                             path="/signup"
                             exact
