@@ -105,7 +105,7 @@ class SearchBarContainer extends React.Component {
     }
 
     numberCheck = e => {
-        const re = /[0-9A-F:]+/g;
+        const re = /[0-9]+/g;
         if (!re.test(e.key)) {
             e.preventDefault();
         }

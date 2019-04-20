@@ -1,6 +1,6 @@
 import React from 'react'
 
-const SearchBar = ({updateName, updateZip, name, zip, pressSearch, numberCheck}) =>
+const SearchBar = ({updateName, updateZip, name, zip, pressSearch, numberCheck, characterCheck}) =>
     <div className="input-group input-group-lg">
         <input
             placeholder="Search for providers"
