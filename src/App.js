@@ -44,22 +44,23 @@ export default class App extends Component {
         this.setState({modalIsOpen: true});
       }
      
-      afterOpenModal() {
+    afterOpenModal() {
         // references are now sync'd and can be accessed.
         this.subtitle.style.color = '#f00';
-      }
+    }
      
-      closeModal() {
+    closeModal() {
         this.setState({modalIsOpen: false});
-      }
+    }
       
     logout = () => {
         this.setState({username: ""});
-
+    }
 
     goToProfile = () => {
         this.props.history.push('/profile')
     }
+
 
     componentDidMount() {
         for (let i in popularCategories) {
