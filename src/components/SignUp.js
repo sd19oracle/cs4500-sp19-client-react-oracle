@@ -16,7 +16,6 @@ class SignUp extends React.Component {
                 lastname : data.get('lastname'),
                 email : data.get('email'),
                 password : data.get('password')}
-        console.log(info)
         this.UserService.createUser(info);
         this.props.history.push({pathname :'/home', state: { username: data.get('firstname')}});
     }

@@ -24,7 +24,6 @@ export default class FAQService {
   findAllFAQs(params) {
     let queryString = "";
     if (params) queryString = "?" + qs.stringify(params);
-    console.log(queryString);
     return fetch(`${this.urlPrefix}/api/faqs` + queryString)
       .then(response => response.json());
   }
