@@ -14,6 +14,7 @@ const SearchBar = ({updateName, updateZip, name, zip, pressSearch, numberCheck, 
             className="form-control"
             onChange={e => updateZip(e)}
             onKeyPress={(e) => numberCheck(e)}
+            maxLength={5}
             value={zip}/>
         <div className="input-group-append">
             <button
