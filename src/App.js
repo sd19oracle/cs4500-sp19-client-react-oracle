@@ -8,6 +8,7 @@ import ServiceService from './services/ServiceService'
 import SignUp from './components/SignUp'
 import {GiWyvern} from "react-icons/gi";
 import popularCategories from './data/popular-service-categories.mock'
+import ProvidersPage from './components/ProvidersPage/ProvidersPage'
 import Dropdown from 'react-bootstrap/Dropdown'
 import DropdownButton from 'react-bootstrap/DropdownButton'
 import ReactDOM from 'react-dom';
@@ -15,7 +16,6 @@ import Modal from 'react-modal';
 import SelectUSState from 'react-select-us-states';
 import ServiceNavigator from "./components/ServiceNavigator";
 import ServiceCategoryService from "./services/ServiceCategoryService";
-
 
 export default class App extends Component {
     constructor(props) {
@@ -158,14 +158,13 @@ export default class App extends Component {
                                 </form>
                             </div>
                             </Modal>
-                    
-                        <Route exact path="/" render={() => (
-                            <Redirect to="/home"/>
-                        )}/>
+                       
+                       <Route exact path="/"
+                        component={Home}/>
                         <Route
                             exact
                             path="/home"
-                            render={() => <Home services={this.state.popularServices}/>}/>
+                            component={Home}/>
                        <Route
                             path={["/services/:catId", "/services"]}
                             component={ServiceNavigator}/>
@@ -173,6 +172,10 @@ export default class App extends Component {
                             path="/signup"
                             exact
                             component={SignUp}/>
+                        <Route
+                            path="/providers"
+                            exact
+                            component={ProvidersPage}/>
                         <Route
                             path="/login"
                             exact
