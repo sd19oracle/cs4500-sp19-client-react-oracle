@@ -24,14 +24,14 @@ class SearchBarContainer extends React.Component {
             .then(providers =>
                 this.setState({
                     providersList: providers
-                }, function() {
+                }, function () {
                     console.log(this.state.providersList)
                     this.props.history.push({
                         pathname: '/Providers',
                         state: {
                             name: this.state.name,
                             zip: this.state.zip,
-                            list : this.state.providersList
+                            list: this.state.providersList
                         }
                     })
                 })
@@ -43,14 +43,14 @@ class SearchBarContainer extends React.Component {
             .then(providers =>
                 this.setState({
                     providersList: providers
-                }, function() {
+                }, function () {
                     console.log(this.state.providersList)
                     this.props.history.push({
                         pathname: '/Providers',
                         state: {
                             name: this.state.name,
                             zip: this.state.zip,
-                            list : this.state.providersList
+                            list: this.state.providersList
                         }
                     })
                 })
@@ -62,14 +62,14 @@ class SearchBarContainer extends React.Component {
             .then(providers =>
                 this.setState({
                     providersList: providers
-                }, function() {
+                }, function () {
                     console.log(this.state.providersList)
                     this.props.history.push({
                         pathname: '/Providers',
                         state: {
                             name: this.state.name,
                             zip: this.state.zip,
-                            list : this.state.providersList
+                            list: this.state.providersList
                         }
                     })
                 })
@@ -83,7 +83,7 @@ class SearchBarContainer extends React.Component {
         } else if (this.state.name === "" && this.state.zip !== "") {
             console.log("here2")
             this.searchProvByZip(this.state.zip)
-        } else if (this.state.name !== "" && this.state.zip === ""){
+        } else if (this.state.name !== "" && this.state.zip === "") {
             console.log("here3" + this.state.name)
             this.searchProvByName(this.state.name)
         } else {
@@ -104,6 +104,13 @@ class SearchBarContainer extends React.Component {
         })
     }
 
+    numberCheck = e => {
+        const re = /[0-9A-F:]+/g;
+        if (!re.test(e.key)) {
+            e.preventDefault();
+        }
+    }
+
     render() {
         return (
             <div>
@@ -113,6 +120,7 @@ class SearchBarContainer extends React.Component {
                     name={this.state.name}
                     zip={this.state.zip}
                     pressSearch={this.pressSearch}
+                    numberCheck={this.numberCheck}
                 />
             </div>
         )

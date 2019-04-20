@@ -1,6 +1,6 @@
 import React from 'react'
 
-const SearchBar = ({updateName, updateZip, name, zip, pressSearch}) =>
+const SearchBar = ({updateName, updateZip, name, zip, pressSearch, numberCheck}) =>
     <div className="input-group input-group-lg">
         <input
             placeholder="Search for providers"
@@ -13,6 +13,7 @@ const SearchBar = ({updateName, updateZip, name, zip, pressSearch}) =>
             type="text"
             className="form-control"
             onChange={e => updateZip(e)}
+            onKeyPress={(e) => numberCheck(e)}
             value={zip}/>
         <div className="input-group-append">
             <button
