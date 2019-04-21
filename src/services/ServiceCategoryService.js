@@ -29,7 +29,10 @@ export default class ServiceCategoryService {
 
     findAllServiceCategories = () =>
         fetch(this.urlPrefix + "/api/categories")
-            .then(response => response.json());
+            .then(response => {
+                console.log(response)
+                return response.json()
+            });
 
     findPageOfServiceCategories = (pageNum, ipp) =>
         fetch(this.urlPrefix + `/api/categories/paged?pageNum=${pageNum}&ipp=${ipp}`)
@@ -49,15 +52,14 @@ export default class ServiceCategoryService {
     }
 
     async updateServiceCategory(serviceCategory) {
-        fetch(this.urlPrefix + `/api/categories/${serviceCategory.id}`, {
+        var resp = await fetch(this.urlPrefix + `/api/categories/${serviceCategory.id}`, {
             method: "put",
             body: JSON.stringify(serviceCategory),
             headers: {
                 "content-type": "application/json"
             }
-        }).then(response => {
-            response.clone().json();
         })
+        return resp.json()
     }
 
     findServiceCategoryPaged(pageIdx, perPage) { 

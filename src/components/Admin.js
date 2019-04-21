@@ -8,6 +8,7 @@ import FAQAnswers from './FAQAnswers';
 import FAQAnswerDetails from './FAQAnswerDetails';
 import FAQs from './FAQs';
 import FAQDetails from './FAQDetails';
+import ServiceCategory from "./ServiceCategory"
 
 
 const Admin = () =>
@@ -31,6 +32,8 @@ const Admin = () =>
 					<Link to="/admin/faqs">FAQs</Link>
 					<br/>
 					<Link to="/admin/faqs/1">FAQ Details</Link>
+                    <br />
+                    <Link to="/admin/service-category">Service Category</Link>
                 </div>
                 <div className="col-9">
                     <Route
@@ -65,6 +68,10 @@ const Admin = () =>
 						path="/admin/faqs/:id"
 						exact
 						component={FAQDetails}/>
+                    <Route
+                        path="/admin/service-category"
+                        exact
+                        component={ServiceCategory}/>
                 </div>
             </div>
         </Router>
