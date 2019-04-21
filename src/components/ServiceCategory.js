@@ -14,6 +14,7 @@ class ServiceCategories extends React.Component {
         this.updateInput = this.updateInput.bind(this)
         this.selectForEdit = this.selectForEdit.bind(this)
         this.updateExistingCategory = this.updateExistingCategory.bind(this)
+        this.deleteCategory = this.deleteCategory.bind(this)
     }
     componentDidMount() {
         this.serviceCategoryService
@@ -50,6 +51,15 @@ class ServiceCategories extends React.Component {
                     .then(serviceCategories =>
                         this.setState({ serviceCategories: serviceCategories }))
             });
+    }
+
+    deleteCategory(id) { 
+        this.serviceCategoryService.deleteServiceCategoryById(id)
+        .then(() => {
+            this.serviceCategoryService.findAllServiceCategories()
+                .then(serviceCategories =>
+                    this.setState({ serviceCategories: serviceCategories }))
+        });
     }
 
     selectForEdit(id) {
@@ -142,7 +152,8 @@ class ServiceCategories extends React.Component {
                                                 className="add_button btn btn-warning mx-1"
                                                 onClick={(e) => this.selectForEdit(serviceCategory.id)}><MdEdit /></button>
                                             <button
-                                                className="add_button btn btn-danger mx-1"><MdDelete /></button>
+                                                className="add_button btn btn-danger mx-1"
+                                                onClick={(e) => this.deleteCategory(serviceCategory.id)}><MdDelete /></button>
                                         </td>
                                     </tr>
                                 )
