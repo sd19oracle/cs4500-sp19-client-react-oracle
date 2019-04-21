@@ -6,8 +6,12 @@ class ServiceCategories extends React.Component {
         super(props)
         this.serviceCategoryService = ServiceCategoryService.getInstance()
         this.state = {
-            serviceCategories: []
+            serviceCategories: [],
+            total_entries: 0,
+            new_entry: {serviceCategoryName: "", popularity: "", icon: ""}
         }
+        this.createNewCategory = this.createNewCategory.bind(this)
+        this.updateInput = this.updateInput.bind(this)
     }
     componentDidMount() {
         this.serviceCategoryService
@@ -18,6 +22,34 @@ class ServiceCategories extends React.Component {
                 })
             )
     }
+
+    createNewCategory() { 
+        if (this.state.new_entry.serviceCategoryName === "" || this.state.new_entry.popularity === -1) {
+            alert("New Category Name or Popularity Value can't be Blank")
+        } else { 
+            this.serviceCategoryService.createServiceCategory(this.state.new_entry)
+                .then(() => {
+                    this.serviceCategoryService.findAllServiceCategories()
+                        .then(serviceCategories => 
+                            this.setState({ serviceCategories: serviceCategories }))
+                    this.setState({ new_entry: {serviceCategoryName: "", popularity: "", icon: ""}})
+                })
+        }
+    }
+
+    updateInput(e) { 
+        const target = e.currentTarget;
+        const value = target.value;
+        const name = target.name
+        this.setState(prevState => ({
+            new_entry: {
+                ...prevState.new_entry,
+                [name]: value
+            }
+        }))
+        console.log(this.state.new_entry);
+    }
+
     render() {
         return (
             <div>
@@ -34,18 +66,29 @@ class ServiceCategories extends React.Component {
                         <tr>
                             <td>
                                 <input
+                                    type="text"
+                                    name="serviceCategoryName"
+                                    placeholder="Name"
+                                    value={this.state.new_entry.serviceCategoryName}
+                                    onChange={this.updateInput}
                                     className={"form-control ml-1"}
                                 ></input>
                             </td>
                             <td>
                                 <input
+                                    type="text"
+                                    name="popularity"
+                                    placeholder="Popularity Value"
+                                    value={this.state.new_entry.popularity}
+                                    onChange={this.updateInput}
                                     className={"form-control ml-1"}
                                 ></input>
                             </td>
                             <td>
                                 <div>
                                     <button
-                                        className="add_button btn btn-primary mx-1"><MdAdd /></button>
+                                        className="add_button btn btn-primary mx-1"
+                                        onClick={this.createNewCategory}><MdAdd /></button>
                                     <button
                                         className="add_button btn btn-success mx-1"><MdSave /></button>
                                 </div>
