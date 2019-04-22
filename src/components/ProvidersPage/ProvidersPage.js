@@ -5,7 +5,7 @@ import SearchBarService from '../../services/SearchBarService'
 
 class ProviderPage extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.searchBarService = SearchBarService.getInstance();
     if (props.location.state) {
       this.state = {
@@ -18,10 +18,10 @@ class ProviderPage extends React.Component {
         providerList: [],
         name: "",
         zip: ""
-      }
-      this.searchProvByName = this.searchProvByName.bind(this)
-      this.searchProvByZip = this.searchProvByZip.bind(this)
-      this.searchProvByNameAndZip = this.searchProvByNameAndZip.bind(this)
+      };
+      this.searchProvByName = this.searchProvByName.bind(this);
+      this.searchProvByZip = this.searchProvByZip.bind(this);
+      this.searchProvByNameAndZip = this.searchProvByNameAndZip.bind(this);
     }
   }
 
@@ -47,7 +47,6 @@ class ProviderPage extends React.Component {
   }
 
   searchProvByName(name) {
-    console.log("execute?")
     this.searchBarService
       .findProvidersByName(name)
       .then(providers =>
