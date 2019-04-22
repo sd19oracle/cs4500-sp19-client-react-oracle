@@ -75,4 +75,21 @@ export default class UserService {
       }
     });
   }
+
+  updateCurrentUser(user) {
+    return fetch(this.urlPrefix + "/api/currentUser/update", {
+      body: JSON.stringify(user),
+      method: "POST",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    }).then(response => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        throw new HttpError(response);
+      }
+    });
+  }
 }
