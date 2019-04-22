@@ -90,7 +90,10 @@ class ProviderPage extends React.Component {
         this.searchBarService
             .findProvidersByNameAndZip(name, zip)
             .then(providers =>
-                this.state.providerList = providers)
+                this.setState({
+                    providersList: providers
+                })
+            )
     }
 
 
