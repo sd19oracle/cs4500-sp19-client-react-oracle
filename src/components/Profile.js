@@ -10,15 +10,21 @@ class Profile extends React.Component {
       },
     };
     this.setNewValue = this.setNewValue.bind(this);
+    this.logOut = this.logOut.bind(this);
   }
 
   setNewValue(newValue) {
     console.log('this is the State code:' + newValue);
   }
 
+  logOut() {
+    this.props.history.push({pathname:"./home", state : {username: null}});
+  }
+
   render() {
     return (<div>
       <div className ="box2"> <h1>Profile</h1></div>
+      <form>
     <div class="row">
     <div class="column" >
           <h2>Legal Name</h2>
@@ -50,13 +56,14 @@ class Profile extends React.Component {
       <h6>Zip</h6>
       <input type="text"/>
       <h6>Email</h6>
-      <input type="text" placeholder="user@example.com"/>
+      <input type="text" placeholder="DISABLE@example.com" disabled/>
       <br/>
   </div>
   </div>
   <hr></hr>
   <button className="button2">  Update </button>
-  <button className="button2"> Log out</button>
+      </form>
+  <button className="button2" onClick={this.logOut}> Log out</button>
   </div>)
   }
 }
