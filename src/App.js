@@ -4,50 +4,29 @@ import {BrowserRouter as Router, Route} from 'react-router-dom'
 import Admin from './components/Admin'
 import Home from './components/Home'
 import Profile from './components/Profile'
-import ServiceService from './services/ServiceService'
 import SignUp from './components/SignUp'
-import popularCategories from './data/popular-service-categories.mock'
 import ProvidersPage from './components/ProvidersPage/ProvidersPage'
 import ServiceNavigator from "./components/ServiceNavigator";
 import Login from "./components/Login";
 import GlobalNavbar from "./components/GlobalNavbar";
+import UserService from "./services/UserService";
 
 export default class App extends Component {
   constructor(props) {
     super(props);
-    this.serviceService = ServiceService.getInstance();
+    this.userService = UserService.getInstance();
     this.state = {
-      popularServices: [],
-      allServices: [],
-      username: null,
-      modalIsOpen: false
+      user: {
+        username: null,
+      },
     };
-  }
-
-  componentDidMount() {
-    for (let i in popularCategories) {
-      this.serviceService.findPopularServicesByCategory(popularCategories[i].id, 6)
-        .then(services => {
-            let newPopularServices = this.state.popularServices;
-            newPopularServices.push(
-              {
-                "id": popularCategories[i].id,
-                "category_name": popularCategories[i].name,
-                "services": services
-              });
-            this.setState({
-              popularServices: newPopularServices
-            });
-          }
-        )
-    }
   }
 
   render() {
     return (
       <Router>
         <div>
-          <GlobalNavbar/>
+          <GlobalNavbar username={this.state.user.username} isAdmin={this.state.user.role === "admin"}/>
           <div className="container">
             <Route exact path="/" component={Home}/>
             <Route
@@ -58,9 +37,9 @@ export default class App extends Component {
               path={["/services/:catId", "/services"]}
               component={ServiceNavigator}/>
             <Route
-              path="/signup"
+              path="/register"
               exact
-              component={SignUp}/>
+              component={Register}/>
             <Route
               path="/providers"
               exact
@@ -68,7 +47,19 @@ export default class App extends Component {
             <Route
               path="/login"
               exact
-              component={Login}/>
+              render={({location, history}) =>
+                <Login history={history}
+                       location={location}
+                       setUser={user => this.setState({user})}/>}/>
+            <Route path="/logout"
+                   exact
+                   render={({history}) => {
+                     this.userService.logout().then(() => {
+                       this.setState({user: {username: null}});
+                       history.push("/home");
+                     });
+                     return null;
+                   }}/>
             <Route
               path="/admin"
               component={Admin}/>
