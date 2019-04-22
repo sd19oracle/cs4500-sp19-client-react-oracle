@@ -10,6 +10,7 @@ import ServiceNavigator from "./components/ServiceNavigator";
 import Login from "./components/Login";
 import GlobalNavbar from "./components/GlobalNavbar";
 import UserService from "./services/UserService";
+import Register from "./components/Register";
 
 export default class App extends Component {
   constructor(props) {
