@@ -9,7 +9,7 @@ class ProviderPage extends React.Component {
         this.searchBarService = SearchBarService.getInstance();
         if (props.location.state) {
             this.state = {
-                providerList: props.location.state.list,
+                providerList: props.location.state.providersList,
                 name: props.location.state.name,
                 zip: props.location.state.zip
             }
@@ -28,7 +28,7 @@ class ProviderPage extends React.Component {
     componentDidMount(props = this.props) {
         if (props.location.state) {
             this.state = {
-                providerList: props.location.state.list,
+                providerList: props.location.state.providersList,
                 name: props.location.state.name,
                 zip: props.location.state.zip
             }
@@ -42,13 +42,19 @@ class ProviderPage extends React.Component {
         }
     }
 
-    loadPosts(props = this.props) {
+    componentDidUpdate(prevProps) {
+        if (prevProps.location.state !== this.props.location.state) {
+            this.loadPosts(this.props)
+        }
+    }
+
+    loadPosts(props) {
         if (props.location.state) {
-            this.state = {
-                providerList: props.location.state.list,
+            this.setState({
+                providerList: props.location.state.providersList,
                 name: props.location.state.name,
                 zip: props.location.state.zip
-            }
+            })
         } else {
             this.searchBarService.findProvidersByZip(0).then(providers =>
                 this.setState({
@@ -57,10 +63,6 @@ class ProviderPage extends React.Component {
                     providerList: providers
                 }))
         }
-    }
-
-    componentWillReceiveProps(nextProps) {
-        this.loadPosts(nextProps)
     }
 
     searchProvByName(name) {
