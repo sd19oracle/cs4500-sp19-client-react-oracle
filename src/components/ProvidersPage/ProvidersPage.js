@@ -25,9 +25,22 @@ class ProviderPage extends React.Component {
         }
     }
 
-    // componentDidMount() {
-        
-    // }
+    componentDidMount(props = this.props) {
+        if (props.location.state) {
+            this.state = {
+                providerList: props.location.state.list,
+                name: props.location.state.name,
+                zip: props.location.state.zip
+            }
+        } else {
+            this.searchBarService.findProvidersByZip(0).then(providers =>
+                this.setState({
+                    name: "",
+                    zip: "0",
+                    providerList: providers
+                }))
+        }
+    }
 
     loadPosts(props = this.props) {
         if (props.location.state) {
