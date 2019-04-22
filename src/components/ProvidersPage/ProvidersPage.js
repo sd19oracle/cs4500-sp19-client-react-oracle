@@ -25,7 +25,7 @@ class ProviderPage extends React.Component {
         }
     }
 
-    componentDidMount(props = this.props) {
+  componentDidMount(props = this.props) {
         if (props.location.state) {
             this.state = {
                 providerList: props.location.state.providersList,
@@ -64,6 +64,7 @@ class ProviderPage extends React.Component {
                 }))
         }
     }
+  
 
     searchProvByName(name) {
         console.log("execute?")
@@ -84,6 +85,7 @@ class ProviderPage extends React.Component {
                 })
             )
     }
+
     searchProvByNameAndZip(name, zip) {
         this.searchBarService
             .findProvidersByNameAndZip(name, zip)
@@ -91,32 +93,26 @@ class ProviderPage extends React.Component {
                 this.state.providerList = providers)
     }
 
-    render() {
-        return (
-            <div>
-                <div className="row">
-                    <div className="col-8">
-                        <SearchBarContainer history={this.props.history} />
-                    </div>
-                    <div className="col-3 text-right">
-                        <a href="#">Sign up</a>
-                    </div>
-                    <div className="col-1">
-                        <a href="#">Log in</a>
-                    </div>
-                </div>
-                <br />
-                <br />
 
-                <div className="row">
-                    <div className="col-9">
-                        <ServiceProviderList
-                            serviceProviders={this.state.providerList} />
-                    </div>
-                </div>
-            </div>
-        )
-    }
+  render() {
+    return (
+      <div>
+        <div className="row">
+          <div className="col-8">
+            <SearchBarContainer history={this.props.history}/>
+          </div>
+        </div>
+        <br/>
+        <br/>
+        <div className="row">
+          <div className="col-9">
+            <ServiceProviderList
+              serviceProviders={this.state.providerList}/>
+          </div>
+        </div>
+      </div>
+    )
+  }
 }
 
 export default ProviderPage
