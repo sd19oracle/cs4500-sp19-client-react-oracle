@@ -4,7 +4,6 @@ import {BrowserRouter as Router, Route} from 'react-router-dom'
 import Admin from './components/Admin'
 import Home from './components/Home'
 import Profile from './components/Profile'
-import SignUp from './components/SignUp'
 import ProvidersPage from './components/ProvidersPage/ProvidersPage'
 import ServiceNavigator from "./components/ServiceNavigator";
 import Login from "./components/Login";
