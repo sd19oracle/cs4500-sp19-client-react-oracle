@@ -9,7 +9,7 @@ class ServiceCategories extends React.Component {
             serviceCategories: [],
             total_entries: 0,
             new_entry: { serviceCategoryName: "", popularity: "", icon: "", id: -1 },
-            itemsPerPage: 2
+            itemsPerPage: 10
         }
         this.createNewCategory = this.createNewCategory.bind(this);
         this.updateInput = this.updateInput.bind(this);
@@ -235,7 +235,6 @@ class ServiceCategories extends React.Component {
                         value={this.state.itemsPerPage}
                         onChange={this.setIpp}
                         style={{ width: "3rem" }}>
-                        <option value="2">2</option>
                         <option value="10">10</option>
                         <option value="25">25</option>
                         <option value="50">50</option>
