@@ -22,11 +22,18 @@ export default class App extends Component {
     };
   }
 
+  componentDidMount() {
+    this.userService.getCurrentUser().then(user => {
+      if (user) this.setState({user});
+    });
+  }
+
   render() {
     return (
       <Router>
         <div>
-          <GlobalNavbar username={this.state.user.username} isAdmin={this.state.user.role === "admin"}/>
+          <GlobalNavbar username={this.state.user.firstName}
+                        isAdmin={this.state.user.role === "admin"}/>
           <div className="container">
             <Route exact path="/" component={Home}/>
             <Route
@@ -55,7 +62,7 @@ export default class App extends Component {
                    exact
                    render={({history}) => {
                      this.userService.logout().then(() => {
-                       this.setState({user: {username: null}});
+                       this.setState({user: {email: null}});
                        history.push("/home");
                      });
                      return null;

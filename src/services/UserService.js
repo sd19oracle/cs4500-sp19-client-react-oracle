@@ -41,9 +41,9 @@ export default class UserService {
     });
   }
 
-  login(username, password) {
+  login(email, password) {
     return fetch(this.urlPrefix + "/api/login", {
-      body: JSON.stringify({username, password}),
+      body: JSON.stringify({email, password}),
       method: "POST",
       credentials: "include",
       headers: {
@@ -61,7 +61,7 @@ export default class UserService {
     return fetch(this.urlPrefix + "/api/logout", {
       credentials: "include",
       method: "POST",
-    }).then(response => response.json());
+    });
   }
 
   getCurrentUser() {
