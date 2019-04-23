@@ -118,25 +118,25 @@ export default class FAQs extends React.Component {
           <nav aria-label="Page navigation example">
             <ul className="pagination">
               <li className={prevClass}>
-                <a className="page-link" href="" onClick={this.previous}>Previous</a>
+                <button className="page-link" onClick={this.previous}>Previous</button>
               </li>
               <li className={prevClass}>
-                <a className="page-link" href="" onClick={this.previous}>
+                <button className="page-link" onClick={this.previous}>
                   {this.state.metadata && this.state.metadata.pageable.pageNumber}
-                </a>
+                </button>
               </li>
               <li className="page-item active">
-                <a className="page-link" href="">
+                <button className="page-link" >
                   {this.state.metadata && this.state.metadata.pageable.pageNumber + 1}
-                </a>
+                </button>
               </li>
               <li className={nextClass}>
-                <a className="page-link" href="" onClick={this.next}>
+                <button className="page-link" onClick={this.next}>
                   {this.state.metadata && this.state.metadata.pageable.pageNumber + 2}
-                </a>
+                </button>
               </li>
               <li className={nextClass}>
-                <a className="page-link" href="" onClick={this.next}>Next</a>
+                <button className="page-link" onClick={this.next}>Next</button>
               </li>
             </ul>
           </nav>

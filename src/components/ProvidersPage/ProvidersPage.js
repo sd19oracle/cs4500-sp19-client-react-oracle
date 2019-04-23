@@ -9,7 +9,7 @@ class ProviderPage extends React.Component {
         this.searchBarService = SearchBarService.getInstance();
         if (props.location.state) {
             this.state = {
-                providerList: props.location.state.list,
+                providerList: props.location.state.providersList,
                 name: props.location.state.name,
                 zip: props.location.state.zip
             }
@@ -25,14 +25,10 @@ class ProviderPage extends React.Component {
         }
     }
 
-    // componentDidMount() {
-        
-    // }
-
-    loadPosts(props = this.props) {
+  componentDidMount(props = this.props) {
         if (props.location.state) {
             this.state = {
-                providerList: props.location.state.list,
+                providerList: props.location.state.providersList,
                 name: props.location.state.name,
                 zip: props.location.state.zip
             }
@@ -46,9 +42,29 @@ class ProviderPage extends React.Component {
         }
     }
 
-    componentWillReceiveProps(nextProps) {
-        this.loadPosts(nextProps)
+    componentDidUpdate(prevProps) {
+        if (prevProps.location.state !== this.props.location.state) {
+            this.loadPosts(this.props)
+        }
     }
+
+    loadPosts(props) {
+        if (props.location.state) {
+            this.setState({
+                providerList: props.location.state.providersList,
+                name: props.location.state.name,
+                zip: props.location.state.zip
+            })
+        } else {
+            this.searchBarService.findProvidersByZip(0).then(providers =>
+                this.setState({
+                    name: "",
+                    zip: "0",
+                    providerList: providers
+                }))
+        }
+    }
+  
 
     searchProvByName(name) {
         console.log("execute?")
@@ -69,39 +85,37 @@ class ProviderPage extends React.Component {
                 })
             )
     }
+
     searchProvByNameAndZip(name, zip) {
         this.searchBarService
             .findProvidersByNameAndZip(name, zip)
             .then(providers =>
-                this.state.providerList = providers)
+                this.setState({
+                    providersList: providers
+                })
+            )
     }
 
-    render() {
-        return (
-            <div>
-                <div className="row">
-                    <div className="col-8">
-                        <SearchBarContainer history={this.props.history} />
-                    </div>
-                    <div className="col-3 text-right">
-                        <a href="#">Sign up</a>
-                    </div>
-                    <div className="col-1">
-                        <a href="#">Log in</a>
-                    </div>
-                </div>
-                <br />
-                <br />
 
-                <div className="row">
-                    <div className="col-9">
-                        <ServiceProviderList
-                            serviceProviders={this.state.providerList} />
-                    </div>
-                </div>
-            </div>
-        )
-    }
+  render() {
+    return (
+      <div>
+        <div className="row">
+          <div className="col-8">
+            <SearchBarContainer history={this.props.history}/>
+          </div>
+        </div>
+        <br/>
+        <br/>
+        <div className="row">
+          <div className="col-9">
+            <ServiceProviderList
+              serviceProviders={this.state.providerList}/>
+          </div>
+        </div>
+      </div>
+    )
+  }
 }
 
 export default ProviderPage

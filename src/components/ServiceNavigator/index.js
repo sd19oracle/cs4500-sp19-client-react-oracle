@@ -29,8 +29,26 @@ export default class ServiceNavigator extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
-    if (this.props.match.params.catId !== prevProps.match.params.catId) {
+    const currentCatID = this.props.match.params.catId;
+    const prevCatID = prevProps.match.params.catId;
+
+    if (!currentCatID && prevCatID) {
+      // if going from a selection to no selection,
+      // then empty the list of services for that selection
+      this.setState({services: []})
+
+    } else if (currentCatID !== prevCatID) {
+      // if switching ids then load the services for the new one
       this.loadServices("");
+
+    } else if (currentCatID && prevCatID) {
+      // if user selects a category then filters it out,
+      // deselect that category
+      const pred = cat => cat.id === Number(currentCatID);
+      const selectedCat = this.state.serviceCategories.find(pred);
+      if (!selectedCat) {
+        this.props.history.push("/services");
+      }
     }
   }
 
@@ -55,7 +73,12 @@ export default class ServiceNavigator extends React.Component {
   currentServiceTitle() {
     if (this.state.serviceCategories.length && this.props.match.params.catId) {
       const pred = cat => cat.id === Number(this.props.match.params.catId);
-      return this.state.serviceCategories.find(pred).serviceCategoryName;
+      const selectedCat = this.state.serviceCategories.find(pred);
+      if (selectedCat) {
+        return selectedCat.serviceCategoryName;
+      } else {
+        return null;
+      }
     }
     return null;
   }

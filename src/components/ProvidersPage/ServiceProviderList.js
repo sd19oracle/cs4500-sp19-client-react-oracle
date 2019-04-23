@@ -3,9 +3,10 @@ import ServiceProvider from './ServiceProvider'
 const ServiceProviderList = ({serviceProviders}) =>
     <div>
         {
-            serviceProviders.map(serviceProvider =>
-                <ServiceProvider
-                    serviceProvider={serviceProvider}/>
+            serviceProviders.map((serviceProvider, index) =>
+                <ServiceProvider key={index}
+                    serviceProvider={serviceProvider}
+                    index={index}/>
             )
         }
     </div>

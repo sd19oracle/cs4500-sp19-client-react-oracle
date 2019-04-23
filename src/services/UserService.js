@@ -1,41 +1,95 @@
+import URLPrefix from "./URLPrefix";
+import HttpError from "./HttpError";
+
 export default class UserService {
-    static instance = null;
-    static urlPrefix = null;
-    static hostname = null;
+  static instance = null;
 
-    static getInstance() {
-        if (UserService.instance === null) {
-            UserService.instance = new UserService()
-        }
-
-        this.hostname = window.location.hostname;
-        if (this.hostname === "localhost") {
-            this.urlPrefix = "http://localhost:8080";
-        } else {
-            this.urlPrefix = "https://cs4500-sp19-oracle.herokuapp.com"
-        }
-        return this.instance;
+  static getInstance() {
+    if (UserService.instance === null) {
+      UserService.instance = new UserService()
     }
+    return this.instance;
+  }
 
+  constructor() {
+    this.urlPrefix = URLPrefix.getInstance().urlPrefix;
+  }
 
-    findUserById = userId =>
-        fetch(`http://localhost:8080/api/users/${userId}`)
-            .then(response => response.json())
-    findAllUsers = () =>
-        fetch("http://localhost:8080/api/users")
-            .then(response => response.json())
+  findUserById(userId) {
+    return fetch(this.urlPrefix + `/api/users/${userId}`)
+      .then(response => response.json());
+  }
 
-    createUser = (data) => {
-        console.log(JSON.stringify(data))
-        return fetch(UserService.urlPrefix + `/api/users/`, {
-            method: "POST",
-            body: JSON.stringify(data),
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-              }
-        })
-        .then(response => response.json());
-        
-    }
+  findAllUsers() {
+    return fetch(this.urlPrefix + "/api/users")
+      .then(response => response.json());
+  }
+
+  createUser(user) {
+    return fetch(this.urlPrefix + "/api/users", {
+      method: "POST",
+      body: JSON.stringify(user),
+      headers: {
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      }
+    }).then(response => {
+      if (!response.ok) {
+        throw new HttpError(response);
+      }
+      return response.json();
+    });
+  }
+
+  login(email, password) {
+    return fetch(this.urlPrefix + "/api/login", {
+      body: JSON.stringify({email, password}),
+      method: "POST",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    }).then(response => {
+      if (!response.ok) {
+        throw new HttpError(response);
+      }
+      return response.json();
+    });
+  }
+
+  logout() {
+    return fetch(this.urlPrefix + "/api/logout", {
+      credentials: "include",
+      method: "POST",
+    });
+  }
+
+  getCurrentUser() {
+    return fetch(this.urlPrefix + "/api/currentUser", {
+      credentials: "include"
+    }).then(response => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        throw new HttpError(response);
+      }
+    });
+  }
+
+  updateCurrentUser(user) {
+    return fetch(this.urlPrefix + "/api/currentUser/update", {
+      body: JSON.stringify(user),
+      method: "POST",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    }).then(response => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        throw new HttpError(response);
+      }
+    });
+  }
 }

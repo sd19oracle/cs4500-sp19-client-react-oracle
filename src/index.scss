@@ -1,3 +1,4 @@
+
 body {
   margin: 0;
   padding: 0;
@@ -6,6 +7,13 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 10px;
+  height: 380px; /* Should be removed. Only for demonstration */
 }
 
 code {
@@ -48,7 +56,7 @@ code {
 
 .box-layout {
   /* background: linear-gradient(#e66465, #9198e6); */
-  background: linear-gradient(#e66465, #9198e6);;
+  background: linear-gradient(#e66465, #9198e6);
   /* // background: url('/img/money.jfif'); */
   display: flex;
   align-items: center;
@@ -67,6 +75,12 @@ code {
   padding: 3.2rem 5rem;
 }
 
+.box2 {
+  width: 50 rem;
+  text-align: center;
+  padding: 50px;
+  background: linear-gradient(#e66465, #9198e6);
+}
 
 .button {
   background: linear-gradient(#9198e6, #e66465);
@@ -77,4 +91,16 @@ code {
   margin: 0.8rem;
   padding: 0.4rem;
   border-radius: 15px;
+}
+
+.button2 {
+  background:#277c2f;
+  border: none;
+  color: white;
+  font-weight: 400;
+  font-size: 1.3rem;
+  margin: 0.8rem;
+  padding: 0.4rem;
+  border-radius: 15px;
+  width: 100%
 }
