@@ -6,7 +6,7 @@ const ServiceProvider = ({serviceProvider, index}) =>
             <div className="col-2">
                 <img key={index} src="https://picsum.photos/130/130"/>
             </div>
-            <div className="col-7">
+            <div className="col-7 providerInfo">
                 <a href="#">
                     {serviceProvider.firstName + " "}
                     {serviceProvider.lastName}
@@ -24,13 +24,14 @@ const ServiceProvider = ({serviceProvider, index}) =>
                     {/* <span>{serviceProvider.hires}</span> hires */}
                     <span key={serviceProvider.id}> Location: {serviceProvider.zipCode}</span>
                 </div>
-                <div>
+                <div className="ProviderAnswers">
                     {serviceProvider.answers.map(answer  => 
+                  
                         <span key={answer.id}> {answer.answer}</span>
                     )}
                 </div>
             </div>
-            <div className="col-3">
+            <div className="col-3 ViewButton">
                 <div>
                     {/* <span className="float-right">{serviceProvider.price}</span> */}
                 </div>

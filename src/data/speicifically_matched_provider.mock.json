@@ -1,0 +1,12 @@
+[
+    {
+        "id": 890,
+        "email": "ana@gmail.com",
+        "password": "ana",
+        "firstName": "Ana",
+        "lastName": "Christina",
+        "role": "provider",
+        "zipCode": "02110",
+        "answers": [],
+        "services": []
+    }]

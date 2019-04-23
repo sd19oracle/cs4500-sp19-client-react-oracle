@@ -1,0 +1,46 @@
+[
+    {
+        "id": 890,
+        "email": "ana@gmail.com",
+        "password": "ana",
+        "firstName": "Ana",
+        "lastName": "Christina",
+        "role": "provider",
+        "zipCode": "02110",
+        "answers": [],
+        "services": []
+    },
+    {
+        "id": 789,
+        "email": "song@gmail.com",
+        "password": "itisfine",
+        "firstName": "Song",
+        "lastName": "Park",
+        "role": "provider",
+        "zipCode": "02115",
+        "answers": [],
+        "services": []
+    },
+    {
+        "id": 456,
+        "email": "jordan@gmail.com",
+        "password": "goat",
+        "firstName": "Michael",
+        "lastName": "Jordan",
+        "role": "provider",
+        "zipCode": "10010",
+        "answers": [],
+        "services": []
+    },
+    {
+        "id": 567,
+        "email": "pokemon@gmail.com",
+        "password": "pokemon",
+        "firstName": "Pokemon",
+        "lastName": "Go",
+        "role": "provider",
+        "zipCode": "31256",
+        "answers": [],
+        "services": []
+    }
+]
