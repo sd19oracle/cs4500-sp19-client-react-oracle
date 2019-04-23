@@ -1,8 +1,6 @@
 import React from 'react'
-// import SearchBar from './SearchBar/SearchBar'
-import ServiceTabNavigator from './ServiceTabNavigator/ServiceTabNavigator'
+import ServiceTabNavContainer from './ServiceTabNavigator/ServiceTabNavContainer'
 import ServiceCategoryPills from './ServiceCategoryPills/ServiceCategoryPills'
-import serviceCategories from '../data/service-categories.mock.json'
 import SearchBarContainer from './SearchBar/SearchBarContainer'
 
 class Home extends React.Component {
@@ -30,7 +28,7 @@ class Home extends React.Component {
                 <br />
                 <br />
                 <br />
-                {/* <ServiceTabNavigator /> */}
+                 <ServiceTabNavContainer history={this.props.history} />
             </div>
         )
     }
