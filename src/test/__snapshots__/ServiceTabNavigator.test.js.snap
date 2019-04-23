@@ -1,0 +1,310 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`basic test 1`] = `
+<div>
+  <ul
+    className="nav nav-tabs"
+  >
+    <li
+      className="nav-item"
+    >
+      <span
+        className="nav-link"
+      >
+        Home Improvements
+      </span>
+    </li>
+    <li
+      className="nav-item"
+    >
+      <span
+        className="nav-link"
+      >
+        Pets
+      </span>
+    </li>
+    <li
+      className="nav-item"
+    >
+      <span
+        className="nav-link"
+      >
+        Wellness
+      </span>
+    </li>
+    <li
+      className="nav-item"
+    >
+      <span
+        className="nav-link"
+      >
+        Business
+      </span>
+    </li>
+    <li
+      className="nav-item"
+    >
+      <span
+        className="nav-link"
+      >
+        Events
+      </span>
+    </li>
+    <li
+      className="nav-item"
+    >
+      <span
+        className="nav-link"
+      >
+        Crafts
+      </span>
+    </li>
+    <li
+      className="nav-item"
+    >
+      <span
+        className="nav-link"
+      >
+        Design and Web
+      </span>
+    </li>
+    <li
+      className="nav-item"
+    >
+      <span
+        className="nav-link"
+      >
+        Legal
+      </span>
+    </li>
+    <li
+      className="nav-item"
+    >
+      <span
+        className="nav-link"
+      >
+        Personal
+      </span>
+    </li>
+    <li
+      className="nav-item"
+    >
+      <span
+        className="nav-link"
+      >
+        Photography
+      </span>
+    </li>
+  </ul>
+  <br />
+</div>
+`;
+
+exports[`empty service category test 1`] = `
+<div>
+  <ul
+    className="nav nav-tabs"
+  />
+  <br />
+</div>
+`;
+
+exports[`test nav tab length 1`] = `
+<div>
+  <ul
+    className="nav nav-tabs"
+  >
+    <li
+      className="nav-item"
+    >
+      <span
+        className="nav-link"
+      >
+        Home Improvements
+      </span>
+    </li>
+    <li
+      className="nav-item"
+    >
+      <span
+        className="nav-link"
+      >
+        Pets
+      </span>
+    </li>
+    <li
+      className="nav-item"
+    >
+      <span
+        className="nav-link"
+      >
+        Wellness
+      </span>
+    </li>
+    <li
+      className="nav-item"
+    >
+      <span
+        className="nav-link"
+      >
+        Business
+      </span>
+    </li>
+    <li
+      className="nav-item"
+    >
+      <span
+        className="nav-link"
+      >
+        Events
+      </span>
+    </li>
+    <li
+      className="nav-item"
+    >
+      <span
+        className="nav-link"
+      >
+        Crafts
+      </span>
+    </li>
+    <li
+      className="nav-item"
+    >
+      <span
+        className="nav-link"
+      >
+        Design and Web
+      </span>
+    </li>
+    <li
+      className="nav-item"
+    >
+      <span
+        className="nav-link"
+      >
+        Legal
+      </span>
+    </li>
+    <li
+      className="nav-item"
+    >
+      <span
+        className="nav-link"
+      >
+        Personal
+      </span>
+    </li>
+    <li
+      className="nav-item"
+    >
+      <span
+        className="nav-link"
+      >
+        Photography
+      </span>
+    </li>
+  </ul>
+  <br />
+</div>
+`;
+
+exports[`test popular services length 1`] = `
+<div>
+  <ul
+    className="nav nav-tabs"
+  >
+    <li
+      className="nav-item"
+    >
+      <span
+        className="nav-link"
+      >
+        Home Improvements
+      </span>
+    </li>
+    <li
+      className="nav-item"
+    >
+      <span
+        className="nav-link"
+      >
+        Pets
+      </span>
+    </li>
+    <li
+      className="nav-item"
+    >
+      <span
+        className="nav-link"
+      >
+        Wellness
+      </span>
+    </li>
+    <li
+      className="nav-item"
+    >
+      <span
+        className="nav-link"
+      >
+        Business
+      </span>
+    </li>
+    <li
+      className="nav-item"
+    >
+      <span
+        className="nav-link"
+      >
+        Events
+      </span>
+    </li>
+    <li
+      className="nav-item"
+    >
+      <span
+        className="nav-link"
+      >
+        Crafts
+      </span>
+    </li>
+    <li
+      className="nav-item"
+    >
+      <span
+        className="nav-link"
+      >
+        Design and Web
+      </span>
+    </li>
+    <li
+      className="nav-item"
+    >
+      <span
+        className="nav-link"
+      >
+        Legal
+      </span>
+    </li>
+    <li
+      className="nav-item"
+    >
+      <span
+        className="nav-link"
+      >
+        Personal
+      </span>
+    </li>
+    <li
+      className="nav-item"
+    >
+      <span
+        className="nav-link"
+      >
+        Photography
+      </span>
+    </li>
+  </ul>
+  <br />
+</div>
+`;
