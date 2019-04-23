@@ -69,10 +69,14 @@ export default class UserService {
       credentials: "include"
     }).then(response => {
       if (response.ok) {
-        return response.json();
+        return response;
       } else {
         throw new HttpError(response);
       }
+    }).then(response => { 
+      return response.json();
+    }).catch(error => { 
+      return {};
     });
   }
 
