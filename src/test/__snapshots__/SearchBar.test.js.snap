@@ -1,0 +1,153 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`basic test 1`] = `
+<div
+  className="input-group input-group-lg"
+>
+  <input
+    className="form-control"
+    onChange={[Function]}
+    placeholder="Search for providers"
+    type="text"
+    value=""
+  />
+  <input
+    className="form-control"
+    maxLength={5}
+    onChange={[Function]}
+    onKeyPress={[Function]}
+    placeholder="Zip code"
+    type="text"
+    value="0"
+  />
+  <div
+    className="input-group-append"
+  >
+    <button
+      className="btn btn-primary"
+      type="button"
+    >
+      Search
+    </button>
+  </div>
+</div>
+`;
+
+exports[`basic test2 1`] = `
+<div
+  className="input-group input-group-lg"
+>
+  <input
+    className="form-control"
+    onChange={[Function]}
+    placeholder="Search for providers"
+    type="text"
+    value=""
+  />
+  <input
+    className="form-control"
+    maxLength={5}
+    onChange={[Function]}
+    onKeyPress={[Function]}
+    placeholder="Zip code"
+    type="text"
+    value="02115"
+  />
+  <div
+    className="input-group-append"
+  >
+    <button
+      className="btn btn-primary"
+      type="button"
+    >
+      Search
+    </button>
+  </div>
+</div>
+`;
+
+exports[`basic test3 1`] = `
+<div
+  className="input-group input-group-lg"
+>
+  <input
+    className="form-control"
+    onChange={[Function]}
+    placeholder="Search for providers"
+    type="text"
+    value="jordan"
+  />
+  <input
+    className="form-control"
+    maxLength={5}
+    onChange={[Function]}
+    onKeyPress={[Function]}
+    placeholder="Zip code"
+    type="text"
+    value="02115"
+  />
+  <div
+    className="input-group-append"
+  >
+    <button
+      className="btn btn-primary"
+      type="button"
+    >
+      Search
+    </button>
+  </div>
+</div>
+`;
+
+exports[`rendering results on provders page 1`] = `
+<providerList
+  providerList={
+    Array [
+      Object {
+        "answers": Array [],
+        "email": "ana@gmail.com",
+        "firstName": "Ana",
+        "id": 890,
+        "lastName": "Christina",
+        "password": "ana",
+        "role": "provider",
+        "services": Array [],
+        "zipCode": "02110",
+      },
+      Object {
+        "answers": Array [],
+        "email": "song@gmail.com",
+        "firstName": "Song",
+        "id": 789,
+        "lastName": "Park",
+        "password": "itisfine",
+        "role": "provider",
+        "services": Array [],
+        "zipCode": "02115",
+      },
+      Object {
+        "answers": Array [],
+        "email": "jordan@gmail.com",
+        "firstName": "Michael",
+        "id": 456,
+        "lastName": "Jordan",
+        "password": "goat",
+        "role": "provider",
+        "services": Array [],
+        "zipCode": "10010",
+      },
+      Object {
+        "answers": Array [],
+        "email": "pokemon@gmail.com",
+        "firstName": "Pokemon",
+        "id": 567,
+        "lastName": "Go",
+        "password": "pokemon",
+        "role": "provider",
+        "services": Array [],
+        "zipCode": "31256",
+      },
+    ]
+  }
+/>
+`;
