@@ -9,13 +9,16 @@ class ServiceCategories extends React.Component {
             serviceCategories: [],
             total_entries: 0,
             new_entry: { serviceCategoryName: "", popularity: "", icon: "", id: -1 },
-            itemsPerPage: 5
+            itemsPerPage: 2
         }
-        this.createNewCategory = this.createNewCategory.bind(this)
-        this.updateInput = this.updateInput.bind(this)
-        this.selectForEdit = this.selectForEdit.bind(this)
-        this.updateExistingCategory = this.updateExistingCategory.bind(this)
-        this.deleteCategory = this.deleteCategory.bind(this)
+        this.createNewCategory = this.createNewCategory.bind(this);
+        this.updateInput = this.updateInput.bind(this);
+        this.selectForEdit = this.selectForEdit.bind(this);
+        this.updateExistingCategory = this.updateExistingCategory.bind(this);
+        this.deleteCategory = this.deleteCategory.bind(this);
+        this.pgup = this.pgup.bind(this);
+        this.pgdn = this.pgdn.bind(this);
+        this.setIpp = this.setIpp.bind(this);
     }
 
     componentDidMount() {
@@ -113,9 +116,53 @@ class ServiceCategories extends React.Component {
         console.log(this.state.new_entry);
     }
 
+    pgup(e) { 
+        e.preventDefault();
+        if (this.state.metadata.first) return;
+        this.serviceCategoryService
+            .findPageOfServiceCategories(this.state.metadata.pageable.pageNumber - 1, this.state.itemsPerPage)
+            .then(pagedMetadata =>
+                this.setState({
+                    metadata: pagedMetadata,
+                    serviceCategories: pagedMetadata.content
+                })
+            )
+
+    }
+    
+    pgdn(e) { 
+        e.preventDefault();
+        if (this.state.metadata.last) return;
+        this.serviceCategoryService
+            .findPageOfServiceCategories(this.state.metadata.pageable.pageNumber + 1, this.state.itemsPerPage)
+            .then(pagedMetadata =>
+                this.setState({
+                    metadata: pagedMetadata,
+                    serviceCategories: pagedMetadata.content
+                })
+            )
+
+    }
+
+    setIpp(e) { 
+        //console.log(e.currentTarget.value)
+        this.setState({ itemsPerPage: e.currentTarget.value });
+        console.log(this.state.itemsPerPage)
+        this.serviceCategoryService
+            .findPageOfServiceCategories(0, e.currentTarget.value)
+            .then(pagedMetadata =>
+                this.setState({
+                    metadata: pagedMetadata,
+                    serviceCategories: pagedMetadata.content,
+                })
+            )
+    }
+
     render() {
         let prev = "page-item";
         let next = "page-item";
+        if (this.state.metadata && this.state.metadata.first) prev += " disabled";
+        if (this.state.metadata && this.state.metadata.last) next += " disabled";
         return (
             <div>
                 <div id="main_table">
@@ -186,6 +233,7 @@ class ServiceCategories extends React.Component {
                     <select
                         className="form-control mx-1"
                         value={this.state.itemsPerPage}
+                        onChange={this.setIpp}
                         style={{ width: "3rem" }}>
                         <option value="2">2</option>
                         <option value="10">10</option>
@@ -194,6 +242,16 @@ class ServiceCategories extends React.Component {
                         <option value="100">100</option>
                     </select>
                     <div className="mx-1">Per Page</div>
+                    <nav aria-label="Page navigation example">
+                        <ul className="pagination">
+                            <li className={prev}><button className="page-link" onClick={this.pgup}>Previous</button></li>
+                            <li className={prev}><button className="page-link" onClick={this.pgup}>{this.state.metadata && this.state.metadata.pageable.pageNumber}</button></li>
+                            <li className="page-item active"><button className="page-link">{this.state.metadata && this.state.metadata.pageable.pageNumber + 1}</button></li>
+                            <li className={next}><button className="page-link" onClick={this.pgdn}>{this.state.metadata && this.state.metadata.pageable.pageNumber + 2}</button></li>
+                            <li className={next}><button className="page-link" onClick={this.pgdn}>Next</button></li>
+                        </ul>
+                    </nav>
+                    {/*
                     <div class="btn-group page-button-group" role="group">
                         <button
                             type="button"
@@ -205,9 +263,16 @@ class ServiceCategories extends React.Component {
                             type="button"
                             className={next + " btn btn-secondary"}
                             onClick={console.log("!!")}>
+                            {this.state.metadata && this.state.metadata.pageable.pageNumber + 1}
+                        </button>
+                        <button
+                            type="button"
+                            className={next + " btn btn-secondary"}
+                            onClick={console.log("!!")}>
                             Next
                         </button>
                     </div>
+                    */}
                 </div>
             </div>
 
