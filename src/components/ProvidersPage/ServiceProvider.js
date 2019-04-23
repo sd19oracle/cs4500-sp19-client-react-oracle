@@ -8,7 +8,8 @@ const ServiceProvider = ({serviceProvider, index}) =>
             </div>
             <div className="col-7">
                 <a href="#">
-                    {serviceProvider.username}
+                    {serviceProvider.firstName + " "}
+                    {serviceProvider.lastName}
                 </a>
                 <div>
                     <span key={serviceProvider.id + 100}> Role: {serviceProvider.role} </span>
