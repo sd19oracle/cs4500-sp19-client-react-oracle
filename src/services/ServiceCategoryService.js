@@ -61,4 +61,9 @@ export default class ServiceCategoryService {
         })
         return resp.json()
     }
+
+    findServiceCategoryPaged(pageIdx, perPage) { 
+        return fetch(this.urlPrefix + `/api/categories/paged?pageNum=${pageIdx}&ipp=${perPage}`)
+        .then(response => response.json())
+    }
 }
