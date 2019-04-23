@@ -100,54 +100,957 @@ exports[`basic test3 1`] = `
 `;
 
 exports[`rendering results on provders page 1`] = `
-<providerList
-  providerList={
-    Array [
-      Object {
-        "answers": Array [],
-        "email": "ana@gmail.com",
-        "firstName": "Ana",
-        "id": 890,
-        "lastName": "Christina",
-        "password": "ana",
-        "role": "provider",
-        "services": Array [],
-        "zipCode": "02110",
-      },
-      Object {
-        "answers": Array [],
-        "email": "song@gmail.com",
-        "firstName": "Song",
-        "id": 789,
-        "lastName": "Park",
-        "password": "itisfine",
-        "role": "provider",
-        "services": Array [],
-        "zipCode": "02115",
-      },
-      Object {
-        "answers": Array [],
-        "email": "jordan@gmail.com",
-        "firstName": "Michael",
-        "id": 456,
-        "lastName": "Jordan",
-        "password": "goat",
-        "role": "provider",
-        "services": Array [],
-        "zipCode": "10010",
-      },
-      Object {
-        "answers": Array [],
-        "email": "pokemon@gmail.com",
-        "firstName": "Pokemon",
-        "id": 567,
-        "lastName": "Go",
-        "password": "pokemon",
-        "role": "provider",
-        "services": Array [],
-        "zipCode": "31256",
-      },
-    ]
-  }
-/>
+<div>
+  <div>
+    <div
+      className="row"
+    >
+      <div
+        className="col-2"
+      >
+        <img
+          src="https://picsum.photos/130/130"
+        />
+      </div>
+      <div
+        className="col-7 providerInfo"
+      >
+        <a
+          href="#"
+        >
+          Ana 
+          Christina
+        </a>
+        <div>
+          <span>
+             Role: 
+            provider
+             
+          </span>
+          <i
+            className="fa fa-star cs4500-yellow"
+          />
+          <i
+            className="fa fa-star cs4500-yellow"
+          />
+          <i
+            className="fa fa-star cs4500-yellow"
+          />
+          <i
+            className="fa fa-star cs4500-yellow"
+          />
+          <i
+            className="fa fa-star cs4500-yellow"
+          />
+        </div>
+        <div>
+          <span>
+             Location: 
+            02110
+          </span>
+        </div>
+        <div
+          className="ProviderAnswers"
+        />
+      </div>
+      <div
+        className="col-3 ViewButton"
+      >
+        <div />
+        <div>
+          <br />
+          <br />
+          <br />
+          <br />
+          <a
+            className="btn btn-primary float-right"
+            href="#"
+          >
+            View Profile
+          </a>
+        </div>
+      </div>
+    </div>
+    <hr />
+  </div>
+  <div>
+    <div
+      className="row"
+    >
+      <div
+        className="col-2"
+      >
+        <img
+          src="https://picsum.photos/130/130"
+        />
+      </div>
+      <div
+        className="col-7 providerInfo"
+      >
+        <a
+          href="#"
+        >
+          Song 
+          Park
+        </a>
+        <div>
+          <span>
+             Role: 
+            provider
+             
+          </span>
+          <i
+            className="fa fa-star cs4500-yellow"
+          />
+          <i
+            className="fa fa-star cs4500-yellow"
+          />
+          <i
+            className="fa fa-star cs4500-yellow"
+          />
+          <i
+            className="fa fa-star cs4500-yellow"
+          />
+          <i
+            className="fa fa-star cs4500-yellow"
+          />
+        </div>
+        <div>
+          <span>
+             Location: 
+            02115
+          </span>
+        </div>
+        <div
+          className="ProviderAnswers"
+        />
+      </div>
+      <div
+        className="col-3 ViewButton"
+      >
+        <div />
+        <div>
+          <br />
+          <br />
+          <br />
+          <br />
+          <a
+            className="btn btn-primary float-right"
+            href="#"
+          >
+            View Profile
+          </a>
+        </div>
+      </div>
+    </div>
+    <hr />
+  </div>
+  <div>
+    <div
+      className="row"
+    >
+      <div
+        className="col-2"
+      >
+        <img
+          src="https://picsum.photos/130/130"
+        />
+      </div>
+      <div
+        className="col-7 providerInfo"
+      >
+        <a
+          href="#"
+        >
+          Michael 
+          Jordan
+        </a>
+        <div>
+          <span>
+             Role: 
+            provider
+             
+          </span>
+          <i
+            className="fa fa-star cs4500-yellow"
+          />
+          <i
+            className="fa fa-star cs4500-yellow"
+          />
+          <i
+            className="fa fa-star cs4500-yellow"
+          />
+          <i
+            className="fa fa-star cs4500-yellow"
+          />
+          <i
+            className="fa fa-star cs4500-yellow"
+          />
+        </div>
+        <div>
+          <span>
+             Location: 
+            10010
+          </span>
+        </div>
+        <div
+          className="ProviderAnswers"
+        />
+      </div>
+      <div
+        className="col-3 ViewButton"
+      >
+        <div />
+        <div>
+          <br />
+          <br />
+          <br />
+          <br />
+          <a
+            className="btn btn-primary float-right"
+            href="#"
+          >
+            View Profile
+          </a>
+        </div>
+      </div>
+    </div>
+    <hr />
+  </div>
+  <div>
+    <div
+      className="row"
+    >
+      <div
+        className="col-2"
+      >
+        <img
+          src="https://picsum.photos/130/130"
+        />
+      </div>
+      <div
+        className="col-7 providerInfo"
+      >
+        <a
+          href="#"
+        >
+          Pokemon 
+          Go
+        </a>
+        <div>
+          <span>
+             Role: 
+            provider
+             
+          </span>
+          <i
+            className="fa fa-star cs4500-yellow"
+          />
+          <i
+            className="fa fa-star cs4500-yellow"
+          />
+          <i
+            className="fa fa-star cs4500-yellow"
+          />
+          <i
+            className="fa fa-star cs4500-yellow"
+          />
+          <i
+            className="fa fa-star cs4500-yellow"
+          />
+        </div>
+        <div>
+          <span>
+             Location: 
+            31256
+          </span>
+        </div>
+        <div
+          className="ProviderAnswers"
+        />
+      </div>
+      <div
+        className="col-3 ViewButton"
+      >
+        <div />
+        <div>
+          <br />
+          <br />
+          <br />
+          <br />
+          <a
+            className="btn btn-primary float-right"
+            href="#"
+          >
+            View Profile
+          </a>
+        </div>
+      </div>
+    </div>
+    <hr />
+  </div>
+</div>
+`;
+
+exports[`rendering results on provders page 2`] = `
+<div>
+  <div>
+    <div
+      className="row"
+    >
+      <div
+        className="col-2"
+      >
+        <img
+          src="https://picsum.photos/130/130"
+        />
+      </div>
+      <div
+        className="col-7 providerInfo"
+      >
+        <a
+          href="#"
+        >
+          Ana 
+          Christina
+        </a>
+        <div>
+          <span>
+             Role: 
+            provider
+             
+          </span>
+          <i
+            className="fa fa-star cs4500-yellow"
+          />
+          <i
+            className="fa fa-star cs4500-yellow"
+          />
+          <i
+            className="fa fa-star cs4500-yellow"
+          />
+          <i
+            className="fa fa-star cs4500-yellow"
+          />
+          <i
+            className="fa fa-star cs4500-yellow"
+          />
+        </div>
+        <div>
+          <span>
+             Location: 
+            02110
+          </span>
+        </div>
+        <div
+          className="ProviderAnswers"
+        />
+      </div>
+      <div
+        className="col-3 ViewButton"
+      >
+        <div />
+        <div>
+          <br />
+          <br />
+          <br />
+          <br />
+          <a
+            className="btn btn-primary float-right"
+            href="#"
+          >
+            View Profile
+          </a>
+        </div>
+      </div>
+    </div>
+    <hr />
+  </div>
+  <div>
+    <div
+      className="row"
+    >
+      <div
+        className="col-2"
+      >
+        <img
+          src="https://picsum.photos/130/130"
+        />
+      </div>
+      <div
+        className="col-7 providerInfo"
+      >
+        <a
+          href="#"
+        >
+          Song 
+          Park
+        </a>
+        <div>
+          <span>
+             Role: 
+            provider
+             
+          </span>
+          <i
+            className="fa fa-star cs4500-yellow"
+          />
+          <i
+            className="fa fa-star cs4500-yellow"
+          />
+          <i
+            className="fa fa-star cs4500-yellow"
+          />
+          <i
+            className="fa fa-star cs4500-yellow"
+          />
+          <i
+            className="fa fa-star cs4500-yellow"
+          />
+        </div>
+        <div>
+          <span>
+             Location: 
+            02115
+          </span>
+        </div>
+        <div
+          className="ProviderAnswers"
+        />
+      </div>
+      <div
+        className="col-3 ViewButton"
+      >
+        <div />
+        <div>
+          <br />
+          <br />
+          <br />
+          <br />
+          <a
+            className="btn btn-primary float-right"
+            href="#"
+          >
+            View Profile
+          </a>
+        </div>
+      </div>
+    </div>
+    <hr />
+  </div>
+  <div>
+    <div
+      className="row"
+    >
+      <div
+        className="col-2"
+      >
+        <img
+          src="https://picsum.photos/130/130"
+        />
+      </div>
+      <div
+        className="col-7 providerInfo"
+      >
+        <a
+          href="#"
+        >
+          Michael 
+          Jordan
+        </a>
+        <div>
+          <span>
+             Role: 
+            provider
+             
+          </span>
+          <i
+            className="fa fa-star cs4500-yellow"
+          />
+          <i
+            className="fa fa-star cs4500-yellow"
+          />
+          <i
+            className="fa fa-star cs4500-yellow"
+          />
+          <i
+            className="fa fa-star cs4500-yellow"
+          />
+          <i
+            className="fa fa-star cs4500-yellow"
+          />
+        </div>
+        <div>
+          <span>
+             Location: 
+            10010
+          </span>
+        </div>
+        <div
+          className="ProviderAnswers"
+        />
+      </div>
+      <div
+        className="col-3 ViewButton"
+      >
+        <div />
+        <div>
+          <br />
+          <br />
+          <br />
+          <br />
+          <a
+            className="btn btn-primary float-right"
+            href="#"
+          >
+            View Profile
+          </a>
+        </div>
+      </div>
+    </div>
+    <hr />
+  </div>
+  <div>
+    <div
+      className="row"
+    >
+      <div
+        className="col-2"
+      >
+        <img
+          src="https://picsum.photos/130/130"
+        />
+      </div>
+      <div
+        className="col-7 providerInfo"
+      >
+        <a
+          href="#"
+        >
+          Pokemon 
+          Go
+        </a>
+        <div>
+          <span>
+             Role: 
+            provider
+             
+          </span>
+          <i
+            className="fa fa-star cs4500-yellow"
+          />
+          <i
+            className="fa fa-star cs4500-yellow"
+          />
+          <i
+            className="fa fa-star cs4500-yellow"
+          />
+          <i
+            className="fa fa-star cs4500-yellow"
+          />
+          <i
+            className="fa fa-star cs4500-yellow"
+          />
+        </div>
+        <div>
+          <span>
+             Location: 
+            31256
+          </span>
+        </div>
+        <div
+          className="ProviderAnswers"
+        />
+      </div>
+      <div
+        className="col-3 ViewButton"
+      >
+        <div />
+        <div>
+          <br />
+          <br />
+          <br />
+          <br />
+          <a
+            className="btn btn-primary float-right"
+            href="#"
+          >
+            View Profile
+          </a>
+        </div>
+      </div>
+    </div>
+    <hr />
+  </div>
+</div>
+`;
+
+exports[`rendering results on provders page 3`] = `
+<div>
+  <div>
+    <div
+      className="row"
+    >
+      <div
+        className="col-2"
+      >
+        <img
+          src="https://picsum.photos/130/130"
+        />
+      </div>
+      <div
+        className="col-7 providerInfo"
+      >
+        <a
+          href="#"
+        >
+          Ana 
+          Christina
+        </a>
+        <div>
+          <span>
+             Role: 
+            provider
+             
+          </span>
+          <i
+            className="fa fa-star cs4500-yellow"
+          />
+          <i
+            className="fa fa-star cs4500-yellow"
+          />
+          <i
+            className="fa fa-star cs4500-yellow"
+          />
+          <i
+            className="fa fa-star cs4500-yellow"
+          />
+          <i
+            className="fa fa-star cs4500-yellow"
+          />
+        </div>
+        <div>
+          <span>
+             Location: 
+            02110
+          </span>
+        </div>
+        <div
+          className="ProviderAnswers"
+        />
+      </div>
+      <div
+        className="col-3 ViewButton"
+      >
+        <div />
+        <div>
+          <br />
+          <br />
+          <br />
+          <br />
+          <a
+            className="btn btn-primary float-right"
+            href="#"
+          >
+            View Profile
+          </a>
+        </div>
+      </div>
+    </div>
+    <hr />
+  </div>
+  <div>
+    <div
+      className="row"
+    >
+      <div
+        className="col-2"
+      >
+        <img
+          src="https://picsum.photos/130/130"
+        />
+      </div>
+      <div
+        className="col-7 providerInfo"
+      >
+        <a
+          href="#"
+        >
+          Song 
+          Park
+        </a>
+        <div>
+          <span>
+             Role: 
+            provider
+             
+          </span>
+          <i
+            className="fa fa-star cs4500-yellow"
+          />
+          <i
+            className="fa fa-star cs4500-yellow"
+          />
+          <i
+            className="fa fa-star cs4500-yellow"
+          />
+          <i
+            className="fa fa-star cs4500-yellow"
+          />
+          <i
+            className="fa fa-star cs4500-yellow"
+          />
+        </div>
+        <div>
+          <span>
+             Location: 
+            02115
+          </span>
+        </div>
+        <div
+          className="ProviderAnswers"
+        />
+      </div>
+      <div
+        className="col-3 ViewButton"
+      >
+        <div />
+        <div>
+          <br />
+          <br />
+          <br />
+          <br />
+          <a
+            className="btn btn-primary float-right"
+            href="#"
+          >
+            View Profile
+          </a>
+        </div>
+      </div>
+    </div>
+    <hr />
+  </div>
+  <div>
+    <div
+      className="row"
+    >
+      <div
+        className="col-2"
+      >
+        <img
+          src="https://picsum.photos/130/130"
+        />
+      </div>
+      <div
+        className="col-7 providerInfo"
+      >
+        <a
+          href="#"
+        >
+          Michael 
+          Jordan
+        </a>
+        <div>
+          <span>
+             Role: 
+            provider
+             
+          </span>
+          <i
+            className="fa fa-star cs4500-yellow"
+          />
+          <i
+            className="fa fa-star cs4500-yellow"
+          />
+          <i
+            className="fa fa-star cs4500-yellow"
+          />
+          <i
+            className="fa fa-star cs4500-yellow"
+          />
+          <i
+            className="fa fa-star cs4500-yellow"
+          />
+        </div>
+        <div>
+          <span>
+             Location: 
+            10010
+          </span>
+        </div>
+        <div
+          className="ProviderAnswers"
+        />
+      </div>
+      <div
+        className="col-3 ViewButton"
+      >
+        <div />
+        <div>
+          <br />
+          <br />
+          <br />
+          <br />
+          <a
+            className="btn btn-primary float-right"
+            href="#"
+          >
+            View Profile
+          </a>
+        </div>
+      </div>
+    </div>
+    <hr />
+  </div>
+  <div>
+    <div
+      className="row"
+    >
+      <div
+        className="col-2"
+      >
+        <img
+          src="https://picsum.photos/130/130"
+        />
+      </div>
+      <div
+        className="col-7 providerInfo"
+      >
+        <a
+          href="#"
+        >
+          Pokemon 
+          Go
+        </a>
+        <div>
+          <span>
+             Role: 
+            provider
+             
+          </span>
+          <i
+            className="fa fa-star cs4500-yellow"
+          />
+          <i
+            className="fa fa-star cs4500-yellow"
+          />
+          <i
+            className="fa fa-star cs4500-yellow"
+          />
+          <i
+            className="fa fa-star cs4500-yellow"
+          />
+          <i
+            className="fa fa-star cs4500-yellow"
+          />
+        </div>
+        <div>
+          <span>
+             Location: 
+            31256
+          </span>
+        </div>
+        <div
+          className="ProviderAnswers"
+        />
+      </div>
+      <div
+        className="col-3 ViewButton"
+      >
+        <div />
+        <div>
+          <br />
+          <br />
+          <br />
+          <br />
+          <a
+            className="btn btn-primary float-right"
+            href="#"
+          >
+            View Profile
+          </a>
+        </div>
+      </div>
+    </div>
+    <hr />
+  </div>
+</div>
+`;
+
+exports[`rendering results on provders page for speicifically matched 1`] = `
+<div>
+  <div>
+    <div
+      className="row"
+    >
+      <div
+        className="col-2"
+      >
+        <img
+          src="https://picsum.photos/130/130"
+        />
+      </div>
+      <div
+        className="col-7 providerInfo"
+      >
+        <a
+          href="#"
+        >
+          Ana 
+          Christina
+        </a>
+        <div>
+          <span>
+             Role: 
+            provider
+             
+          </span>
+          <i
+            className="fa fa-star cs4500-yellow"
+          />
+          <i
+            className="fa fa-star cs4500-yellow"
+          />
+          <i
+            className="fa fa-star cs4500-yellow"
+          />
+          <i
+            className="fa fa-star cs4500-yellow"
+          />
+          <i
+            className="fa fa-star cs4500-yellow"
+          />
+        </div>
+        <div>
+          <span>
+             Location: 
+            02110
+          </span>
+        </div>
+        <div
+          className="ProviderAnswers"
+        />
+      </div>
+      <div
+        className="col-3 ViewButton"
+      >
+        <div />
+        <div>
+          <br />
+          <br />
+          <br />
+          <br />
+          <a
+            className="btn btn-primary float-right"
+            href="#"
+          >
+            View Profile
+          </a>
+        </div>
+      </div>
+    </div>
+    <hr />
+  </div>
+</div>
 `;
