@@ -6,9 +6,9 @@ class Profile extends React.Component {
     super(props);
     this.state = {
       // DIRECTLY GET USER INFO 
-      // currentUser : UserService.getInstance().getCurrentUser()
-      currentUser : { firstname : "Jose", lastname : "CS4500", bd : null, street : "Hunton ave", 
-      city : "BOS", state : "MA", zip :"02115", email: "Jose@gmail.com"}
+      currentUser : UserService.getInstance().getCurrentUser()
+      // currentUser : { firstname : "Jose", lastname : "CS4500", bd : null, street : "Hunton ave", 
+      // city : "BOS", state : "MA", zip :"02115", email: "Jose@gmail.com"}
     };
     this.setNewValue = this.setNewValue.bind(this);
     this.logOut = this.logOut.bind(this);
