@@ -8,7 +8,7 @@ const ServiceTabNavigator = (props) =>
                 props.services.map((service, index) => {
                         return <li key={service.id} className="nav-item">
                             <span className="nav-link" onClick={props.switchCategory}>
-                                {service.category_name}
+                                {service.name}
                             </span>
                         </li>
                     }

@@ -24,7 +24,7 @@ class ServiceTabNavContainer extends React.Component {
                     newPopularServices.push(
                         {
                             "id": serviceCategories[i].id,
-                            "category_name": serviceCategories[i].name,
+                            "name": serviceCategories[i].name,
                             "services": services
                         });
                     this.setState({
@@ -37,7 +37,7 @@ class ServiceTabNavContainer extends React.Component {
 
     switchCategory(event) {
         for (let i in this.state.popularServiceCategories) {
-            if (this.state.popularServiceCategories[i].category_name === event.target.innerText) {
+            if (this.state.popularServiceCategories[i].name === event.target.innerText) {
                 this.setState({
                     activeCategoryServices: this.state.popularServiceCategories[i].services
                 })
