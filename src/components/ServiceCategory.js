@@ -2,6 +2,7 @@ import React from 'react'
 import ServiceCategoryService from '../services/ServiceCategoryService'
 import { MdAdd, MdSave, MdEdit, MdDelete } from "react-icons/md"
 import ServiceCategotyLineItem from "./ServiceCategoryLineItem";
+import ServiceCategoryInputLine from "./ServiceCategoryInputLine"
 class ServiceCategories extends React.Component {
     constructor(props) {
         super(props)
@@ -177,38 +178,11 @@ class ServiceCategories extends React.Component {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>
-                                    <input
-                                        type="text"
-                                        name="serviceCategoryName"
-                                        placeholder="Name"
-                                        value={this.state.new_entry.serviceCategoryName}
-                                        onChange={this.updateInput}
-                                        className={"form-control ml-1"}
-                                    ></input>
-                                </td>
-                                <td>
-                                    <input
-                                        type="text"
-                                        name="popularity"
-                                        placeholder="Popularity Value"
-                                        value={this.state.new_entry.popularity}
-                                        onChange={this.updateInput}
-                                        className={"form-control ml-1"}
-                                    ></input>
-                                </td>
-                                <td>
-                                    <div>
-                                        <button
-                                            className="add_button btn btn-primary mx-1"
-                                            onClick={this.createNewCategory}><MdAdd /></button>
-                                        <button
-                                            className="add_button btn btn-success mx-1"
-                                            onClick={this.updateExistingCategory}><MdSave /></button>
-                                    </div>
-                                </td>
-                            </tr>
+                            <ServiceCategoryInputLine
+                                new_entry={this.state.new_entry}
+                                updateInput={this.updateInput}
+                                createNewCategory={this.createNewCategory}
+                                updateExistingCategory={this.updateExistingCategory}/>
 
                             {
                                 this.state.serviceCategories
@@ -246,28 +220,6 @@ class ServiceCategories extends React.Component {
                             <li className={next}><button className="page-link" onClick={this.pgdn}>Next</button></li>
                         </ul>
                     </nav>
-                    {/*
-                    <div class="btn-group page-button-group" role="group">
-                        <button
-                            type="button"
-                            className={prev + " btn btn-secondary"}
-                            onClick={console.log("!")}>
-                            Prev
-                        </button>
-                        <button
-                            type="button"
-                            className={next + " btn btn-secondary"}
-                            onClick={console.log("!!")}>
-                            {this.state.metadata && this.state.metadata.pageable.pageNumber + 1}
-                        </button>
-                        <button
-                            type="button"
-                            className={next + " btn btn-secondary"}
-                            onClick={console.log("!!")}>
-                            Next
-                        </button>
-                    </div>
-                    */}
                 </div>
             </div>
 
