@@ -28,16 +28,7 @@ export default class App extends Component {
     });
   }
 
-  componentDidUpdate() {
-   this.loadPosts();
-}
-
-loadPosts() {
-  this.userService.getCurrentUser().then(user => {
-    if (user) this.setState({user}
-    )
-  })
- }
+  setUser = user => this.setState({user});
 
   render() {
     return (
@@ -68,7 +59,7 @@ loadPosts() {
               render={({location, history}) =>
                 <Login history={history}
                        location={location}
-                       setUser={user => this.setState({user})}/>}/>
+                       setUser={this.setUser}/>}/>
             <Route path="/logout"
                    exact
                    render={({history}) => {
@@ -83,7 +74,7 @@ loadPosts() {
               component={Admin}/>
             <Route
               path="/profile"
-              component={Profile}/>
+              render={({history}) => <Profile history={history} setUser={this.setUser}/>}/>
           </div>
         </div>
       </Router>

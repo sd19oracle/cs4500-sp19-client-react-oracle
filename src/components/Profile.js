@@ -1,13 +1,14 @@
 import React from "react";
-import { SelectUSState } from "react-select-us-states";
+import {SelectUSState} from "react-select-us-states";
 import UserService from "../services/UserService";
+
 class Profile extends React.Component {
   constructor(props) {
     super(props);
     this.userService = UserService.getInstance();
     this.state = {
       currentUser: {
-        // DIRECTLY GET USER INFO 
+        // DIRECTLY GET USER INFO
         firstName: "",
         id: 0,
         lastName: "",
@@ -19,36 +20,33 @@ class Profile extends React.Component {
         email: ""
       }
     };
-    // console.log(this.userService.getCurrentUser())
 
-    this.userService.getCurrentUser().then(user => console.log(String(user.id)))
-
-    this.setNewValue = this.setNewValue.bind(this);
     this.logOut = this.logOut.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
     this.updateUser = this.updateUser.bind(this);
   }
 
   componentDidMount() {
-    this.userService.getCurrentUser().then(user => this.setState({
-      currentUser: {
-        id: String(user.id),
-        firstName: user.firstName,
-        lastName: user.lastName,
-        zipCode: user.zipCode,
-        email: user.email
+    this.userService.getCurrentUser().then(user => {
+      if (Object.entries(user).length === 0 && user.constructor === Object) {
+        this.props.history.push("/login");
       }
-    }
-    ))
-  }
-
-  setNewValue(newValue) {
-    console.log('this is the State code:' + newValue);
+      this.setState({
+          currentUser: {
+            id: String(user.id),
+            firstName: user.firstName,
+            lastName: user.lastName,
+            zipCode: user.zipCode,
+            email: user.email
+          }
+        }
+      )
+    })
   }
 
   logOut() {
-      this.setState({ user: { email: null } });
-      this.props.history.push({ pathname: "/logout" });
+    this.setState({user: {email: null}});
+    this.props.history.push({pathname: "/logout"});
   }
 
   handleInputChange(event) {
@@ -67,42 +65,55 @@ class Profile extends React.Component {
   }
 
   updateUser() {
-    this.userService.updateCurrentUser(this.state.currentUser, this.state.currentUser.id)
-    this.props.history.push({ pathname: "./home" });
+    this.userService.updateUser(this.state.currentUser).then(user => {
+      this.props.setUser(user);
+      this.setState({
+          currentUser: {
+            id: String(user.id),
+            firstName: user.firstName,
+            lastName: user.lastName,
+            zipCode: user.zipCode,
+            email: user.email
+          }
+        }
+      );
+      this.props.history.push("/home");
+    })
+
   }
 
   render() {
     return (
       <div>
-        <div className="box2"> <h1>Profile</h1></div>
+        <div className="box2"><h1>Profile</h1></div>
         {/* <Form onSubmit = {this.updateUser}> */}
         <div className="row">
-          <div className="column" >
+          <div className="column">
             <h2>Legal Name</h2>
             <hr></hr>
             <div>
               <h6>First Name</h6>
-              <input name="firstName" value={this.state.currentUser.firstName} onChange={this.handleInputChange} />
+              <input name="firstName" value={this.state.currentUser.firstName} onChange={this.handleInputChange}/>
               <h6>Last Name</h6>
-              <input name="lastName" value={this.state.currentUser.lastName} onChange={this.handleInputChange} />
+              <input name="lastName" value={this.state.currentUser.lastName} onChange={this.handleInputChange}/>
             </div>
             <hr></hr>
           </div>
-          <div className="column" >
+          <div className="column">
             <h2>Date of Birth</h2>
             <hr></hr>
             <h6>Choose your Birthday</h6>
-            <input type="month" name="bd" value={this.state.currentUser.DOB_MONTH} onChange={this.handleInputChange} />
+            <input type="month" name="bd" value={this.state.currentUser.DOB_MONTH} onChange={this.handleInputChange}/>
           </div>
-          <div className="column" >
+          <div className="column">
             <h2> Location </h2>
             <hr></hr>
             <h6>Street</h6>
-            <input type="text" name="street" value={this.state.currentUser.Street} onChange={this.handleInputChange} />
+            <input type="text" name="street" value={this.state.currentUser.Street} onChange={this.handleInputChange}/>
             <h6>City</h6>
-            <input type="text" name="city" value={this.state.currentUser.City} onChange={this.handleInputChange} />
+            <input type="text" name="city" value={this.state.currentUser.City} onChange={this.handleInputChange}/>
             <h6>State</h6>
-            <p >
+            <p>
               <select name="state" value={this.state.currentUser.State} onChange={this.handleInputChange}>
                 <option value="AL">Alabama</option>
                 <option value="AK">Alaska</option>
@@ -158,14 +169,14 @@ class Profile extends React.Component {
               </select>
             </p>
             <h6>Zip</h6>
-            <input type="text" name="zip" value={this.state.currentUser.zipCode} onChange={this.handleInputChange} />
+            <input type="text" name="zip" value={this.state.currentUser.zipCode} onChange={this.handleInputChange}/>
             <h6>Email</h6>
-            <input type="text" name="email" value={this.state.currentUser.email} disabled style={{ background: "yellow" }} />
-            <br />
+            <input type="text" name="email" value={this.state.currentUser.email} readOnly={true}/>
+            <br/>
           </div>
         </div>
         <hr></hr>
-        <button type="button" className="button2" onClick={this.updateUser}>  Update </button>
+        <button type="button" className="button2" onClick={this.updateUser}> Update</button>
         <button type="submit" className="button2" onClick={this.logOut}> Log out</button>
         {/* </Formik> */}
       </div>)

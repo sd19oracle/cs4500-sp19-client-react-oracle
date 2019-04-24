@@ -73,19 +73,18 @@ export default class UserService {
       } else {
         throw new HttpError(response);
       }
-    }).then(response => { 
+    }).then(response => {
       return response.json();
-    }).catch(error => { 
+    }).catch(error => {
       return {};
     });
   }
 
-  updateCurrentUser(user, id) {
-    return fetch(this.urlPrefix + `/api/users/${id}`, 
+  updateUser(user) {
+    return fetch(this.urlPrefix + `/api/users/${user.id}`,
     {
       body: JSON.stringify(user),
       method: "PUT",
-      credentials: "include",
       headers: {
         "Content-Type": "application/json"
       }
