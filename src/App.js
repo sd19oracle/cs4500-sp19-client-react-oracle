@@ -48,7 +48,10 @@ export default class App extends Component {
             <Route
               path="/register"
               exact
-              component={Register}/>
+              render={({location, history}) =>
+                <Register history={history}
+                       location={location}
+                       setUser={this.setUser}/>}/>
             <Route
               path="/providers"
               exact

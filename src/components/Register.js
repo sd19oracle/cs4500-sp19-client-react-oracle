@@ -9,9 +9,14 @@ const Register = ({setUser, location, history}) =>
     <Formik
       initialValues={{email: "", password: "", firstName: "", lastName: ""}}
       onSubmit={(values, {resetForm}) => {
-        UserService.getInstance().createUser(values)
+        const service = UserService.getInstance();
+        service.createUser(values)
           .then(() => {
-            history.push("/login");
+            service.login(values.email, values.password)
+              .then((user) => {
+                setUser(user);
+                history.push("/home");
+              })
           })
           .catch(err => {
             if (err instanceof HttpError && err.response.status === 409) {
