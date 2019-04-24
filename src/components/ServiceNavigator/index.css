@@ -3,6 +3,7 @@
 }
 
 .cover {
-    max-height: 15rem;
+    max-height: 13rem;
     object-fit: cover;
+    border-radius: 0.5rem;
 }
