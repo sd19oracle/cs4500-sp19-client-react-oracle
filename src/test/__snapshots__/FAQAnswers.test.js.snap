@@ -1,0 +1,194 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders the answers given 1`] = `
+<div>
+  <h3>
+    FAQ Answers
+  </h3>
+  <table
+    className="table"
+  >
+    <thead>
+      <tr>
+        <td>
+          ID
+        </td>
+        <td>
+          Question ID
+        </td>
+        <td>
+          Question
+        </td>
+        <td>
+          Answer
+        </td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <a
+            href="/admin/faq-answers/2"
+            onClick={[Function]}
+          >
+            2
+          </a>
+        </td>
+        <td>
+          2
+        </td>
+        <td>
+          Are you getting the hang of this Chris?
+        </td>
+        <td>
+          No
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a
+            href="/admin/faq-answers/3"
+            onClick={[Function]}
+          >
+            3
+          </a>
+        </td>
+        <td>
+          2
+        </td>
+        <td>
+          Are you getting the hang of this Chris?
+        </td>
+        <td>
+          Maybe
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a
+            href="/admin/faq-answers/4"
+            onClick={[Function]}
+          >
+            4
+          </a>
+        </td>
+        <td>
+          3
+        </td>
+        <td>
+          test
+        </td>
+        <td>
+          So
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;
+
+exports[`should render the faq answers 1`] = `
+<div>
+  <h3>
+    FAQ Answers
+  </h3>
+  <table
+    className="table"
+  >
+    <thead>
+      <tr>
+        <td>
+          ID
+        </td>
+        <td>
+          Question ID
+        </td>
+        <td>
+          Question
+        </td>
+        <td>
+          Answer
+        </td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <a
+            href="/admin/faq-answers/1"
+            onClick={[Function]}
+          >
+            1
+          </a>
+        </td>
+        <td>
+          1
+        </td>
+        <td>
+          Do you like pie?
+        </td>
+        <td>
+          Yes
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a
+            href="/admin/faq-answers/2"
+            onClick={[Function]}
+          >
+            2
+          </a>
+        </td>
+        <td>
+          2
+        </td>
+        <td>
+          Are you getting the hang of this Chris?
+        </td>
+        <td>
+          No
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a
+            href="/admin/faq-answers/3"
+            onClick={[Function]}
+          >
+            3
+          </a>
+        </td>
+        <td>
+          2
+        </td>
+        <td>
+          Are you getting the hang of this Chris?
+        </td>
+        <td>
+          Maybe
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a
+            href="/admin/faq-answers/4"
+            onClick={[Function]}
+          >
+            4
+          </a>
+        </td>
+        <td>
+          3
+        </td>
+        <td>
+          test
+        </td>
+        <td>
+          So
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;
