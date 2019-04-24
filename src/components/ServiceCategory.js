@@ -1,6 +1,7 @@
 import React from 'react'
 import ServiceCategoryService from '../services/ServiceCategoryService'
 import { MdAdd, MdSave, MdEdit, MdDelete } from "react-icons/md"
+import ServiceCategotyLineItem from "./ServiceCategoryLineItem";
 class ServiceCategories extends React.Component {
     constructor(props) {
         super(props)
@@ -116,7 +117,7 @@ class ServiceCategories extends React.Component {
         console.log(this.state.new_entry);
     }
 
-    pgup(e) { 
+    pgup(e) {
         e.preventDefault();
         if (this.state.metadata.first) return;
         this.serviceCategoryService
@@ -129,8 +130,8 @@ class ServiceCategories extends React.Component {
             )
 
     }
-    
-    pgdn(e) { 
+
+    pgdn(e) {
         e.preventDefault();
         if (this.state.metadata.last) return;
         this.serviceCategoryService
@@ -144,7 +145,7 @@ class ServiceCategories extends React.Component {
 
     }
 
-    setIpp(e) { 
+    setIpp(e) {
         //console.log(e.currentTarget.value)
         this.setState({ itemsPerPage: e.currentTarget.value });
         console.log(this.state.itemsPerPage)
@@ -211,19 +212,14 @@ class ServiceCategories extends React.Component {
 
                             {
                                 this.state.serviceCategories
-                                    .map(serviceCategory =>
-                                        <tr key={serviceCategory.id}>
-                                            <td>{serviceCategory.serviceCategoryName}</td>
-                                            <td>{serviceCategory.popularity}</td>
-                                            <td>
-                                                <button
-                                                    className="add_button btn btn-warning mx-1"
-                                                    onClick={(e) => this.selectForEdit(serviceCategory.id)}><MdEdit /></button>
-                                                <button
-                                                    className="add_button btn btn-danger mx-1"
-                                                    onClick={(e) => this.deleteCategory(serviceCategory.id)}><MdDelete /></button>
-                                            </td>
-                                        </tr>
+                                    .map(serviceCategory => 
+                                        <ServiceCategotyLineItem
+                                            itemid={serviceCategory.id}
+                                            serviceCategoryName={serviceCategory.serviceCategoryName}
+                                            popularity={serviceCategory.popularity}
+                                            selectForEdit={this.selectForEdit}
+                                            deleteCategory={this.deleteCategory}/>
+                                    
                                     )
                             }
                         </tbody>
