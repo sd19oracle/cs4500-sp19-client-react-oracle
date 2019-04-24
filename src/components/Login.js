@@ -13,7 +13,7 @@ const Login = ({setUser, location, history}) =>
         UserService.getInstance().login(values.email, values.password)
           .then((user) => {
             setUser(user);
-            history.push("/home");
+            history.push("/profile");
           })
           .catch(err => {
             if (err instanceof HttpError && err.response.status === 401) {
