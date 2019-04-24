@@ -111,7 +111,7 @@ class Profile extends React.Component {
             <h2>Date of Birth</h2>
             <hr></hr>
             <h6>Choose your Birthday</h6>
-            <input type="month" name="dob" value={this.state.currentUser.dob} onChange={this.handleInputChange}/>
+            <input type="date" name="dob" value={this.state.currentUser.dob} onChange={this.handleInputChange}/>
           </div>
           <div className="column">
             <h2> Location </h2>
