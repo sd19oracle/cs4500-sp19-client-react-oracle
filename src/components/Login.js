@@ -12,7 +12,7 @@ const Login = ({setUser, location, history}) =>
         UserService.getInstance().login(values.username, values.password)
           .then((user) => {
             setUser(user);
-            history.push("/home");
+            history.push("/profile");
           })
           .catch(err => {
             history.push("/login?fail=true");
