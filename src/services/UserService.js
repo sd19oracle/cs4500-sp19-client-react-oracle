@@ -81,9 +81,10 @@ export default class UserService {
   }
 
   updateCurrentUser(user) {
-    return fetch(this.urlPrefix + "/api/currentUser/update", {
+    return fetch(this.urlPrefix + `/api/users/${user}`, 
+    {
       body: JSON.stringify(user),
-      method: "POST",
+      method: "PUT",
       credentials: "include",
       headers: {
         "Content-Type": "application/json"
