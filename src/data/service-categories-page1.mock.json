@@ -1,0 +1,66 @@
+{
+    "content": [
+        {
+            "id": 10,
+            "popularity": 2,
+            "icon": "img_url",
+            "serviceCategoryName": "Personal",
+            "services": [
+                {
+                    "id": 543,
+                    "serviceName": "Personal Training",
+                    "popularity": 8,
+                    "thumbnail": "https://picsum.photos/300/200",
+                    "questions": []
+                }
+            ]
+        },
+        {
+            "id": 11,
+            "popularity": 1,
+            "icon": "img_url",
+            "serviceCategoryName": "Photography",
+            "services": [
+                {
+                    "id": 456,
+                    "serviceName": "Photographers",
+                    "popularity": 7,
+                    "thumbnail": "https://picsum.photos/300/200",
+                    "questions": []
+                }
+            ]
+        },
+        {
+            "id": 15,
+            "popularity": 300,
+            "icon": "",
+            "serviceCategoryName": "Test1",
+            "services": []
+        }
+    ],
+    "pageable": {
+        "sort": {
+            "sorted": false,
+            "unsorted": true,
+            "empty": true
+        },
+        "pageSize": 7,
+        "pageNumber": 1,
+        "offset": 7,
+        "paged": true,
+        "unpaged": false
+    },
+    "totalPages": 2,
+    "totalElements": 10,
+    "last": true,
+    "first": false,
+    "sort": {
+        "sorted": false,
+        "unsorted": true,
+        "empty": true
+    },
+    "numberOfElements": 3,
+    "size": 7,
+    "number": 1,
+    "empty": false
+}
