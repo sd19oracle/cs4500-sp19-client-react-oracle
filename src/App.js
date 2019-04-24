@@ -28,6 +28,8 @@ export default class App extends Component {
     });
   }
 
+  setUser = user => this.setState({user});
+
   render() {
     return (
       <Router>
@@ -57,7 +59,7 @@ export default class App extends Component {
               render={({location, history}) =>
                 <Login history={history}
                        location={location}
-                       setUser={user => this.setState({user})}/>}/>
+                       setUser={this.setUser}/>}/>
             <Route path="/logout"
                    exact
                    render={({history}) => {
@@ -72,7 +74,7 @@ export default class App extends Component {
               component={Admin}/>
             <Route
               path="/profile"
-              component={Profile}/>
+              render={({history}) => <Profile history={history} setUser={this.setUser}/>}/>
           </div>
         </div>
       </Router>
