@@ -5,6 +5,7 @@ import ServiceCategoryService from "../../services/ServiceCategoryService";
 import "./index.css"
 import ServiceCards from "./ServiceCards";
 import ServiceService from "../../services/ServiceService";
+import ServiceLinks from "./ServiceLinks";
 
 export default class ServiceNavigator extends React.Component {
 
@@ -41,7 +42,9 @@ export default class ServiceNavigator extends React.Component {
       // if switching ids then load the services for the new one
       this.loadServices("");
 
-    } else if (currentCatID && prevCatID) {
+    } else if (currentCatID && prevCatID
+      && this.state.serviceCategories.length
+      !== prevState.serviceCategories.length) {
       // if user selects a category then filters it out,
       // deselect that category
       const pred = cat => cat.id === Number(currentCatID);
@@ -93,7 +96,9 @@ export default class ServiceNavigator extends React.Component {
     </div>
     <div className="col-8">
       <h1>{this.currentServiceTitle()}</h1>
-      <ServiceCards services={this.state.services}/>
+      <ServiceCards services={this.state.services.slice(0, 4)}/>
+      <hr/>
+      <ServiceLinks services={this.state.services}/>
     </div>
   </div>;
 }
