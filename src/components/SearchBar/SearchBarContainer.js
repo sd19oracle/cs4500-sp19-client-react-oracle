@@ -31,7 +31,7 @@ class SearchBarContainer extends React.Component {
                         state: {
                             name: this.state.name,
                             zip: this.state.zip,
-                            list: this.state.providersList
+                            providersList: this.state.providersList
                         }
                     })
                 })
@@ -50,7 +50,7 @@ class SearchBarContainer extends React.Component {
                         state: {
                             name: this.state.name,
                             zip: this.state.zip,
-                            list: this.state.providersList
+                            providersList: this.state.providersList
                         }
                     })
                 })
@@ -69,7 +69,7 @@ class SearchBarContainer extends React.Component {
                         state: {
                             name: this.state.name,
                             zip: this.state.zip,
-                            list: this.state.providersList
+                            providersList: this.state.providersList
                         }
                     })
                 })

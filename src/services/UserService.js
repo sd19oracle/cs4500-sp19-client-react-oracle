@@ -41,9 +41,9 @@ export default class UserService {
     });
   }
 
-  login(username, password) {
+  login(email, password) {
     return fetch(this.urlPrefix + "/api/login", {
-      body: JSON.stringify({username, password}),
+      body: JSON.stringify({email, password}),
       method: "POST",
       credentials: "include",
       headers: {
@@ -61,7 +61,7 @@ export default class UserService {
     return fetch(this.urlPrefix + "/api/logout", {
       credentials: "include",
       method: "POST",
-    }).then(response => response.json());
+    });
   }
 
   getCurrentUser() {
@@ -69,18 +69,22 @@ export default class UserService {
       credentials: "include"
     }).then(response => {
       if (response.ok) {
-        return response.json();
+        return response;
       } else {
         throw new HttpError(response);
       }
+    }).then(response => {
+      return response.json();
+    }).catch(error => {
+      return {};
     });
   }
 
-  updateCurrentUser(user) {
-    return fetch(this.urlPrefix + "/api/currentUser/update", {
+  updateUser(user) {
+    return fetch(this.urlPrefix + `/api/users/${user.id}`,
+    {
       body: JSON.stringify(user),
-      method: "POST",
-      credentials: "include",
+      method: "PUT",
       headers: {
         "Content-Type": "application/json"
       }

@@ -1,17 +1,18 @@
 import React from 'react'
 
-const ServiceProvider = ({serviceProvider}) =>
+const ServiceProvider = ({serviceProvider, index}) =>
     <div>
-        <div className="row">
+        <div className="row" key={index}>
             <div className="col-2">
-                <img src="https://picsum.photos/130/130"/>
+                <img key={index} src="https://picsum.photos/130/130"/>
             </div>
-            <div className="col-7">
+            <div className="col-7 providerInfo">
                 <a href="#">
-                    {serviceProvider.username}
+                    {serviceProvider.firstName + " "}
+                    {serviceProvider.lastName}
                 </a>
                 <div>
-                    <span> Role: {serviceProvider.role} </span>
+                    <span key={serviceProvider.id + 100}> Role: {serviceProvider.role} </span>
                     <i className="fa fa-star cs4500-yellow"/>
                     <i className="fa fa-star cs4500-yellow"/>
                     <i className="fa fa-star cs4500-yellow"/>
@@ -21,15 +22,16 @@ const ServiceProvider = ({serviceProvider}) =>
                 <div>
                     {/* <span>{serviceProvider.yearsInBusiness}</span> years in business, */}
                     {/* <span>{serviceProvider.hires}</span> hires */}
-                    <span> Location: {serviceProvider.zipCode}</span>
+                    <span key={serviceProvider.id}> Location: {serviceProvider.zipCode}</span>
                 </div>
-                <div>
+                <div className="ProviderAnswers">
                     {serviceProvider.answers.map(answer  => 
-                        <span> {answer.answer}</span>
+                  
+                        <span key={answer.id}> {answer.answer}</span>
                     )}
                 </div>
             </div>
-            <div className="col-3">
+            <div className="col-3 ViewButton">
                 <div>
                     {/* <span className="float-right">{serviceProvider.price}</span> */}
                 </div>
