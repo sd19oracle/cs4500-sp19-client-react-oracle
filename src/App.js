@@ -28,6 +28,17 @@ export default class App extends Component {
     });
   }
 
+  componentDidUpdate() {
+   this.loadPosts();
+}
+
+loadPosts() {
+  this.userService.getCurrentUser().then(user => {
+    if (user) this.setState({user}
+    )
+  })
+ }
+
   render() {
     return (
       <Router>

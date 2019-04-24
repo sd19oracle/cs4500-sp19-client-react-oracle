@@ -80,8 +80,8 @@ export default class UserService {
     });
   }
 
-  updateCurrentUser(user) {
-    return fetch(this.urlPrefix + `/api/users/${user}`, 
+  updateCurrentUser(user, id) {
+    return fetch(this.urlPrefix + `/api/users/${id}`, 
     {
       body: JSON.stringify(user),
       method: "PUT",
