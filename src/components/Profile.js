@@ -20,7 +20,7 @@ class Profile extends React.Component {
         email: ""
       }
     };
-
+    console.log(this.userService.getCurrentUser().then(user => console.log(user)))
     this.logOut = this.logOut.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
     this.updateUser = this.updateUser.bind(this);
@@ -37,7 +37,11 @@ class Profile extends React.Component {
             firstName: user.firstName,
             lastName: user.lastName,
             zipCode: user.zipCode,
-            email: user.email
+            email: user.email,
+            Street : user.street,
+            State : user.state,
+            DOB_MONTH : user.dob,
+            City: user.city
           }
         }
       )
