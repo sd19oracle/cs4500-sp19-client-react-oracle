@@ -12,7 +12,7 @@ const ServiceCards = ({services}) =>
              className="card-img-top cover"/>
         <div className="card-body">
           <p className="card-text">
-            <Link to="/providers">{service.serviceName}</Link>
+            <Link to={`/providers/${service.id}`}>{service.serviceName}</Link>
           </p>
         </div>
       </div>
