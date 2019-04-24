@@ -12,15 +12,15 @@ class Profile extends React.Component {
         firstName: "",
         id: 0,
         lastName: "",
-        DOB_MONTH: "",
-        Street: "",
-        City: "",
-        State: "",
+        dob: "",
+        street: "",
+        city: "",
+        state: "",
         zipCode: "",
         email: ""
       }
     };
-
+    console.log(this.userService.getCurrentUser().then(user => console.log(user)))
     this.logOut = this.logOut.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
     this.updateUser = this.updateUser.bind(this);
@@ -37,7 +37,11 @@ class Profile extends React.Component {
             firstName: user.firstName,
             lastName: user.lastName,
             zipCode: user.zipCode,
-            email: user.email
+            email: user.email,
+            street : user.street,
+            state : user.state,
+            dob : user.dob,
+            city: user.city
           }
         }
       )
@@ -73,7 +77,11 @@ class Profile extends React.Component {
             firstName: user.firstName,
             lastName: user.lastName,
             zipCode: user.zipCode,
-            email: user.email
+            email: user.email,
+            street : user.street,
+            state : user.state,
+            dob : user.dob,
+            city: user.city
           }
         }
       );
@@ -103,18 +111,18 @@ class Profile extends React.Component {
             <h2>Date of Birth</h2>
             <hr></hr>
             <h6>Choose your Birthday</h6>
-            <input type="month" name="bd" value={this.state.currentUser.DOB_MONTH} onChange={this.handleInputChange}/>
+            <input type="date" name="dob" value={this.state.currentUser.dob} onChange={this.handleInputChange}/>
           </div>
           <div className="column">
             <h2> Location </h2>
             <hr></hr>
             <h6>Street</h6>
-            <input type="text" name="street" value={this.state.currentUser.Street} onChange={this.handleInputChange}/>
+            <input type="text" name="street" value={this.state.currentUser.street} onChange={this.handleInputChange}/>
             <h6>City</h6>
-            <input type="text" name="city" value={this.state.currentUser.City} onChange={this.handleInputChange}/>
+            <input type="text" name="city" value={this.state.currentUser.city} onChange={this.handleInputChange}/>
             <h6>State</h6>
             <p>
-              <select name="state" value={this.state.currentUser.State} onChange={this.handleInputChange}>
+              <select name="state" value={this.state.currentUser.state} onChange={this.handleInputChange}>
                 <option value="AL">Alabama</option>
                 <option value="AK">Alaska</option>
                 <option value="AZ">Arizona</option>
@@ -169,7 +177,7 @@ class Profile extends React.Component {
               </select>
             </p>
             <h6>Zip</h6>
-            <input type="text" name="zip" value={this.state.currentUser.zipCode} onChange={this.handleInputChange}/>
+            <input type="text" name="zipCode" value={this.state.currentUser.zipCode} onChange={this.handleInputChange}/>
             <h6>Email</h6>
             <input type="text" name="email" value={this.state.currentUser.email} readOnly={true}/>
             <br/>
