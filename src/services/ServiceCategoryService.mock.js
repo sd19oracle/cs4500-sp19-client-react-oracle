@@ -7,7 +7,7 @@ global.fetch = jest.fn()
             if (config.method === "delete") {
                 return Promise.resolve();
             }
-            else if (config.method === "put") {
+            else if (config.method === "put" || config.method === "post") {
                 const body = JSON.parse(config.body);
                 return Promise.resolve({ json: () => body })
             }
