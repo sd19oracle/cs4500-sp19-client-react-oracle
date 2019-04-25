@@ -74,6 +74,36 @@
                     "questions": []
                 }
             ]
+        },
+        {
+            "id": 8,
+            "popularity": 4,
+            "icon": "img_url",
+            "serviceCategoryName": "Design and Web",
+            "services": [
+                {
+                    "id": 456,
+                    "serviceName": "Photographers",
+                    "popularity": 7,
+                    "thumbnail": "https://picsum.photos/300/200",
+                    "questions": []
+                }
+            ]
+        },
+        {
+            "id": 9,
+            "popularity": 3,
+            "icon": "img_url",
+            "serviceCategoryName": "Legal",
+            "services": [
+                {
+                    "id": 456,
+                    "serviceName": "Photographers",
+                    "popularity": 7,
+                    "thumbnail": "https://picsum.photos/300/200",
+                    "questions": []
+                }
+            ]
         }
     ],
     "pageable": {
@@ -82,23 +112,23 @@
             "unsorted": true,
             "empty": true
         },
-        "pageSize": 5,
+        "pageSize": 7,
         "pageNumber": 0,
         "offset": 0,
-        "paged": true,
-        "unpaged": false
+        "unpaged": false,
+        "paged": true
     },
-    "totalPages": 2,
     "totalElements": 10,
     "last": false,
+    "totalPages": 2,
     "first": true,
     "sort": {
         "sorted": false,
         "unsorted": true,
         "empty": true
     },
-    "numberOfElements": 5,
-    "size": 5,
+    "numberOfElements": 7,
+    "size": 7,
     "number": 0,
     "empty": false
 }

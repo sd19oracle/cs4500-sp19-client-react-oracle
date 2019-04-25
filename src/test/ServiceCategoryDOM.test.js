@@ -1,6 +1,6 @@
 import "../services/ServiceCategoryService.mock"
 import { MemoryRouter } from "react-router-dom";
-import svccatmockdata from "../data/service_categories_page0.mock"
+import svccatmockdata from "../data/service-categories-page0.mock"
 import React from 'react'
 import renderer from 'react-test-renderer'
 import ServiceCategoryService from "../services/ServiceCategoryService"
@@ -16,5 +16,8 @@ test("render correct # of entries (first page)", () => {
         </MemoryRouter>
     );
     let root = component.root;
-    expect(root.findAllByType("tr").length).toBe(7);
+    console.log(root.findAllByType("tr"))
+    expect(root.findAllByType("tr").length).toBe(9);
 })
+
+//test("count buttons of the DOM, should be ")
