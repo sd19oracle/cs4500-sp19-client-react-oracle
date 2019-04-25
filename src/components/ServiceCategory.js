@@ -1,8 +1,10 @@
-import React from 'react'
-import ServiceCategoryService from '../services/ServiceCategoryService'
-import { MdAdd, MdSave, MdEdit, MdDelete } from "react-icons/md"
+import React from 'react';
+import ServiceCategoryService from '../services/ServiceCategoryService';
+import { MdAdd, MdSave, MdEdit, MdDelete } from "react-icons/md";
 import ServiceCategotyLineItem from "./ServiceCategoryLineItem";
-import ServiceCategoryInputLine from "./ServiceCategoryInputLine"
+import ServiceCategoryInputLine from "./ServiceCategoryInputLine";
+import ServiceCategoryTable from "./ServiceCategoryTable";
+
 class ServiceCategories extends React.Component {
     constructor(props) {
         super(props)
@@ -115,7 +117,6 @@ class ServiceCategories extends React.Component {
                 [name]: value
             }
         }))
-        console.log(this.state.new_entry);
     }
 
     pgup(e) {
@@ -165,40 +166,19 @@ class ServiceCategories extends React.Component {
         let next = "page-item";
         if (this.state.metadata && this.state.metadata.first) prev += " disabled";
         if (this.state.metadata && this.state.metadata.last) next += " disabled";
+        let tableprops = {
+            new_entry: this.state.new_entry,
+            updateInput: this.updateInput,
+            createNewCategory: this.createNewCategory,
+            updateExistingCategory: this.updateExistingCategory,
+            serviceCategories: this.state.serviceCategories,
+            selectForEdit: this.selectForEdit,
+            deleteCategory: this.deleteCategory
+        }
         return (
             <div>
-                <div id="main_table">
-                    <h3>Service Categories</h3>
-                    <table className="table">
-                        <thead>
-                            <tr>
-                                <th>Category</th>
-                                <th>Popularity</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <ServiceCategoryInputLine
-                                new_entry={this.state.new_entry}
-                                updateInput={this.updateInput}
-                                createNewCategory={this.createNewCategory}
-                                updateExistingCategory={this.updateExistingCategory}/>
-
-                            {
-                                this.state.serviceCategories
-                                    .map(serviceCategory => 
-                                        <ServiceCategotyLineItem
-                                            itemid={serviceCategory.id}
-                                            serviceCategoryName={serviceCategory.serviceCategoryName}
-                                            popularity={serviceCategory.popularity}
-                                            selectForEdit={this.selectForEdit}
-                                            deleteCategory={this.deleteCategory}/>
-                                    
-                                    )
-                            }
-                        </tbody>
-                    </table>
-                </div>
+                <ServiceCategoryTable
+                    {...tableprops}/>
                 <div id="page-control" className="d-flex flex-row align-baseline">
                     <select
                         className="form-control mx-1"
