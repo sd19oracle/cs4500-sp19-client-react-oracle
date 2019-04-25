@@ -2,7 +2,7 @@ import React from "react";
 import { MdAdd, MdSave} from "react-icons/md";
 
 const ServiceCategoryInputLine = props =>
-    <tr>
+    <tr key="input">
         <td>
             <input
                 type="text"

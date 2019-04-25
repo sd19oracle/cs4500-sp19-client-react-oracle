@@ -8,7 +8,7 @@ const ServiceCategoryTable = props =>
         <h3>Service Categories</h3>
         <table className="table">
             <thead>
-                <tr>
+                <tr key="Title">
                     <th>Category</th>
                     <th>Popularity</th>
                     <th>Actions</th>
