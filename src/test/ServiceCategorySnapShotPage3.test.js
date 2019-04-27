@@ -1,12 +1,12 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import svcCatPageOne from "../data/service-categories-page1.mock.json"
+import svcCatPageTwo from "../data/service-categories-page2.mock.json"
 import ServiceCategoryTable from "../components/ServiceCategoryTable";
 
 test("snapshots matching", () => {
     const component = renderer.create(
         <ServiceCategoryTable
-            serviceCategories={svcCatPageOne.content}
+            serviceCategories={svcCatPageTwo.content}
             new_entry={{ serviceCategoryName: "", popularity: "", icon: "", id: -1 }} />
     );
     let tree = component.toJSON();
