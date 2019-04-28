@@ -1,0 +1,66 @@
+{
+  "content": [
+    {
+      "id": 7,
+      "popularity": 5,
+      "icon": "img_url",
+      "serviceCategoryName": "Housing",
+      "services": [
+        {
+          "id": 188,
+          "serviceName": "House cleaning",
+          "popularity": 8,
+          "thumbnail": "https://picsum.photos/300/200",
+          "questions": []
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "popularity": 3,
+      "icon": "img_url",
+      "serviceCategoryName": "Moving",
+      "services": [
+        {
+          "id": 189,
+          "serviceName": "House Moving",
+          "popularity": 10,
+          "thumbnail": "https://picsum.photos/300/200",
+          "questions": []
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "popularity": 200,
+      "icon": "",
+      "serviceCategoryName": "Actors",
+      "services": []
+    }
+  ],
+  "pageable": {
+    "sort": {
+      "sorted": false,
+      "unsorted": true,
+      "empty": true
+    },
+    "pageSize": 7,
+    "pageNumber": 2,
+    "offset": 3,
+    "unpaged": false,
+    "paged": true
+  },
+  "totalElements": 10,
+  "last": true,
+  "totalPages": 2,
+  "first": false,
+  "sort": {
+    "sorted": false,
+    "unsorted": true,
+    "empty": true
+  },
+  "numberOfElements": 5,
+  "size": 7,
+  "number": 2,
+  "empty": false
+}
